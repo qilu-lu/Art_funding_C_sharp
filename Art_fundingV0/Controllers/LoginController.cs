@@ -9,6 +9,7 @@ using System.Web.Security;
 
 namespace Art_fundingV0.Controllers
 {
+    [Authorize]
     public class LoginController : Controller
     {
         private IDal dal;
@@ -34,19 +35,20 @@ namespace Art_fundingV0.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string utilisateur, string returnUrl)
+
+        public ActionResult Index(EntrepriseViewModel viewModel, string returnUrl)
         {
             if (ModelState.IsValid)
             {
-                //Utilisateur utilisateur = dal.Authentifier(viewModel.Utilisateur.Prenom, viewModel.Utilisateur.MotDePasse);
-                if (utilisateur != null)
+                Utilisateur utilisateur = dal.Authentifier(viewModel.entreprise.Prenom, viewModel.entreprise.MotDePasse);
+                if (entreprise != null)
                 {
-                    FormsAuthentication.SetAuthCookie(utilisateur.ToString(), false);
+                    FormsAuthentication.SetAuthCookie(entreprise.Id.ToString(), false);
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
                     return Redirect("/");
                 }
-                ModelState.AddModelError("Utilisateur.Prenom", "Prénom et/ou mot de passe incorrect(s)");
+                ModelState.AddModelError("entreprise.adresse_email", "adresse_email et/ou mot de passe incorrect(s)");
             }
             return View();
         }
