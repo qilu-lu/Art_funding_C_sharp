@@ -8,13 +8,13 @@ using Art_fundingV0.Models;
 using Art_fundingV0.ViewModels;
 namespace Art_fundingV0.Controllers
 {
-    public class usersController : Controller
+    public class userEntrepriseController : Controller
     {
         private IDal dal;
-        public usersController() : this(new Dal())
+        public userEntrepriseController() : this(new Dal())
         {
         }
-        private usersController(IDal dalIoc)
+        private userEntrepriseController(IDal dalIoc)
         {
             dal = dalIoc;
         }
@@ -24,8 +24,8 @@ namespace Art_fundingV0.Controllers
             LoginViewModel viewModelentre = new LoginViewModel { LoggedIn = HttpContext.User.Identity.IsAuthenticated };
             if (HttpContext.User.Identity.IsAuthenticated)
             {
-               string adresse_email = viewModelentre.adresse_emailUE;
-                string mot_de_passe = viewModelentre.mot_de_passeUE ;
+                string adresse_email = viewModelentre.adresse_email;
+                string mot_de_passe = viewModelentre.mot_de_passe;
                 entreprise entreprise = new entreprise() { adresse_email = adresse_email, mot_de_passe = mot_de_passe };
                 entreprise = dal.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name);
             }
@@ -36,7 +36,7 @@ namespace Art_fundingV0.Controllers
         {
             if (ModelState.IsValid)
             {
-               utilisateurentreprise entreprise = dal.AuthentifierEntreprise(viewModel.adresse_emailUE, viewModel.mot_de_passeUE);
+               utilisateurentreprise entreprise = dal.AuthentifierEntreprise(viewModel.adresse_email, viewModel.mot_de_passe);
                 if (entreprise != null)
                 {
                     FormsAuthentication.SetAuthCookie(entreprise.identreprise.ToString(), false);

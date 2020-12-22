@@ -1,0 +1,38 @@
+﻿@model Art_fundingV0.ViewModels.LoginViewModel
+@{
+    Layout = null;
+}
+@if (Model.LoggedIn)
+{
+    <h3>
+        Vous êtes déjà authentifié avec le login :
+        @Model.adresse_email
+    </h3>
+    @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
+
+}
+else
+{
+    <p>
+        Veuillez vous authentifier :
+    </p>
+    using (Html.BeginForm())
+    {
+        <div>
+
+            @Html.LabelFor(m => m.adresse_email)
+
+            @Html.TextBoxFor(m => m.adresse_email)
+            @Html.ValidationMessageFor(m => m.adresse_email)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.mot_de_passe)
+            @Html.PasswordFor(m => m.mot_de_passe)
+            @Html.ValidationMessageFor(m => m.mot_de_passe)
+        </div>
+        <input type="submit" value="Se connecter" />
+        <br />
+        @Html.ActionLink("Créer un compte", "CreerCompte")
+    }
+}
+

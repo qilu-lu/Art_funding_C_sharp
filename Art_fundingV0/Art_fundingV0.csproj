@@ -137,7 +137,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccueilTestController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserArtisteController.cs" />
+    <Compile Include="Controllers\UserEntrepriseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -262,13 +263,13 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\ViewsEntreprise\LoginEntreprise.cshtml" />
     <Content Include="Views\AccueilTest\Index.cshtml" />
-    <Content Include="Views\users\Index.cshtml" />
+    <Content Include="Views\userEntreprise\Index.cshtml" />
+    <Content Include="Views\UserArtiste\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Accueil\" />
     <Folder Include="Views\Login\" />
-    <Folder Include="Views\User\" />
     <Folder Include="Views\ViewsArtiste\" />
   </ItemGroup>
   <ItemGroup>
