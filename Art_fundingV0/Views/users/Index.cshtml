@@ -19,16 +19,16 @@ else
     using (Html.BeginForm())
     {
         <div>
-           @Html.Label("veuillez entrer ")
-            @*@Html.LabelFor(m => m.entreprise.adresse_emailUE)*@
            
-           @Html.TextBoxFor(m => m.entreprise.adresse_emailUE)
-            @Html.ValidationMessageFor(m => m.entreprise.adresse_emailUE)
+            @Html.LabelFor(m => m.adresse_emailUE)
+           
+           @Html.TextBoxFor(m => m.adresse_emailUE)
+            @Html.ValidationMessageFor(m => m.adresse_emailUE)
         </div>
         <div>
-            @Html.LabelFor(m => m.entreprise.mot_de_passe)
-            @Html.PasswordFor(m => m.entreprise.mot_de_passe)
-            @Html.ValidationMessageFor(m => m.entreprise.mot_de_passe)
+            @Html.LabelFor(m => m.mot_de_passeUE)
+            @Html.PasswordFor(m => m.mot_de_passeUE)
+            @Html.ValidationMessageFor(m => m.mot_de_passeUE)
         </div>
         <input type="submit" value="Se connecter" />
         <br />

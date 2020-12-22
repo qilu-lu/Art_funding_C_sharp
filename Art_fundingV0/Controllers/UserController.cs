@@ -18,18 +18,19 @@ namespace Art_fundingV0.Controllers
         {
             dal = dalIoc;
         }
-        //public ActionResult Index()
-        //{
-        //    LoginViewModel viewModelentre = new LoginViewModel { LoggedIn = HttpContext.User.Identity.IsAuthenticated };
-        //    if (HttpContext.User.Identity.IsAuthenticated)
-        //    {
-        //       string adresse_email = viewModelentre.adresse_emailUE;
-        //        string mot_de_passe = viewModelentre.mot_de_passeUE ;
-        //        entreprise entreprise = new entreprise() { adresse_email = adresse_email, mot_de_passe = mot_de_passe };
-        //        entreprise = dal.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name);
-        //    }
-        //    return View(viewModelentre);
-        //}
+        [HttpGet]
+        public ActionResult Index()
+        {
+            LoginViewModel viewModelentre = new LoginViewModel { LoggedIn = HttpContext.User.Identity.IsAuthenticated };
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+               string adresse_email = viewModelentre.adresse_emailUE;
+                string mot_de_passe = viewModelentre.mot_de_passeUE ;
+                entreprise entreprise = new entreprise() { adresse_email = adresse_email, mot_de_passe = mot_de_passe };
+                entreprise = dal.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name);
+            }
+            return View(viewModelentre);
+        }
         [HttpPost]
         public ActionResult Index(LoginViewModel viewModel, string returnUrl)
         {
