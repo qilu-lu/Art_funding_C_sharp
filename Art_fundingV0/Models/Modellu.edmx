@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="art_fundingModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="art_fundingModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="artiste">
           <Key>
             <PropertyRef Name="idartiste" />
@@ -18,13 +18,13 @@
           <Property Name="ville" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="pays" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="mail" Type="varchar" MaxLength="55" Nullable="false" />
-          <Property Name="numéro" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="numero" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="projet_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="description" Type="text" />
           <Property Name="ecole_choisie_id" Type="uint" Nullable="false" />
           <Property Name="formation_choisie_id" Type="int" />
           <Property Name="mot_de_passe" Type="varchar" MaxLength="32" Nullable="false" />
-          <Property Name="Disposibilite" Type="date" />
+          <Property Name="Disponibilite" Type="date" />
           <Property Name="categorie_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="categorie">
@@ -100,17 +100,17 @@
             <PropertyRef Name="identreprise" />
           </Key>
           <Property Name="identreprise" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="dénomination_Commerciale" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="denomination_Commerciale" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="raison_Sociale" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="nom_de_l'ayant_droit" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="prénom_de_l'ayant_droit" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="prenom_de_l'ayant_droit" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="fonction_au_sein_de_l'entreprise" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="adresse" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="code_postale" Type="int" Nullable="false" />
           <Property Name="ville" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="pays" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="adresse_email" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="numéro" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="numero" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="artiste_choisi_id" Type="int" />
           <Property Name="contrat_abonnement_id" Type="int" Nullable="false" />
           <Property Name="contrat_avec_artiste_id" Type="int" />
@@ -141,26 +141,23 @@
           <Property Name="idartist" Type="uint" Nullable="false" />
           <Property Name="photo" Type="blob" />
         </EntityType>
-        <EntityType Name="projet">
+        <EntityType Name="utilisateurartiste">
           <Key>
-            <PropertyRef Name="idprojet" />
+            <PropertyRef Name="idUtilisateurArtiste" />
           </Key>
-          <Property Name="idprojet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="un_photo" Type="blob" Nullable="false" />
-          <Property Name="deux_photo" Type="blob" Nullable="false" />
-          <Property Name="trois_photo" Type="blob" Nullable="false" />
-          <Property Name="quatre_photo" Type="blob" />
-          <Property Name="cinq_photo" Type="blob" />
-          <Property Name="six_photo" Type="blob" />
-          <Property Name="sept_photo" Type="blob" />
-          <Property Name="huit_photo" Type="blob" />
-          <Property Name="neuf_photo" Type="blob" />
-          <Property Name="dix_photo" Type="blob" />
-          <Property Name="onze_photo" Type="blob" />
-          <Property Name="douze_photo" Type="blob" />
-          <Property Name="treize_photo" Type="blob" />
-          <Property Name="quatorze_photo" Type="blob" />
-          <Property Name="quinze_photo" Type="blob" />
+          <Property Name="idUtilisateurArtiste" Type="int" Nullable="false" />
+          <Property Name="mailUA" Type="varchar" MaxLength="45" />
+          <Property Name="mot_de_passe" Type="varchar" MaxLength="45" />
+          <Property Name="idartiste" Type="int" />
+        </EntityType>
+        <EntityType Name="utilisateurentreprise">
+          <Key>
+            <PropertyRef Name="idUtilisateurEntreprise" />
+          </Key>
+          <Property Name="idUtilisateurEntreprise" Type="int" Nullable="false" />
+          <Property Name="adresse_mailUE" Type="varchar" MaxLength="45" />
+          <Property Name="mot_de_passeUE" Type="varchar" MaxLength="45" />
+          <Property Name="identreprise" Type="int" />
         </EntityType>
         <Association Name="fk_artiste_ecole">
           <End Role="ecole" Type="Self.ecole" Multiplicity="1" />
@@ -210,6 +207,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_UtilisateurArtiste_Artiste">
+          <End Role="artiste" Type="Self.artiste" Multiplicity="0..1" />
+          <End Role="utilisateurartiste" Type="Self.utilisateurartiste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="artiste">
+              <PropertyRef Name="idartiste" />
+            </Principal>
+            <Dependent Role="utilisateurartiste">
+              <PropertyRef Name="idartiste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UtilsateurEntreprise_entreprise">
+          <End Role="entreprise" Type="Self.entreprise" Multiplicity="0..1" />
+          <End Role="utilisateurentreprise" Type="Self.utilisateurentreprise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="entreprise">
+              <PropertyRef Name="identreprise" />
+            </Principal>
+            <Dependent Role="utilisateurentreprise">
+              <PropertyRef Name="identreprise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="art_fundingModelStoreContainer">
           <EntitySet Name="artiste" EntityType="Self.artiste" Schema="art_funding" store:Type="Tables" />
           <EntitySet Name="categorie" EntityType="Self.categorie" Schema="art_funding" store:Type="Tables" />
@@ -223,7 +244,8 @@
           <EntitySet Name="fomation" EntityType="Self.fomation" Schema="art_funding" store:Type="Tables" />
           <EntitySet Name="formation_ecole" EntityType="Self.formation_ecole" Schema="art_funding" store:Type="Tables" />
           <EntitySet Name="photo" EntityType="Self.photo" Schema="art_funding" store:Type="Tables" />
-          <EntitySet Name="projet" EntityType="Self.projet" Schema="art_funding" store:Type="Tables" />
+          <EntitySet Name="utilisateurartiste" EntityType="Self.utilisateurartiste" Schema="art_funding" store:Type="Tables" />
+          <EntitySet Name="utilisateurentreprise" EntityType="Self.utilisateurentreprise" Schema="art_funding" store:Type="Tables" />
           <AssociationSet Name="fk_artiste_ecole" Association="Self.fk_artiste_ecole">
             <End Role="ecole" EntitySet="ecole" />
             <End Role="artiste" EntitySet="artiste" />
@@ -240,9 +262,16 @@
             <End Role="fomation" EntitySet="fomation" />
             <End Role="formation_ecole" EntitySet="formation_ecole" />
           </AssociationSet>
+          <AssociationSet Name="fk_UtilisateurArtiste_Artiste" Association="Self.fk_UtilisateurArtiste_Artiste">
+            <End Role="artiste" EntitySet="artiste" />
+            <End Role="utilisateurartiste" EntitySet="utilisateurartiste" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UtilsateurEntreprise_entreprise" Association="Self.fk_UtilsateurEntreprise_entreprise">
+            <End Role="entreprise" EntitySet="entreprise" />
+            <End Role="utilisateurentreprise" EntitySet="utilisateurentreprise" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="art_fundingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -259,16 +288,17 @@
           <Property Name="ville" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pays" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="mail" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="numéro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numero" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="projet_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Name="ecole_choisie_id" Type="Int64" Nullable="false" />
           <Property Name="formation_choisie_id" Type="Int32" />
           <Property Name="mot_de_passe" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Disposibilite" Type="DateTime" />
+          <Property Name="Disponibilite" Type="DateTime" />
           <Property Name="categorie_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ecole" Relationship="Self.fk_artiste_ecole" FromRole="artiste" ToRole="ecole" />
           <NavigationProperty Name="entreprises" Relationship="Self.fk_entreprise_artiste" FromRole="artiste" ToRole="entreprise" />
+          <NavigationProperty Name="utilisateurartistes" Relationship="Self.fk_UtilisateurArtiste_Artiste" FromRole="artiste" ToRole="utilisateurartiste" />
         </EntityType>
         <EntityType Name="categorie">
           <Key>
@@ -276,6 +306,7 @@
           </Key>
           <Property Name="id_categorie" Type="Int32" Nullable="false" />
           <Property Name="nom" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom1" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="contrat_abonnement">
           <Key>
@@ -345,23 +376,25 @@
             <PropertyRef Name="identreprise" />
           </Key>
           <Property Name="identreprise" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dénomination_Commerciale" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="denomination_Commerciale" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="raison_Sociale" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nom_de_l_ayant_droit" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="prénom_de_l_ayant_droit" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prenom_de_l_ayant_droit" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fonction_au_sein_de_l_entreprise" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="adresse" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="code_postale" Type="Int32" Nullable="false" />
           <Property Name="ville" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pays" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="adresse_email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="numéro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numero" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="artiste_choisi_id" Type="Int32" />
           <Property Name="contrat_abonnement_id" Type="Int32" Nullable="false" />
           <Property Name="contrat_avec_artiste_id" Type="Int32" />
           <Property Name="mot_de_passe" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SIRET" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="artiste" Relationship="Self.fk_entreprise_artiste" FromRole="entreprise" ToRole="artiste" />
+          <NavigationProperty Name="utilisateurentreprises" Relationship="Self.fk_UtilsateurEntreprise_entreprise" FromRole="entreprise" ToRole="utilisateurentreprise" />
+          <Property Name="prenom_de_l_ayant_droit1" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="fomation">
           <Key>
@@ -390,26 +423,25 @@
           <Property Name="idartist" Type="Int64" Nullable="false" />
           <Property Name="photo1" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="projet">
+        <EntityType Name="utilisateurartiste">
           <Key>
-            <PropertyRef Name="idprojet" />
+            <PropertyRef Name="idUtilisateurArtiste" />
           </Key>
-          <Property Name="idprojet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="un_photo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="deux_photo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="trois_photo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="quatre_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="cinq_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="six_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="sept_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="huit_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="neuf_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="dix_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="onze_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="douze_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="treize_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="quatorze_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="quinze_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="idUtilisateurArtiste" Type="Int32" Nullable="false" />
+          <Property Name="mailUA" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="mot_de_passe" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="idartiste" Type="Int32" />
+          <NavigationProperty Name="artiste" Relationship="Self.fk_UtilisateurArtiste_Artiste" FromRole="utilisateurartiste" ToRole="artiste" />
+        </EntityType>
+        <EntityType Name="utilisateurentreprise">
+          <Key>
+            <PropertyRef Name="idUtilisateurEntreprise" />
+          </Key>
+          <Property Name="idUtilisateurEntreprise" Type="Int32" Nullable="false" />
+          <Property Name="adresse_mailUE" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="mot_de_passeUE" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="identreprise" Type="Int32" />
+          <NavigationProperty Name="entreprise" Relationship="Self.fk_UtilsateurEntreprise_entreprise" FromRole="utilisateurentreprise" ToRole="entreprise" />
         </EntityType>
         <Association Name="fk_artiste_ecole">
           <End Role="ecole" Type="Self.ecole" Multiplicity="1" />
@@ -435,6 +467,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_UtilisateurArtiste_Artiste">
+          <End Role="artiste" Type="Self.artiste" Multiplicity="0..1" />
+          <End Role="utilisateurartiste" Type="Self.utilisateurartiste" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="artiste">
+              <PropertyRef Name="idartiste" />
+            </Principal>
+            <Dependent Role="utilisateurartiste">
+              <PropertyRef Name="idartiste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_formation_ecole_ecole">
           <End Role="ecole" Type="Self.ecole" Multiplicity="1" />
           <End Role="formation_ecole" Type="Self.formation_ecole" Multiplicity="*" />
@@ -444,6 +488,18 @@
             </Principal>
             <Dependent Role="formation_ecole">
               <PropertyRef Name="ecole_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UtilsateurEntreprise_entreprise">
+          <End Role="entreprise" Type="Self.entreprise" Multiplicity="0..1" />
+          <End Role="utilisateurentreprise" Type="Self.utilisateurentreprise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="entreprise">
+              <PropertyRef Name="identreprise" />
+            </Principal>
+            <Dependent Role="utilisateurentreprise">
+              <PropertyRef Name="identreprise" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -459,7 +515,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="art_fundingEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="art_fundingEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="artistes" EntityType="Self.artiste" />
           <EntitySet Name="categories" EntityType="Self.categorie" />
           <EntitySet Name="contrat_abonnement" EntityType="Self.contrat_abonnement" />
@@ -472,7 +528,8 @@
           <EntitySet Name="fomations" EntityType="Self.fomation" />
           <EntitySet Name="formation_ecole" EntityType="Self.formation_ecole" />
           <EntitySet Name="photos" EntityType="Self.photo" />
-          <EntitySet Name="projets" EntityType="Self.projet" />
+          <EntitySet Name="utilisateurartistes" EntityType="Self.utilisateurartiste" />
+          <EntitySet Name="utilisateurentreprises" EntityType="Self.utilisateurentreprise" />
           <AssociationSet Name="fk_artiste_ecole" Association="Self.fk_artiste_ecole">
             <End Role="ecole" EntitySet="ecoles" />
             <End Role="artiste" EntitySet="artistes" />
@@ -481,9 +538,17 @@
             <End Role="artiste" EntitySet="artistes" />
             <End Role="entreprise" EntitySet="entreprises" />
           </AssociationSet>
+          <AssociationSet Name="fk_UtilisateurArtiste_Artiste" Association="Self.fk_UtilisateurArtiste_Artiste">
+            <End Role="artiste" EntitySet="artistes" />
+            <End Role="utilisateurartiste" EntitySet="utilisateurartistes" />
+          </AssociationSet>
           <AssociationSet Name="fk_formation_ecole_ecole" Association="Self.fk_formation_ecole_ecole">
             <End Role="ecole" EntitySet="ecoles" />
             <End Role="formation_ecole" EntitySet="formation_ecole" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UtilsateurEntreprise_entreprise" Association="Self.fk_UtilsateurEntreprise_entreprise">
+            <End Role="entreprise" EntitySet="entreprises" />
+            <End Role="utilisateurentreprise" EntitySet="utilisateurentreprises" />
           </AssociationSet>
           <AssociationSet Name="fk_formation_ecole_formation" Association="Self.fk_formation_ecole_formation">
             <End Role="fomation" EntitySet="fomations" />
@@ -495,7 +560,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="art_fundingModelStoreContainer" CdmEntityContainer="art_fundingEntities">
+        <EntityContainerMapping StorageEntityContainer="art_fundingModelStoreContainer" CdmEntityContainer="art_fundingEntities2">
           <EntitySetMapping Name="artistes">
             <EntityTypeMapping TypeName="art_fundingModel.artiste">
               <MappingFragment StoreEntitySet="artiste">
@@ -508,13 +573,13 @@
                 <ScalarProperty Name="ville" ColumnName="ville" />
                 <ScalarProperty Name="pays" ColumnName="pays" />
                 <ScalarProperty Name="mail" ColumnName="mail" />
-                <ScalarProperty Name="numéro" ColumnName="numéro" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
                 <ScalarProperty Name="projet_id" ColumnName="projet_id" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="ecole_choisie_id" ColumnName="ecole_choisie_id" />
                 <ScalarProperty Name="formation_choisie_id" ColumnName="formation_choisie_id" />
                 <ScalarProperty Name="mot_de_passe" ColumnName="mot_de_passe" />
-                <ScalarProperty Name="Disposibilite" ColumnName="Disposibilite" />
+                <ScalarProperty Name="Disponibilite" ColumnName="Disponibilite" />
                 <ScalarProperty Name="categorie_id" ColumnName="categorie_id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -522,8 +587,8 @@
           <EntitySetMapping Name="categories">
             <EntityTypeMapping TypeName="art_fundingModel.categorie">
               <MappingFragment StoreEntitySet="categorie">
+                <ScalarProperty Name="nom1" ColumnName="nom" />
                 <ScalarProperty Name="id_categorie" ColumnName="id_categorie" />
-                <ScalarProperty Name="nom" ColumnName="nom" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -597,18 +662,18 @@
           <EntitySetMapping Name="entreprises">
             <EntityTypeMapping TypeName="art_fundingModel.entreprise">
               <MappingFragment StoreEntitySet="entreprise">
+                <ScalarProperty Name="prenom_de_l_ayant_droit1" ColumnName="prenom_de_l'ayant_droit" />
                 <ScalarProperty Name="identreprise" ColumnName="identreprise" />
-                <ScalarProperty Name="dénomination_Commerciale" ColumnName="dénomination_Commerciale" />
+                <ScalarProperty Name="denomination_Commerciale" ColumnName="denomination_Commerciale" />
                 <ScalarProperty Name="raison_Sociale" ColumnName="raison_Sociale" />
                 <ScalarProperty Name="nom_de_l_ayant_droit" ColumnName="nom_de_l'ayant_droit" />
-                <ScalarProperty Name="prénom_de_l_ayant_droit" ColumnName="prénom_de_l'ayant_droit" />
                 <ScalarProperty Name="fonction_au_sein_de_l_entreprise" ColumnName="fonction_au_sein_de_l'entreprise" />
                 <ScalarProperty Name="adresse" ColumnName="adresse" />
                 <ScalarProperty Name="code_postale" ColumnName="code_postale" />
                 <ScalarProperty Name="ville" ColumnName="ville" />
                 <ScalarProperty Name="pays" ColumnName="pays" />
                 <ScalarProperty Name="adresse_email" ColumnName="adresse_email" />
-                <ScalarProperty Name="numéro" ColumnName="numéro" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
                 <ScalarProperty Name="artiste_choisi_id" ColumnName="artiste_choisi_id" />
                 <ScalarProperty Name="contrat_abonnement_id" ColumnName="contrat_abonnement_id" />
                 <ScalarProperty Name="contrat_avec_artiste_id" ColumnName="contrat_avec_artiste_id" />
@@ -644,25 +709,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="projets">
-            <EntityTypeMapping TypeName="art_fundingModel.projet">
-              <MappingFragment StoreEntitySet="projet">
-                <ScalarProperty Name="idprojet" ColumnName="idprojet" />
-                <ScalarProperty Name="un_photo" ColumnName="un_photo" />
-                <ScalarProperty Name="deux_photo" ColumnName="deux_photo" />
-                <ScalarProperty Name="trois_photo" ColumnName="trois_photo" />
-                <ScalarProperty Name="quatre_photo" ColumnName="quatre_photo" />
-                <ScalarProperty Name="cinq_photo" ColumnName="cinq_photo" />
-                <ScalarProperty Name="six_photo" ColumnName="six_photo" />
-                <ScalarProperty Name="sept_photo" ColumnName="sept_photo" />
-                <ScalarProperty Name="huit_photo" ColumnName="huit_photo" />
-                <ScalarProperty Name="neuf_photo" ColumnName="neuf_photo" />
-                <ScalarProperty Name="dix_photo" ColumnName="dix_photo" />
-                <ScalarProperty Name="onze_photo" ColumnName="onze_photo" />
-                <ScalarProperty Name="douze_photo" ColumnName="douze_photo" />
-                <ScalarProperty Name="treize_photo" ColumnName="treize_photo" />
-                <ScalarProperty Name="quatorze_photo" ColumnName="quatorze_photo" />
-                <ScalarProperty Name="quinze_photo" ColumnName="quinze_photo" />
+          <EntitySetMapping Name="utilisateurartistes">
+            <EntityTypeMapping TypeName="art_fundingModel.utilisateurartiste">
+              <MappingFragment StoreEntitySet="utilisateurartiste">
+                <ScalarProperty Name="idUtilisateurArtiste" ColumnName="idUtilisateurArtiste" />
+                <ScalarProperty Name="mailUA" ColumnName="mailUA" />
+                <ScalarProperty Name="mot_de_passe" ColumnName="mot_de_passe" />
+                <ScalarProperty Name="idartiste" ColumnName="idartiste" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="utilisateurentreprises">
+            <EntityTypeMapping TypeName="art_fundingModel.utilisateurentreprise">
+              <MappingFragment StoreEntitySet="utilisateurentreprise">
+                <ScalarProperty Name="idUtilisateurEntreprise" ColumnName="idUtilisateurEntreprise" />
+                <ScalarProperty Name="adresse_mailUE" ColumnName="adresse_mailUE" />
+                <ScalarProperty Name="mot_de_passeUE" ColumnName="mot_de_passeUE" />
+                <ScalarProperty Name="identreprise" ColumnName="identreprise" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

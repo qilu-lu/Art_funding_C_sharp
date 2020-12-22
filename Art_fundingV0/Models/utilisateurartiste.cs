@@ -12,10 +12,13 @@ namespace Art_fundingV0.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class categorie
+    public partial class utilisateurartiste
     {
-        public int id_categorie { get; set; }
-        public string nom { get; set; }
-        public string nom1 { get; set; }
+        public int idUtilisateurArtiste { get; set; }
+        public string mailUA { get; set; }
+        public string mot_de_passeUA { get; set; }
+        public Nullable<int> idartiste { get; set; }
+        public string role { get; set; }
+        public virtual artiste artiste { get; set; }
     }
 }

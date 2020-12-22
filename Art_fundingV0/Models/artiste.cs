@@ -18,6 +18,7 @@ namespace Art_fundingV0.Models
         public artiste()
         {
             this.entreprises = new HashSet<entreprise>();
+            this.utilisateurartistes = new HashSet<utilisateurartiste>();
         }
     
         public int idartiste { get; set; }
@@ -29,7 +30,6 @@ namespace Art_fundingV0.Models
         public string ville { get; set; }
         public string pays { get; set; }
         public string mail { get; set; }
-       
         public string numero { get; set; }
         public int projet_id { get; set; }
         public string description { get; set; }
@@ -42,5 +42,7 @@ namespace Art_fundingV0.Models
         public virtual ecole ecole { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<entreprise> entreprises { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<utilisateurartiste> utilisateurartistes { get; set; }
     }
 }

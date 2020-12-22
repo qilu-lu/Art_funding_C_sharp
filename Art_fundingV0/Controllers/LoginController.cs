@@ -26,31 +26,31 @@ namespace Art_fundingV0.Controllers
         // GET: Login
         public ActionResult Index()
         {
-           //EntrepriseViewModel viewModel = new EntrepriseViewModel { Authentifie = HttpContext.User.Identity.IsAuthenticated };
-           // if (HttpContext.User.Identity.IsAuthenticated)
-           // {
-           //     EntrepriseViewModel.entreprise = dal.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name);
-           // }
-            return View();
-        }
-
-        [HttpPost]
-
-        public ActionResult Index(EntrepriseViewModel viewModel, string returnUrl)
-        {
-            if (ModelState.IsValid)
+            EntrepriseViewModel viewModelentre = new EntrepriseViewModel { Authentifie = HttpContext.User.Identity.IsAuthenticated };
+            if (HttpContext.User.Identity.IsAuthenticated)
             {
-                Utilisateur utilisateur = dal.Authentifier(viewModel.entreprise.Prenom, viewModel.entreprise.MotDePasse);
-                if (entreprise != null)
-                {
-                    FormsAuthentication.SetAuthCookie(entreprise.Id.ToString(), false);
-                    if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
-                        return Redirect(returnUrl);
-                    return Redirect("/");
-                }
-                ModelState.AddModelError("entreprise.adresse_email", "adresse_email et/ou mot de passe incorrect(s)");
+                //EntrepriseViewModel.entreprise = dal.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name);
             }
             return View();
-        }
-    }
-}
+        } } }
+
+      //  [HttpPost]
+
+      //  public ActionResult Index(EntrepriseViewModel viewModel, string returnUrl)
+      //  {
+       //     if (ModelState.IsValid)
+        //    {
+            //    Utilisateur utilisateur = dal.Authentifier(viewModel.entreprise.Prenom, viewModel.entreprise.MotDePasse);
+           //     if (entreprise != null)
+          //      {
+            //        FormsAuthentication.SetAuthCookie(entreprise.Id.ToString(), false);
+            //        if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
+            //            return Redirect(returnUrl);
+            //        return Redirect("/");
+             //   }
+              //  ModelState.AddModelError("entreprise.adresse_email", "adresse_email et/ou mot de passe incorrect(s)");
+           // }
+         //   return View();
+      //  }
+   // }
+//}

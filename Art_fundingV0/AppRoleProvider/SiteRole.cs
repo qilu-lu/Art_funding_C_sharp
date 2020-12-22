@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
+using System.Web.Security;
+using Art_fundingV0.Models;
 
-namespace Art_fundingV0.RoleProvider
+namespace Art_fundingV0.AppRoleProvider
 { 
     public class SiteRole : RoleProvider
     {
@@ -37,7 +40,7 @@ namespace Art_fundingV0.RoleProvider
         public override string[] GetRolesForUser(string userId)
         {
             int userIdInt = Convert.ToInt32(userId);
-            string data = new sakilaEntities().users.Where(x => x.user_id == userIdInt).FirstOrDefault().role;
+            string data = new BddContext().utilisateurentreprises.Where(x => x.idUtilisateurEntreprise == userIdInt).FirstOrDefault().role;
             string[] result = { data };
             return result;
         }

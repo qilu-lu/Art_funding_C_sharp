@@ -1,13 +1,15 @@
-﻿@model Art_fundingV0.ViewModels.EntrepriseViewModel
-
-@if (Model.Authentifie)
+﻿@model Art_fundingV0.ViewModels.LoginViewModel
+@{
+    Layout = null;
+}
+@if (Model.LoggedIn)
 {
     <h3>
         Vous êtes déjà authentifié avec le login :
-        @Model.entreprise.adresse_email
+        @Model.adresse_emailUE
     </h3>
     @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
-   
+
 }
 else
 {
@@ -17,9 +19,11 @@ else
     using (Html.BeginForm())
     {
         <div>
-            @Html.LabelFor(m => m.entreprise.adresse_email)
-            @Html.TextBoxFor(m => m.entreprise.adresse_email)
-            @Html.ValidationMessageFor(m => m.entreprise.adresse_email)
+           @Html.Label("veuillez entrer ")
+            @*@Html.LabelFor(m => m.entreprise.adresse_emailUE)*@
+           
+           @Html.TextBoxFor(m => m.entreprise.adresse_emailUE)
+            @Html.ValidationMessageFor(m => m.entreprise.adresse_emailUE)
         </div>
         <div>
             @Html.LabelFor(m => m.entreprise.mot_de_passe)

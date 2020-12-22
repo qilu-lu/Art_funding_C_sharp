@@ -10,5 +10,12 @@ namespace Art_fundingV0.Models
     {
         public DbSet<artiste> Artistes { get; set; }
         public DbSet<entreprise> Entreprises { get; set; }
+        public DbSet<utilisateurentreprise> utilisateurentreprises { get; set; }
+        public DbSet<utilisateurartiste> utilisateurartistes { get; set; }
+
+
+
+
+
     }
 }

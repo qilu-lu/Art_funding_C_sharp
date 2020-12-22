@@ -41,6 +41,35 @@ namespace Art_fundingV0.Models
             context.SaveChanges();
 
         }
+        public int AjouterUserEntreprise(string adresse_mailUE, string mot_de_passeUE)
+        {
+            string encodedPassword = EncodeMD5(mot_de_passeUE);
+            utilisateurentreprise userToAdd = new utilisateurentreprise
+            {
+                adresse_mailUE = adresse_mailUE,
+                mot_de_passeUE = mot_de_passeUE,
+                role="entreprise"
+
+            };
+            context.utilisateurentreprises.Add(userToAdd);
+            context.SaveChanges();
+            return userToAdd.idUtilisateurEntreprise;
+        }
+
+        public int AjouterUserArtiste(string mailUA, string mot_de_passeUA)
+        {
+            string encodedPassword = EncodeMD5(mot_de_passeUA);
+           utilisateurartiste userToAdd = new utilisateurartiste
+           {
+               mailUA = mailUA,
+               mot_de_passeUA = mot_de_passeUA,
+               role="artiste"
+                
+            };
+            context.utilisateurartistes.Add(userToAdd);
+            context.SaveChanges();
+            return userToAdd.idartiste.Value;
+        }
 
         public void CreerEntreprise(string denomination_Commerciale, string raison_Sociale, string nom_de_l_ayant_droit, string prenom_de_l_ayant_droit, string fonction_au_sein_de_l_entreprise, string adresse, int code_postale, string ville, string pays, string adresse_email, string numero, int? artiste_choisi_id, int contrat_abonnement_id, int? contrat_avec_artiste_id, string mot_de_passe, string SIRET)
         {
@@ -134,15 +163,15 @@ namespace Art_fundingV0.Models
     //{
     //    throw new NotImplementedException();
     //}
-    public artiste AuthentifierArtiste(string mail, string motDePasse)
+    public utilisateurartiste AuthentifierArtiste(string mail, string motDePasse)
     {
         string motDePasseEncode = EncodeMD5(motDePasse);
-        return context.Artistes.FirstOrDefault(u => u.mail == mail && u.mot_de_passe == motDePasseEncode);
+            return context.utilisateurartistes.FirstOrDefault(u => u.mailUA == mail && u.mot_de_passeUA == motDePasseEncode);
     }
-    public entreprise AuthentifierEntreprise(string mail, string motDePasse)
+    public utilisateurentreprise AuthentifierEntreprise(string mail, string motDePasse)
     {
         string motDePasseEncode = EncodeMD5(motDePasse);
-        return context.Entreprises.FirstOrDefault(u => u.adresse_email == mail && u.mot_de_passe == motDePasseEncode);
+            return context.utilisateurentreprises.FirstOrDefault(u => u.adresse_mailUE == mail && u.mot_de_passeUE == motDePasseEncode);
     }
 
     private string EncodeMD5(string motDePasse)
@@ -158,19 +187,43 @@ namespace Art_fundingV0.Models
         }
 
 
+        public artiste ObtientTousLesArtistes(int id)
+        {
+            return context.Artistes.FirstOrDefault(u => u.idartiste == id);
+        }
+
+        public artiste ObtientTousLesArtistes(string idString)
+        {
+            int id;
+            if (int.TryParse(idString, out id))
+                return ObtientTousLesArtistes(id);
+            return null;
+        }
+
 
         public List<entreprise> ObtientToutesLesEntreprises()
         {
             return context.Entreprises.ToList();
         }
+        public entreprise ObtientToutesLesEntreprises(int id)
+        {
+            return context.Entreprises.FirstOrDefault(u => u.identreprise == id);
+        }
 
+        public entreprise ObtientToutesLesEntreprises(string idString)
+        {
+            int id;
+            if (int.TryParse(idString, out id))
+                return ObtientToutesLesEntreprises(id);
+            return null;
+        }
 
         public void Dispose()
         {
             context.Dispose();
         }
 
-
+   
     }
 }
 

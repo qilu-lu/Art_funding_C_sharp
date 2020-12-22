@@ -14,6 +14,12 @@ namespace Art_fundingV0.Models
     
     public partial class entreprise
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public entreprise()
+        {
+            this.utilisateurentreprises = new HashSet<utilisateurentreprise>();
+        }
+    
         public int identreprise { get; set; }
         public string denomination_Commerciale { get; set; }
         public string raison_Sociale { get; set; }
@@ -31,7 +37,10 @@ namespace Art_fundingV0.Models
         public Nullable<int> contrat_avec_artiste_id { get; set; }
         public string mot_de_passe { get; set; }
         public string SIRET { get; set; }
+        public string prenom_de_l_ayant_droit1 { get; set; }
     
         public virtual artiste artiste { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<utilisateurentreprise> utilisateurentreprises { get; set; }
     }
 }

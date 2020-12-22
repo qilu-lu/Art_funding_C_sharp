@@ -13,10 +13,10 @@ namespace Art_fundingV0.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class art_fundingEntities : DbContext
+    public partial class art_fundingEntities2 : DbContext
     {
-        public art_fundingEntities()
-            : base("name=art_fundingEntities")
+        public art_fundingEntities2()
+            : base("name=art_fundingEntities2")
         {
         }
     
@@ -37,6 +37,7 @@ namespace Art_fundingV0.Models
         public virtual DbSet<fomation> fomations { get; set; }
         public virtual DbSet<formation_ecole> formation_ecole { get; set; }
         public virtual DbSet<photo> photos { get; set; }
-        public virtual DbSet<projet> projets { get; set; }
+        public virtual DbSet<utilisateurartiste> utilisateurartistes { get; set; }
+        public virtual DbSet<utilisateurentreprise> utilisateurentreprises { get; set; }
     }
 }
