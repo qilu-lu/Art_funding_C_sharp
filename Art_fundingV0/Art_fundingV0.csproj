@@ -136,6 +136,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccueilTestController.cs" />
+    <Compile Include="Controllers\FormulaireEntrepriseController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserArtisteController.cs" />
     <Compile Include="Controllers\UserEntrepriseController.cs" />
@@ -265,6 +266,7 @@
     <Content Include="Views\AccueilTest\Index.cshtml" />
     <Content Include="Views\userEntreprise\Index.cshtml" />
     <Content Include="Views\UserArtiste\Index.cshtml" />
+    <Content Include="Views\FormulaireEntreprise\Inscription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

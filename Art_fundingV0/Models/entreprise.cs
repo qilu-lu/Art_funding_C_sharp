@@ -11,7 +11,8 @@ namespace Art_fundingV0.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class entreprise
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,10 @@ namespace Art_fundingV0.Models
         }
     
         public int identreprise { get; set; }
+        [Required]
+        [Display(Name = "Dénomination commerciale")]
         public string denomination_Commerciale { get; set; }
+
         public string raison_Sociale { get; set; }
         public string nom_de_l_ayant_droit { get; set; }
         public string prenom_de_l_ayant_droit { get; set; }

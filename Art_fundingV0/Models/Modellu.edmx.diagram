@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b21a7a5fe6944b00907d407a4dd9cdfd" Name="Diagram1" ZoomLevel="46">
+      <Diagram DiagramId="b21a7a5fe6944b00907d407a4dd9cdfd" Name="Diagram1" ZoomLevel="101">
         <EntityTypeShape EntityType="art_fundingModel.artiste" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="art_fundingModel.categorie" Width="1.5" PointX="6.875" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="art_fundingModel.contrat_abonnement" Width="1.5" PointX="7.75" PointY="8.125" IsExpanded="true" />
