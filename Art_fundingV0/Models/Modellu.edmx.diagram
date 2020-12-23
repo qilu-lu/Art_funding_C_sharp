@@ -7,11 +7,11 @@
       <Diagram DiagramId="b21a7a5fe6944b00907d407a4dd9cdfd" Name="Diagram1" ZoomLevel="101">
         <EntityTypeShape EntityType="art_fundingModel.artiste" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="art_fundingModel.categorie" Width="1.5" PointX="6.875" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="art_fundingModel.contrat_abonnement" Width="1.5" PointX="7.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="art_fundingModel.contrat_abonnement" Width="1.5" PointX="9.5" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="art_fundingModel.contrat_ecole" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="art_fundingModel.contrat_entreprise" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="art_fundingModel.document_artiste" Width="1.5" PointX="9.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="art_fundingModel.document_entreprise" Width="1.5" PointX="9.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="art_fundingModel.document_entreprise" Width="1.5" PointX="7.375" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="art_fundingModel.ecole" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="art_fundingModel.entreprise" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="art_fundingModel.fomation" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />

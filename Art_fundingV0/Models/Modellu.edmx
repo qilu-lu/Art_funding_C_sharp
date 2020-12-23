@@ -32,7 +32,7 @@
             <PropertyRef Name="id_categorie" />
           </Key>
           <Property Name="id_categorie" Type="int" Nullable="false" />
-          <Property Name="nom" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="lu" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
         <EntityType Name="contrat_abonnement">
           <Key>
@@ -74,9 +74,11 @@
             <PropertyRef Name="iddocument_entreprise" />
           </Key>
           <Property Name="iddocument_entreprise" Type="int" Nullable="false" />
-          <Property Name="type_de_dossier" Type="varchar" MaxLength="45" />
           <Property Name="id_entreprise" Type="int" Nullable="false" />
-          <Property Name="pdf" Type="blob" />
+          <Property Name="Attestation_assurance" Type="blob" />
+          <Property Name="Kbis" Type="blob" />
+          <Property Name="RIB" Type="blob" />
+          <Property Name="Dernier_statut" Type="blob" />
         </EntityType>
         <EntityType Name="ecole">
           <Key>
@@ -103,7 +105,7 @@
           <Property Name="denomination_Commerciale" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="raison_Sociale" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="nom_de_l'ayant_droit" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="prenom_de_l'ayant_droit" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="prénom_de_l'ayant_droit" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="fonction_au_sein_de_l'entreprise" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="adresse" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="code_postale" Type="int" Nullable="false" />
@@ -307,6 +309,7 @@
           <Property Name="id_categorie" Type="Int32" Nullable="false" />
           <Property Name="nom" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nom1" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="lu" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="contrat_abonnement">
           <Key>
@@ -351,6 +354,10 @@
           <Property Name="type_de_dossier" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="id_entreprise" Type="Int32" Nullable="false" />
           <Property Name="pdf" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Attestation_assurance" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Kbis" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="RIB" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Dernier_statut" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="ecole">
           <Key>
@@ -395,6 +402,7 @@
           <NavigationProperty Name="artiste" Relationship="Self.fk_entreprise_artiste" FromRole="entreprise" ToRole="artiste" />
           <NavigationProperty Name="utilisateurentreprises" Relationship="Self.fk_UtilsateurEntreprise_entreprise" FromRole="entreprise" ToRole="utilisateurentreprise" />
           <Property Name="prenom_de_l_ayant_droit1" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="prénom_de_l_ayant_droit" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="fomation">
           <Key>
@@ -587,7 +595,7 @@
           <EntitySetMapping Name="categories">
             <EntityTypeMapping TypeName="art_fundingModel.categorie">
               <MappingFragment StoreEntitySet="categorie">
-                <ScalarProperty Name="nom1" ColumnName="nom" />
+                <ScalarProperty Name="lu" ColumnName="lu" />
                 <ScalarProperty Name="id_categorie" ColumnName="id_categorie" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -634,10 +642,12 @@
           <EntitySetMapping Name="document_entreprise">
             <EntityTypeMapping TypeName="art_fundingModel.document_entreprise">
               <MappingFragment StoreEntitySet="document_entreprise">
+                <ScalarProperty Name="Dernier_statut" ColumnName="Dernier_statut" />
+                <ScalarProperty Name="RIB" ColumnName="RIB" />
+                <ScalarProperty Name="Kbis" ColumnName="Kbis" />
+                <ScalarProperty Name="Attestation_assurance" ColumnName="Attestation_assurance" />
                 <ScalarProperty Name="iddocument_entreprise" ColumnName="iddocument_entreprise" />
-                <ScalarProperty Name="type_de_dossier" ColumnName="type_de_dossier" />
                 <ScalarProperty Name="id_entreprise" ColumnName="id_entreprise" />
-                <ScalarProperty Name="pdf" ColumnName="pdf" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -662,7 +672,7 @@
           <EntitySetMapping Name="entreprises">
             <EntityTypeMapping TypeName="art_fundingModel.entreprise">
               <MappingFragment StoreEntitySet="entreprise">
-                <ScalarProperty Name="prenom_de_l_ayant_droit1" ColumnName="prenom_de_l'ayant_droit" />
+                <ScalarProperty Name="prénom_de_l_ayant_droit" ColumnName="prénom_de_l'ayant_droit" />
                 <ScalarProperty Name="identreprise" ColumnName="identreprise" />
                 <ScalarProperty Name="denomination_Commerciale" ColumnName="denomination_Commerciale" />
                 <ScalarProperty Name="raison_Sociale" ColumnName="raison_Sociale" />

@@ -20,29 +20,54 @@ namespace Art_fundingV0.Models
         {
             this.utilisateurentreprises = new HashSet<utilisateurentreprise>();
         }
-    
+
         public int identreprise { get; set; }
         [Required]
         [Display(Name = "Dénomination commerciale")]
         public string denomination_Commerciale { get; set; }
-
+        [Required]
+        [Display(Name = "Raison sociale")]
         public string raison_Sociale { get; set; }
+        [Required]
+        [Display(Name = "Nom de l'ayant droit")]
         public string nom_de_l_ayant_droit { get; set; }
+        [Required]
+        [Display(Name = "Prenom de l'ayant droit")]
         public string prenom_de_l_ayant_droit { get; set; }
+        [Required]
+        [Display(Name = "Fonction au sein de l'entreprise")]
         public string fonction_au_sein_de_l_entreprise { get; set; }
+        [Required]
+        [Display(Name = "Adresse")]
         public string adresse { get; set; }
+        [Required]
+        [Display(Name = "Code Postal")]
         public int code_postale { get; set; }
+        [Required]
+        [Display(Name = "Ville")]
         public string ville { get; set; }
+        [Required]
+        [Display(Name = "Pays")]
         public string pays { get; set; }
+        [Required]
+        [Display(Name = "Adresse email")]
+        [RegularExpression(@"^\w+([-+.']\w+)\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Veuillez entrer svp une adresse mail au formatxxx@xxx.xx")]
         public string adresse_email { get; set; }
+        [Required]
+        [Display(Name = "Numero")]
+        [RegularExpression(@"^[0-9]{10}$", ErrorMessage = "Veuillez entrer svp un numéro de téléphone à 10 chiffres !")]
         public string numero { get; set; }
         public Nullable<int> artiste_choisi_id { get; set; }
         public int contrat_abonnement_id { get; set; }
         public Nullable<int> contrat_avec_artiste_id { get; set; }
         public string mot_de_passe { get; set; }
+        [Required]
+        [Display(Name = "Siret")]
+        [RegularExpression(@"^[0-9]{14}$", ErrorMessage = "Le numéro de SIRET est incorrect")]
         public string SIRET { get; set; }
+
         public string prenom_de_l_ayant_droit1 { get; set; }
-    
+
         public virtual artiste artiste { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<utilisateurentreprise> utilisateurentreprises { get; set; }

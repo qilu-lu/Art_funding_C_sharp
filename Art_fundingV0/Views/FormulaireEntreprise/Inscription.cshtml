@@ -28,73 +28,52 @@
             <ul>
                 <li>
                     @Html.LabelFor(m => m.denomination_Commerciale)
-                    @Html.TextBoxFor(m=>m.denomination_Commerciale)
+                    @Html.TextBoxFor(m => m.denomination_Commerciale)
 
-                    <asp:Label ID="LabelDC" runat="server" Text="Dénomination Commerciale"></asp:Label>
-                    <asp:TextBox ID="TextBoxDC" runat="server"></asp:TextBox>
-
-                    <asp:Label ID="LabelRS" runat="server" Text="Raison Sociale"></asp:Label>
-                    <asp:TextBox ID="TextBoxRS" runat="server"></asp:TextBox>
+                    @Html.LabelFor(m => m.raison_Sociale)
+                    @Html.TextBoxFor(m => m.raison_Sociale)
                 </li>
                 <li>
-                    <asp:Label ID="Labelsiret" runat="server" Text="SIRET"></asp:Label>
-                    <asp:TextBox ID="TextBoxsiret" runat="server"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3"
-                                                    runat="server"
-                                                    ErrorMessage="Veuillez entrer svp un numéro de SIRET à 14 chiffres (SIREN+NIC)"
-                                                    ControlToValidate="TextBoxsiret"
-                                                    ValidationExpression="^[0-9]{14}$"
-                                                    ForeColor="Red">
+                    @Html.LabelFor(m => m.SIRET)
+                    @Html.TextBoxFor(m => m.SIRET)
+                    
+                    @Html.LabelFor(m => m.prenom_de_l_ayant_droit)
+                    @Html.TextBoxFor(m => m.prenom_de_l_ayant_droit)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.nom_de_l_ayant_droit)
+                    @Html.TextBoxFor(m => m.nom_de_l_ayant_droit)
 
-                    </asp:RegularExpressionValidator>
-                    <asp:Label ID="Labelprenom" runat="server" Text="Prénom de l'ayant droit"></asp:Label>
-                    <asp:TextBox ID="TextBoxprenom" runat="server"></asp:TextBox>
+                    @Html.LabelFor(m => m.fonction_au_sein_de_l_entreprise)
+                    @Html.TextBoxFor(m => m.fonction_au_sein_de_l_entreprise)
                 </li>
                 <li>
-                    <asp:Label ID="Labelnom" runat="server" Text="Nom de l'ayant droit"></asp:Label>
-                    <asp:TextBox ID="TextBoxnom" runat="server"></asp:TextBox>
-                    <asp:Label ID="Labelfonction" runat="server" Text="Fonction au sein de l'entreprise"></asp:Label>
-                    <asp:TextBox ID="TextBoxfonction" runat="server"></asp:TextBox>
-                </li>
-                <li>
-                    <asp:Label ID="Labeladresse" runat="server" Text="Adresse"></asp:Label>
-                    <asp:TextBox ID="TextBoxadresse" runat="server"></asp:TextBox>
-                    <asp:Label ID="Labelcodepostale" runat="server" Text="Code Postale"></asp:Label>
-                    <asp:TextBox ID="TextBoxcodepostale" runat="server"></asp:TextBox>
-                </li>
-                <li>
-                    <asp:Label ID="Labelville" runat="server" Text="Ville"></asp:Label>
-                    <asp:TextBox ID="TextBoxville" runat="server"></asp:TextBox>
-                    <asp:Label ID="Labelpays" runat="server" Text="Pays"></asp:Label>
-                    <asp:TextBox ID="TextBoxpays" runat="server"></asp:TextBox>
-                </li>
-                <li>
-                    <asp:Label ID="Labelemail" runat="server" Text="E-mail"></asp:Label>
-                    <asp:TextBox ID="TextBoxemail" runat="server"></asp:TextBox>
-                    @*<asp:RegularExpressionValidator ID="RegularExpressionValidator2"
-                                                    runat="server"
-                                                    ErrorMessage="Veuillez entrer svp une adresse mail au formatxxx@xxx.xx"
-                                                    ControlToValidate="TextBoxemail"
-                                                    ValidationExpression="^\w+([-+.']\w+)\w+([-.]\w+)*\.\w+([-.]\w+)*$"
-                                                    ForeColor="Red">
+                    <p>
+                        @Html.LabelFor(m => m.adresse)
+                        @Html.TextBoxFor(m => m.adresse)
+                    </p>
+                    @Html.LabelFor(m => m.code_postale)
+                    @Html.TextBoxFor(m => m.code_postale)
 
-                    </asp:RegularExpressionValidator>*@
-                    <asp:Label ID="Labelnumero" runat="server" Text="Numero de téléphone"></asp:Label>
-                    <asp:TextBox ID="TextBoxnumero" runat="server"></asp:TextBox>
-                </li>
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator1"
-                                                runat="server"
-                                                ErrorMessage="Veuillez entrer svp un numéro de téléphone à 10 chiffres !"
-                                                ControlToValidate="TextBoxnumero"
-                                                ValidationExpression="^[0-9]{10}$"
-                                                ForeColor="Red">
+                    @Html.LabelFor(m => m.ville)
+                    @Html.TextBoxFor(m => m.ville)
 
-                </asp:RegularExpressionValidator>
+                    @Html.LabelFor(m => m.pays)
+                    @Html.TextBoxFor(m => m.pays)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.adresse_email)
+                    @Html.TextBoxFor(m => m.adresse_email)
+
+                    @Html.LabelFor(m => m.numero)
+                    @Html.TextBoxFor(m => m.numero)
+                </li>
             </ul>
         </div>
         
         <div>
-            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />  
+            <button class="btn-danger">Valider</button>
         </div>
 
     </form>
