@@ -66,6 +66,7 @@ namespace Art_fundingV0.Controllers
                     return View(entreprise);
                 }
                 int id = dal.AjouterUserEntreprise(entreprise.adresse_email, entreprise.mot_de_passe);
+                dal.ajouterEntreprise(entreprise);
                 FormsAuthentication.SetAuthCookie(id.ToString(), false);
                 return Redirect("/");
             }

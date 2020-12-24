@@ -71,27 +71,10 @@ namespace Art_fundingV0.Models
             return userToAdd.idartiste.Value;
         }
 
-        public void CreerEntreprise(string denomination_Commerciale, string raison_Sociale, string nom_de_l_ayant_droit, string prenom_de_l_ayant_droit, string fonction_au_sein_de_l_entreprise, string adresse, int code_postale, string ville, string pays, string adresse_email, string numero, int? artiste_choisi_id, int contrat_abonnement_id, int? contrat_avec_artiste_id, string mot_de_passe, string SIRET)
+        public void ajouterEntreprise(entreprise entreprise)
         {
-            entreprise entreprise = new entreprise()
-            {
-                denomination_Commerciale = denomination_Commerciale,
-                raison_Sociale = raison_Sociale,
-                nom_de_l_ayant_droit = nom_de_l_ayant_droit,
-                prenom_de_l_ayant_droit = prenom_de_l_ayant_droit,
-                fonction_au_sein_de_l_entreprise = fonction_au_sein_de_l_entreprise,
-                adresse = adresse,
-                code_postale = code_postale,
-                ville = ville,
-                pays = pays,
-                adresse_email = adresse_email,
-                numero = numero,
-                artiste_choisi_id = artiste_choisi_id,
-                contrat_abonnement_id = contrat_abonnement_id,
-                contrat_avec_artiste_id = contrat_avec_artiste_id,
-                mot_de_passe = mot_de_passe,
-                SIRET = SIRET
-            };
+           
+            
             context.entreprises.Add(entreprise);
             context.SaveChanges();
         }
