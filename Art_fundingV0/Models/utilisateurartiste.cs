@@ -18,6 +18,7 @@ namespace Art_fundingV0.Models
         public string mailUA { get; set; }
         public string mot_de_passe { get; set; }
         public Nullable<int> idartiste { get; set; }
+        public string role { get; set; }
     
         public virtual artiste artiste { get; set; }
     }

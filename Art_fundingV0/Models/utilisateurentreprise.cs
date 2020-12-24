@@ -18,6 +18,7 @@ namespace Art_fundingV0.Models
         public string adresse_mailUE { get; set; }
         public string mot_de_passeUE { get; set; }
         public Nullable<int> identreprise { get; set; }
+        public string role { get; set; }
     
         public virtual entreprise entreprise { get; set; }
     }

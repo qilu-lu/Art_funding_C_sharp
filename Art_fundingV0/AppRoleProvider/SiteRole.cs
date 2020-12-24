@@ -39,10 +39,11 @@ namespace Art_fundingV0.AppRoleProvider
 
         public override string[] GetRolesForUser(string userId)
         {
-            int userIdInt = Convert.ToInt32(userId);
-            string data = new BddContext().utilisateurentreprises.Where(x => x.idUtilisateurEntreprise == userIdInt).FirstOrDefault().role;
-            string[] result = { data };
-            return result;
+            //int userIdInt = Convert.ToInt32(userId);
+            //string data = new BddContext().utilisateurentreprises.Where(x => x.idUtilisateurEntreprise == userIdInt).FirstOrDefault().role;
+            //string[] result = { data };
+            //return result;
+            throw new NotImplementedException();
         }
 
         public override string[] GetUsersInRole(string roleName)

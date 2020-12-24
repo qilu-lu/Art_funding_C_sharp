@@ -144,64 +144,63 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\artiste.cs">
-      <DependentUpon>Modellu.tt</DependentUpon>
+      <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BddContext.cs" />
     <Compile Include="Models\categorie.cs">
-      <DependentUpon>Modellu.tt</DependentUpon>
+      <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\contrat_abonnement.cs">
-      <DependentUpon>Modellu.tt</DependentUpon>
+      <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\contrat_ecole.cs">
-      <DependentUpon>Modellu.tt</DependentUpon>
+      <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\contrat_entreprise.cs">
-      <DependentUpon>Modellu.tt</DependentUpon>
+      <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Dal.cs" />
     <Compile Include="Models\document_artiste.cs">
-      <DependentUpon>Modellu.tt</DependentUpon>
+      <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\document_entreprise.cs">
-      <DependentUpon>Modellu.tt</DependentUpon>
+      <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ecole.cs">
-      <DependentUpon>Modellu.tt</DependentUpon>
+      <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\entreprise.cs">
-      <DependentUpon>Modellu.tt</DependentUpon>
+      <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\fomation.cs">
-      <DependentUpon>Modellu.tt</DependentUpon>
+      <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\formation_ecole.cs">
-      <DependentUpon>Modellu.tt</DependentUpon>
+      <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IDal.cs" />
-    <Compile Include="Models\Modellu.Context.cs">
+    <Compile Include="Models\ModelArt_funding.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Modellu.Context.tt</DependentUpon>
+      <DependentUpon>ModelArt_funding.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Modellu.cs">
+    <Compile Include="Models\ModelArt_funding.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Modellu.tt</DependentUpon>
+      <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Modellu.Designer.cs">
+    <Compile Include="Models\ModelArt_funding.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Modellu.edmx</DependentUpon>
+      <DependentUpon>ModelArt_funding.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\photo.cs">
-      <DependentUpon>Modellu.tt</DependentUpon>
+      <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\utilisateurartiste.cs">
-      <DependentUpon>Modellu.tt</DependentUpon>
+      <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\utilisateurentreprise.cs">
-      <DependentUpon>Modellu.tt</DependentUpon>
+      <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AppRoleProvider\CustomAuthorize.cs" />
@@ -219,24 +218,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Modellu.Context.tt">
+    <Content Include="Models\ModelArt_funding.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Modellu.edmx</DependentUpon>
-      <LastGenOutput>Modellu.Context.cs</LastGenOutput>
+      <DependentUpon>ModelArt_funding.edmx</DependentUpon>
+      <LastGenOutput>ModelArt_funding.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Modellu.tt">
+    <Content Include="Models\ModelArt_funding.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Modellu.edmx</DependentUpon>
-      <LastGenOutput>Modellu.cs</LastGenOutput>
+      <DependentUpon>ModelArt_funding.edmx</DependentUpon>
+      <LastGenOutput>ModelArt_funding.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Modellu.edmx">
+    <EntityDeploy Include="Models\ModelArt_funding.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Modellu.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelArt_funding.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Modellu.edmx.diagram">
-      <DependentUpon>Modellu.edmx</DependentUpon>
+    <Content Include="Models\ModelArt_funding.edmx.diagram">
+      <DependentUpon>ModelArt_funding.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

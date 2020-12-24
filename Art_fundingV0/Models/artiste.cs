@@ -39,6 +39,7 @@ namespace Art_fundingV0.Models
         public Nullable<System.DateTime> Disponibilite { get; set; }
         public int categorie_id { get; set; }
     
+        public virtual categorie categorie { get; set; }
         public virtual ecole ecole { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<entreprise> entreprises { get; set; }

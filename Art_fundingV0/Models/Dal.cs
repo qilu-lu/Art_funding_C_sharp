@@ -9,11 +9,11 @@ namespace Art_fundingV0.Models
 { 
     public class Dal : IDal 
     {
-        private BddContext context;
+        private art_fundingEntities context;
 
         public Dal()
         {
-            context = new BddContext();
+            context = new art_fundingEntities();
         }
 
         public void CreerArtiste(string nom, string prenom, DateTime date_de_naissance, string adresse, string code_postale, string ville, string pays, string mail, string numero, int projet_id, string description, long ecole_choisie_id, int? formation_choisie_id, string mot_de_passe, DateTime? disponibilite, int categorie_id)
@@ -37,7 +37,7 @@ namespace Art_fundingV0.Models
                 Disponibilite = disponibilite,
                 categorie_id = categorie_id
             };
-            context.Artistes.Add(artiste);
+            context.artistes.Add(artiste);
             context.SaveChanges();
 
         }
@@ -48,7 +48,7 @@ namespace Art_fundingV0.Models
             {
                 adresse_mailUE = adresse_mailUE,
                 mot_de_passeUE = mot_de_passeUE,
-                role="entreprise"
+                //role="entreprise"
 
             };
             context.utilisateurentreprises.Add(userToAdd);
@@ -62,8 +62,8 @@ namespace Art_fundingV0.Models
            utilisateurartiste userToAdd = new utilisateurartiste
            {
                mailUA = mailUA,
-               mot_de_passeUA = mot_de_passeUA,
-               role="artiste"
+               mot_de_passe = mot_de_passeUA,
+               //role="artiste"
                 
             };
             context.utilisateurartistes.Add(userToAdd);
@@ -92,7 +92,7 @@ namespace Art_fundingV0.Models
                 mot_de_passe = mot_de_passe,
                 SIRET = SIRET
             };
-            context.Entreprises.Add(entreprise);
+            context.entreprises.Add(entreprise);
             context.SaveChanges();
         }
 
@@ -102,7 +102,7 @@ namespace Art_fundingV0.Models
         {
 
 
-            artiste artiste = context.Artistes.Find(idartiste);
+            artiste artiste = context.artistes.Find(idartiste);
             if (artiste != null)
             {
                 artiste.nom = nom;
@@ -128,7 +128,7 @@ namespace Art_fundingV0.Models
 
         public void ModifierEntreprise(int identreprise, string denomination_Commerciale, string raison_Sociale, string nom_de_l_ayant_droit, string prenom_de_l_ayant_droit, string fonction_au_sein_de_l_entreprise, string adresse, int code_postale, string ville, string pays, string adresse_email, string numero, int? artiste_choisi_id, int contrat_abonnement_id, int? contrat_avec_artiste_id, string mot_de_passe, string SIRET)
         {
-            entreprise entreprise = context.Entreprises.Find(identreprise);
+            entreprise entreprise = context.entreprises.Find(identreprise);
             if (entreprise != null)
             {
                 entreprise.denomination_Commerciale = denomination_Commerciale;
@@ -166,7 +166,7 @@ namespace Art_fundingV0.Models
     public utilisateurartiste AuthentifierArtiste(string mail, string motDePasse)
     {
         string motDePasseEncode = EncodeMD5(motDePasse);
-            return context.utilisateurartistes.FirstOrDefault(u => u.mailUA == mail && u.mot_de_passeUA == motDePasseEncode);
+            return context.utilisateurartistes.FirstOrDefault(u => u.mailUA == mail && u.mot_de_passe == motDePasseEncode);
     }
     public utilisateurentreprise AuthentifierEntreprise(string mail, string motDePasse)
     {
@@ -183,13 +183,13 @@ namespace Art_fundingV0.Models
 
     public List<artiste> ObtientTousLesArtistes()
         {
-            return context.Artistes.ToList();
+            return context.artistes.ToList();
         }
 
 
         public artiste ObtientTousLesArtistes(int id)
         {
-            return context.Artistes.FirstOrDefault(u => u.idartiste == id);
+            return context.artistes.FirstOrDefault(u => u.idartiste == id);
         }
 
         public artiste ObtientTousLesArtistes(string idString)
@@ -203,11 +203,11 @@ namespace Art_fundingV0.Models
 
         public List<entreprise> ObtientToutesLesEntreprises()
         {
-            return context.Entreprises.ToList();
+            return context.entreprises.ToList();
         }
         public entreprise ObtientToutesLesEntreprises(int id)
         {
-            return context.Entreprises.FirstOrDefault(u => u.identreprise == id);
+            return context.entreprises.FirstOrDefault(u => u.identreprise == id);
         }
 
         public entreprise ObtientToutesLesEntreprises(string idString)
