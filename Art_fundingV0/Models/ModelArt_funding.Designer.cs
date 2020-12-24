@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Much More\RepoPROJET\Art_funding\Art_fundingV0\Models\ModelArt_funding.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\My Developments\Repo_Isika_CDI7\Art_funding\Art_fundingV0\Models\ModelArt_funding.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

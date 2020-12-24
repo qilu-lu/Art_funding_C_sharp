@@ -267,6 +267,7 @@
     <Content Include="Views\UserArtiste\Index.cshtml" />
     <Content Include="Views\FormulaireEntreprise\Inscription.cshtml" />
     <Content Include="Views\FormulaireEntreprise\FournirDocuments.cshtml" />
+    <Content Include="Views\userEntreprise\CreerCompte.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

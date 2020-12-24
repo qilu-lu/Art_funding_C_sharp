@@ -54,22 +54,22 @@ namespace Art_fundingV0.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CreerCompte(EntrepriseViewModel evm)
+        public ActionResult CreerCompte(entreprise entreprise)
         {
             if (ModelState.IsValid)
             {
                 //verifie si le compte existe deja
-                var isEntreprisemailAlreadyExists = dal.ObtientToutesLesEntreprises().Any(u => u.adresse_email.ToLower() == evm.entreprise.adresse_email.ToLower());
-                if (isEntreprisemailAlreadyExists)
+                var EntreprisemailAlreadyExists = dal.ObtientToutesLesEntreprises().FirstOrDefault(u => u.adresse_email.ToLower() == entreprise.adresse_email.ToLower());
+                if (EntreprisemailAlreadyExists != null)
                 {
                     ModelState.AddModelError("Username", "This username already exists");
-                    return View(evm);
+                    return View(entreprise);
                 }
-                int id = dal.AjouterUserEntreprise(evm.entreprise.adresse_email, evm.entreprise.mot_de_passe);
+                int id = dal.AjouterUserEntreprise(entreprise.adresse_email, entreprise.mot_de_passe);
                 FormsAuthentication.SetAuthCookie(id.ToString(), false);
                 return Redirect("/");
             }
-            return View(evm);
+            return View(entreprise);
         }
         public ActionResult Deconnexion()
         {

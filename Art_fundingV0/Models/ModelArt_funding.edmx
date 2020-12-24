@@ -104,9 +104,9 @@
           <Property Name="identreprise" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="denomination_Commerciale" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="raison_Sociale" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="nom_de_l'ayant_droit" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="prenom_de_l'ayant_droit" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="fonction_au_sein_de_l'entreprise" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="nom_de_l_ayant_droit" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="prenom_de_l_ayant_droit" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="fonction_au_sein_de_l_entreprise" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="adresse" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="code_postale" Type="int" Nullable="false" />
           <Property Name="ville" Type="varchar" MaxLength="25" Nullable="false" />
@@ -552,7 +552,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="art_fundingEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="art_fundingEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="artistes" EntityType="Self.artiste" />
           <EntitySet Name="categories" EntityType="Self.categorie" />
           <EntitySet Name="contrat_abonnement" EntityType="Self.contrat_abonnement" />
@@ -601,7 +601,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="art_fundingModelStoreContainer" CdmEntityContainer="art_fundingEntities">
+        <EntityContainerMapping StorageEntityContainer="art_fundingModelStoreContainer" CdmEntityContainer="art_fundingEntities1">
           <EntitySetMapping Name="artistes">
             <EntityTypeMapping TypeName="art_fundingModel.artiste">
               <MappingFragment StoreEntitySet="artiste">
@@ -708,9 +708,9 @@
                 <ScalarProperty Name="identreprise" ColumnName="identreprise" />
                 <ScalarProperty Name="denomination_Commerciale" ColumnName="denomination_Commerciale" />
                 <ScalarProperty Name="raison_Sociale" ColumnName="raison_Sociale" />
-                <ScalarProperty Name="nom_de_l_ayant_droit" ColumnName="nom_de_l'ayant_droit" />
-                <ScalarProperty Name="prenom_de_l_ayant_droit" ColumnName="prenom_de_l'ayant_droit" />
-                <ScalarProperty Name="fonction_au_sein_de_l_entreprise" ColumnName="fonction_au_sein_de_l'entreprise" />
+                <ScalarProperty Name="nom_de_l_ayant_droit" ColumnName="nom_de_l_ayant_droit" />
+                <ScalarProperty Name="prenom_de_l_ayant_droit" ColumnName="prenom_de_l_ayant_droit" />
+                <ScalarProperty Name="fonction_au_sein_de_l_entreprise" ColumnName="fonction_au_sein_de_l_entreprise" />
                 <ScalarProperty Name="adresse" ColumnName="adresse" />
                 <ScalarProperty Name="code_postale" ColumnName="code_postale" />
                 <ScalarProperty Name="ville" ColumnName="ville" />
