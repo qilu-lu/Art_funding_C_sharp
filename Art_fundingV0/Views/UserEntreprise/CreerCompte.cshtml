@@ -1,0 +1,69 @@
+﻿@model Art_fundingV0.Models.entreprise
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta name="viewport" content="width=device-width" />
+    @*<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />*@
+    <title>Inscription</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm())
+        {
+            <ul>
+                <li>
+                    @Html.LabelFor(m => m.denomination_Commerciale)
+                    @Html.TextBoxFor(m => m.denomination_Commerciale)
+
+                    @Html.LabelFor(m => m.raison_Sociale)
+                    @Html.TextBoxFor(m => m.raison_Sociale)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.SIRET)
+                    @Html.TextBoxFor(m => m.SIRET)
+
+                    @Html.LabelFor(m => m.prenom_de_l_ayant_droit)
+                    @Html.TextBoxFor(m => m.prenom_de_l_ayant_droit)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.nom_de_l_ayant_droit)
+                    @Html.TextBoxFor(m => m.nom_de_l_ayant_droit)
+
+                    @Html.LabelFor(m => m.fonction_au_sein_de_l_entreprise)
+                    @Html.TextBoxFor(m => m.fonction_au_sein_de_l_entreprise)
+                </li>
+                <li>
+                    <p>
+                        @Html.LabelFor(m => m.adresse)
+                        @Html.TextBoxFor(m => m.adresse)
+                    </p>
+                    @Html.LabelFor(m => m.code_postale)
+                    @Html.TextBoxFor(m => m.code_postale)
+
+                    @Html.LabelFor(m => m.ville)
+                    @Html.TextBoxFor(m => m.ville)
+
+                    @Html.LabelFor(m => m.pays)
+                    @Html.TextBoxFor(m => m.pays)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.adresse_email)
+                    @Html.TextBoxFor(m => m.adresse_email)
+
+                    @Html.LabelFor(m => m.numero)
+                    @Html.TextBoxFor(m => m.numero)
+                </li>
+            </ul>
+            <input name="envoyer" type="submit">
+        }
+    </div>
+
+
+
+</body>
+</html>
