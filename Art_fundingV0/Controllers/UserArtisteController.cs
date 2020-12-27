@@ -11,13 +11,15 @@ namespace Art_fundingV0.Controllers
     public class UserArtisteController : Controller
     {
 
-        private IDal dal;
-        public UserArtisteController() : this(new Dal())
+        private IDalArtiste dalArtiste;
+        private IDalEcole dalEcole;
+        public UserArtisteController() : this(new DalArtiste(), new DalEcole())
         {
         }
-        private UserArtisteController(IDal dalIoc)
+        private UserArtisteController(IDalArtiste dalIoc, IDalEcole dalecolen)
         {
-            dal = dalIoc;
+            dalArtiste = dalIoc;
+            dalEcole = dalecolen;
         }
         [HttpGet]
         public ActionResult Index()
@@ -25,12 +27,13 @@ namespace Art_fundingV0.Controllers
             LoginViewModel viewModelart = new LoginViewModel { LoggedIn = HttpContext.User.Identity.IsAuthenticated };
             if (HttpContext.User.Identity.IsAuthenticated)
             {
-                string mail = viewModelart.adress_mail;
-                string mot_de_passe = viewModelart.mot_de_passe;
-                utilisateurartiste utilisateurartiste = new utilisateurartiste() { mailUA = mail, mot_de_passe = mot_de_passe };
-                utilisateurartiste = dal.ObtientTousLesArtistes(HttpContext.User.Identity.Name);
-                
-              //  dal.ObtientTousLesEcoles();
+                //  utilisateurentreprise utilisateurentreprise = dal.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name);
+
+                //string mail = viewModelart.adress_mail;
+                //string mot_de_passe = viewModelart.mot_de_passe;
+                utilisateurartiste utilisateurartiste = dalArtiste.ObtientTousLesArtistes(HttpContext.User.Identity.Name);
+                viewModelart.adress_mail = utilisateurartiste.mailUA;
+                //  dal.ObtientTousLesEcoles();
             }
             return View(viewModelart);
         }
@@ -39,7 +42,7 @@ namespace Art_fundingV0.Controllers
         {
             if (ModelState.IsValid)
             {
-                utilisateurartiste artiste = dal.AuthentifierArtiste(viewModel.adress_mail, viewModel.mot_de_passe);
+                utilisateurartiste artiste = dalArtiste.AuthentifierArtiste(viewModel.adress_mail, viewModel.mot_de_passe);
                 if (artiste != null)
                 {
                     FormsAuthentication.SetAuthCookie(artiste.idartiste.ToString(), false);
@@ -57,14 +60,21 @@ namespace Art_fundingV0.Controllers
         {
             CreerArtisteViewModel CreerArtisteViewModel = new CreerArtisteViewModel();
             List<SelectListItem> list = new List<SelectListItem>();
+            List<SelectListItem> list2 = new List<SelectListItem>();
 
-            foreach (ecole ecole in dal.ObtientTousLesEcoles())
+            foreach (ecole ecole in dalEcole.ObtientTousLesEcoles())
             {
-                list.Add(new SelectListItem { Text = ecole.nom, Value = ecole.idecole + "", Selected = false});
+                list.Add(new SelectListItem { Text = ecole.nom, Value = ecole.idecole + "", Selected = false });
             }
             CreerArtisteViewModel.SelectedEcoleIds = new List<int>();
+            CreerArtisteViewModel.EcoleList = list;
+            foreach (categorie categorie in dalEcole.ObtientTousLesCategories())
+            {
+                list2.Add(new SelectListItem { Text = categorie.nom, Value = categorie.id_categorie + "", Selected = false });
+            }
+            CreerArtisteViewModel.SelectedCategorieIds = new List<int>();
 
-                CreerArtisteViewModel.EcoleList = list; 
+            CreerArtisteViewModel.CategorieList = list2;
             return View(CreerArtisteViewModel);
         }
         [HttpPost]
@@ -76,17 +86,23 @@ namespace Art_fundingV0.Controllers
                 //                var isArtistemailAlreadyExists = dal.obtenirtouslesartistes().FirstOrDefault(u => u.mail.ToLower() == utilisateur.mailUA.ToLower());
                 utilisateurartiste utilisateur = creerArtiste.utilisateurartiste;
 
-                var isArtistemailAlreadyExists = dal.getUtilisateurArtisteParEmail(utilisateur.mailUA.ToLower());
+                var isArtistemailAlreadyExists = dalArtiste.getUtilisateurArtisteParEmail(utilisateur.mailUA.ToLower());
                 if (isArtistemailAlreadyExists != null)
                 {
                     ModelState.AddModelError("Username", "This username already exists");
                     return View(utilisateur);
                 }
-                int id = dal.AjouterUserArtiste(utilisateur.mailUA, utilisateur.mot_de_passe, creerArtiste);
+                int id = dalArtiste.AjouterUserArtiste(utilisateur.mailUA, utilisateur.mot_de_passe, creerArtiste);
                 FormsAuthentication.SetAuthCookie(id.ToString(), false);
-                return Redirect("/");
+                // return Redirect("/");
+                return RedirectToAction("Index");
             }
             return View();
+        }
+        public ActionResult Deconnexion()
+        {
+            FormsAuthentication.SignOut();
+            return Redirect("/");
         }
     }
 }

@@ -12,14 +12,14 @@ namespace Art_fundingV0.Controllers
     [Authorize]
     public class LoginController : Controller
     {
-        private IDal dal;
+        private IDalArtiste dal;
 
-        public LoginController() : this(new Dal())
+        public LoginController() : this(new DalArtiste())
         {
 
         }
 
-        private LoginController(IDal dalIoc)
+        private LoginController(IDalArtiste dalIoc)
         {
             dal = dalIoc;
         }

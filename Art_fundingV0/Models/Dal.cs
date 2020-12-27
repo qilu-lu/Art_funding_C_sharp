@@ -9,44 +9,44 @@ using System.Web;
 
 namespace Art_fundingV0.Models
 { 
-    public class Dal : IDal 
+    public class DalArtiste : IDalArtiste 
     {
         private art_fundingEntities context;
 
-        public Dal()
+        public DalArtiste()
         {
             context = new art_fundingEntities();
         }
 
       
-        public int AjouterUserEntreprise(string adresse_mailUE, string mot_de_passeUE, entreprise entrepriseX)
-        {
-            string encodedPassword = EncodeMD5(mot_de_passeUE);
-            entrepriseX.adresse_email = adresse_mailUE;
-            utilisateurentreprise userToAdd = new utilisateurentreprise
-            {
-                adresse_mailUE = adresse_mailUE,
-                mot_de_passeUE = encodedPassword,
-                //role="entreprise"
-                entreprise=entrepriseX
+        //public int AjouterUserEntreprise(string adresse_mailUE, string mot_de_passeUE, entreprise entrepriseX)
+        //{
+        //    string encodedPassword = EncodeMD5(mot_de_passeUE);
+        //    entrepriseX.adresse_email = adresse_mailUE;
+        //    utilisateurentreprise userToAdd = new utilisateurentreprise
+        //    {
+        //        adresse_mailUE = adresse_mailUE,
+        //        mot_de_passeUE = encodedPassword,
+        //        //role="entreprise"
+        //        entreprise=entrepriseX
                 
                
-            };
-            //entreprise.mot_de_passe = encodedPassword;
-            context.utilisateurentreprises.Add(userToAdd);
+        //    };
+        //    //entreprise.mot_de_passe = encodedPassword;
+        //    context.utilisateurentreprises.Add(userToAdd);
 
-                context.SaveChanges();
+        //        context.SaveChanges();
             
            
-            return userToAdd.idUtilisateurEntreprise;
-        }
+        //    return userToAdd.idUtilisateurEntreprise;
+        //}
 
         public int AjouterUserArtiste(string mailUA, string mot_de_passeUA, CreerArtisteViewModel creerArtiste)
         {
             artiste artiste = creerArtiste.utilisateurartiste.artiste;
             //artiste.ecole_choisie_id = ecole_choisie_id;
             artiste.ecole = context.ecoles.Find(creerArtiste.SelectedEcoleIds.First());
-            artiste.categorie= context.categories.Find(1);
+            artiste.categorie= context.categories.Find(creerArtiste.SelectedCategorieIds.First());
             string encodedPassword = EncodeMD5(mot_de_passeUA);
 
            utilisateurartiste userToAdd = new utilisateurartiste
@@ -124,30 +124,30 @@ namespace Art_fundingV0.Models
             context.SaveChanges();
         }
 
-        public void ModifierEntreprise(int identreprise, string denomination_Commerciale, string raison_Sociale, string nom_de_l_ayant_droit, string prenom_de_l_ayant_droit, string fonction_au_sein_de_l_entreprise, string adresse, int code_postale, string ville, string pays, string adresse_email, string numero, int? artiste_choisi_id, int contrat_abonnement_id, int? contrat_avec_artiste_id, string mot_de_passe, string SIRET)
-        {
-            entreprise entreprise = context.entreprises.Find(identreprise);
-            if (entreprise != null)
-            {
-                entreprise.denomination_Commerciale = denomination_Commerciale;
-                entreprise.raison_Sociale = raison_Sociale;
-                entreprise.nom_de_l_ayant_droit = nom_de_l_ayant_droit;
-                entreprise.prenom_de_l_ayant_droit = prenom_de_l_ayant_droit;
-                entreprise.fonction_au_sein_de_l_entreprise = fonction_au_sein_de_l_entreprise;
-                entreprise.adresse = adresse;
-                entreprise.code_postale = code_postale;
-                entreprise.ville = ville;
-                entreprise.pays = pays;
-                entreprise.adresse_email = adresse_email;
-                entreprise.numero = numero;
-                entreprise.artiste_choisi_id = artiste_choisi_id;
-                entreprise.contrat_abonnement_id = contrat_abonnement_id;
-                entreprise.contrat_avec_artiste_id = contrat_avec_artiste_id;
-                entreprise.SIRET = SIRET;
-            }
-            context.SaveChanges();
+        //public void ModifierEntreprise(int identreprise, string denomination_Commerciale, string raison_Sociale, string nom_de_l_ayant_droit, string prenom_de_l_ayant_droit, string fonction_au_sein_de_l_entreprise, string adresse, int code_postale, string ville, string pays, string adresse_email, string numero, int? artiste_choisi_id, int contrat_abonnement_id, int? contrat_avec_artiste_id, string mot_de_passe, string SIRET)
+        //{
+        //    entreprise entreprise = context.entreprises.Find(identreprise);
+        //    if (entreprise != null)
+        //    {
+        //        entreprise.denomination_Commerciale = denomination_Commerciale;
+        //        entreprise.raison_Sociale = raison_Sociale;
+        //        entreprise.nom_de_l_ayant_droit = nom_de_l_ayant_droit;
+        //        entreprise.prenom_de_l_ayant_droit = prenom_de_l_ayant_droit;
+        //        entreprise.fonction_au_sein_de_l_entreprise = fonction_au_sein_de_l_entreprise;
+        //        entreprise.adresse = adresse;
+        //        entreprise.code_postale = code_postale;
+        //        entreprise.ville = ville;
+        //        entreprise.pays = pays;
+        //        entreprise.adresse_email = adresse_email;
+        //        entreprise.numero = numero;
+        //        entreprise.artiste_choisi_id = artiste_choisi_id;
+        //        entreprise.contrat_abonnement_id = contrat_abonnement_id;
+        //        entreprise.contrat_avec_artiste_id = contrat_avec_artiste_id;
+        //        entreprise.SIRET = SIRET;
+        //    }
+        //    context.SaveChanges();
 
-        }
+        //}
 
     //public void SupprimerArtiste(int idartiste, string nom, string prenom, DateTime date_de_naissance, string adresse, string code_postale, string ville, string pays, string mail, string numero, int projet_id, string description, long ecole_choisie_id, int? formation_choisie_id, string mot_de_passe, DateTime? Disponibilite, int categorie_id)
     //{
@@ -165,11 +165,11 @@ namespace Art_fundingV0.Models
         string motDePasseEncode = EncodeMD5(motDePasse);
             return context.utilisateurartistes.FirstOrDefault(u => u.mailUA == mail && u.mot_de_passe == motDePasseEncode);
     }
-        public utilisateurentreprise AuthentifierEntreprise(string mail, string motDePasse)
-        {
-            string motDePasseEncode = EncodeMD5(motDePasse);
-            return context.utilisateurentreprises.FirstOrDefault(u => u.adresse_mailUE == mail && u.mot_de_passeUE == motDePasseEncode);
-        }
+    //    public utilisateurentreprise AuthentifierEntreprise(string mail, string motDePasse)
+    //    {
+    //        string motDePasseEncode = EncodeMD5(motDePasse);
+    //        return context.utilisateurentreprises.FirstOrDefault(u => u.adresse_mailUE == mail && u.mot_de_passeUE == motDePasseEncode);
+    //    }
 
         
         private string EncodeMD5(string motDePasse)
@@ -189,34 +189,38 @@ namespace Art_fundingV0.Models
         {
             return context.artistes.FirstOrDefault(u => u.idartiste == id);
         }
+        //public List<categorie>ObtientTousLesCategories()
+        //{
+        //    return context.categories.ToList();
+        //}
+       
 
-   
 
-        public List<entreprise> ObtientToutesLesEntreprises()
-        {
-            return context.entreprises.ToList();
-        }
-        public entreprise ObtientToutesLesEntreprises(int id)
-        {
-            return context.entreprises.FirstOrDefault(u => u.identreprise == id);
-        }
+        //public List<entreprise> ObtientToutesLesEntreprises()
+        //{
+        //    return context.entreprises.ToList();
+        //}
+        //public entreprise ObtientToutesLesEntreprises(int id)
+        //{
+        //    return context.entreprises.FirstOrDefault(u => u.identreprise == id);
+        //}
 
-        public utilisateurentreprise ObtientUtilisateurE(int id)
-        {
-            return context.utilisateurentreprises.FirstOrDefault(u => u.idUtilisateurEntreprise == id);
-        }
+        //public utilisateurentreprise ObtientUtilisateurE(int id)
+        //{
+        //    return context.utilisateurentreprises.FirstOrDefault(u => u.idUtilisateurEntreprise == id);
+        //}
         public utilisateurartiste ObtientUtilisateurA(int id)
         {
             return context.utilisateurartistes.FirstOrDefault(u => u.idUtilisateurArtiste == id);
         }
 
-        public utilisateurentreprise ObtientToutesLesEntreprises(string idString)
-        {
-            int id;
-            if (int.TryParse(idString, out id))
-                return ObtientUtilisateurE(id);
-            return null;
-        }
+        //public utilisateurentreprise ObtientToutesLesEntreprises(string idString)
+        //{
+        //    int id;
+        //    if (int.TryParse(idString, out id))
+        //        return ObtientUtilisateurE(id);
+        //    return null;
+        //}
         public utilisateurartiste ObtientTousLesArtistes(string idString)
         {
             int id;
@@ -230,23 +234,23 @@ namespace Art_fundingV0.Models
             context.Dispose();
         }
 
-        public utilisateurentreprise getUtilisateurEntrepriseParEmail(string mail)
-        {
-            return context.utilisateurentreprises.FirstOrDefault(u => u.adresse_mailUE == mail);
-        }
+        //public utilisateurentreprise getUtilisateurEntrepriseParEmail(string mail)
+        //{
+        //    return context.utilisateurentreprises.FirstOrDefault(u => u.adresse_mailUE == mail);
+        //}
         public utilisateurartiste getUtilisateurArtisteParEmail(string mail)
         {
             return context.utilisateurartistes.FirstOrDefault(u => u.mailUA == mail);
         }
-        public ecole GetEcoleParId(int id)
-        {
-            return context.ecoles.FirstOrDefault(u => u.idecole == id);
-        }
+        //public ecole GetEcoleParId(int id)
+        //{
+        //    return context.ecoles.FirstOrDefault(u => u.idecole == id);
+        //}
 
-        public List<ecole> ObtientTousLesEcoles()
-        {
-            return context.ecoles.ToList();
-        }
+        //public List<ecole> ObtientTousLesEcoles()
+        //{
+        //    return context.ecoles.ToList();
+        //}
 
     }
 }

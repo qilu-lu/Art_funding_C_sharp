@@ -13,5 +13,10 @@ namespace Art_fundingV0.ViewModels
 
         public IEnumerable<SelectListItem> EcoleList { get; set; }
         public utilisateurartiste utilisateurartiste { get; set; }
+
+
+        public IEnumerable<int> SelectedCategorieIds { get; set; }
+
+        public IEnumerable<SelectListItem> CategorieList { get; set; }
     }
 }
