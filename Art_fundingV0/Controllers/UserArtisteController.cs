@@ -1,30 +1,4 @@
-﻿//using Art_fundingV0.ViewModels;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Web;
-//using System.Web.Mvc;
-
-//namespace Art_fundingV0.Controllers
-//{
-//    public class UserArtisteController : Controller
-//    {
-//        // GET: UserArtiste
-//        public ActionResult Index()
-//        {
-//            LoginViewModel viewModelentre = new LoginViewModel { LoggedIn = HttpContext.User.Identity.IsAuthenticated };
-//            if (HttpContext.User.Identity.IsAuthenticated)
-//            {
-//                string adresse_email = viewModelentre.adresse_email;
-//                string mot_de_passe = viewModelentre.mot_de_passe;
-//                entreprise = new entreprise() { mail = mail, mot_de_passe = mot_de_passe };
-//                entreprise = dal.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name);
-//            }
-//            return View(viewModelentre);
-//        }
-
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -51,10 +25,12 @@ namespace Art_fundingV0.Controllers
             LoginViewModel viewModelart = new LoginViewModel { LoggedIn = HttpContext.User.Identity.IsAuthenticated };
             if (HttpContext.User.Identity.IsAuthenticated)
             {
-                string mail = viewModelart.adresse_email;
+                string mail = viewModelart.adress_mail;
                 string mot_de_passe = viewModelart.mot_de_passe;
-                artiste artiste = new artiste() { mail = mail, mot_de_passe = mot_de_passe };
-                artiste = dal.ObtientTousLesArtistes(HttpContext.User.Identity.Name);
+                utilisateurartiste utilisateurartiste = new utilisateurartiste() { mailUA = mail, mot_de_passe = mot_de_passe };
+                utilisateurartiste = dal.ObtientTousLesArtistes(HttpContext.User.Identity.Name);
+                
+              //  dal.ObtientTousLesEcoles();
             }
             return View(viewModelart);
         }
@@ -63,7 +39,7 @@ namespace Art_fundingV0.Controllers
         {
             if (ModelState.IsValid)
             {
-                utilisateurartiste artiste = dal.AuthentifierArtiste(viewModel.adresse_email, viewModel.mot_de_passe);
+                utilisateurartiste artiste = dal.AuthentifierArtiste(viewModel.adress_mail, viewModel.mot_de_passe);
                 if (artiste != null)
                 {
                     FormsAuthentication.SetAuthCookie(artiste.idartiste.ToString(), false);
@@ -76,27 +52,41 @@ namespace Art_fundingV0.Controllers
             }
             return View(viewModel);
         }
+
         public ActionResult CreerCompte()
         {
-            return View();
+            CreerArtisteViewModel CreerArtisteViewModel = new CreerArtisteViewModel();
+            List<SelectListItem> list = new List<SelectListItem>();
+
+            foreach (ecole ecole in dal.ObtientTousLesEcoles())
+            {
+                list.Add(new SelectListItem { Text = ecole.nom, Value = ecole.idecole + "", Selected = false});
+            }
+            CreerArtisteViewModel.SelectedEcoleIds = new List<int>();
+
+                CreerArtisteViewModel.EcoleList = list; 
+            return View(CreerArtisteViewModel);
         }
         [HttpPost]
-        public ActionResult CreerCompte(ArtisteViewModel avm)
+        public ActionResult CreerCompte(CreerArtisteViewModel creerArtiste)
         {
             if (ModelState.IsValid)
             {
                 //verifie si le compte existe deja
-                var isArtistemailAlreadyExists = dal.ObtientTousLesArtistes().Any(u => u.mail.ToLower() == avm.artiste.mail.ToLower());
-                if (isArtistemailAlreadyExists)
+                //                var isArtistemailAlreadyExists = dal.obtenirtouslesartistes().FirstOrDefault(u => u.mail.ToLower() == utilisateur.mailUA.ToLower());
+                utilisateurartiste utilisateur = creerArtiste.utilisateurartiste;
+
+                var isArtistemailAlreadyExists = dal.getUtilisateurArtisteParEmail(utilisateur.mailUA.ToLower());
+                if (isArtistemailAlreadyExists != null)
                 {
                     ModelState.AddModelError("Username", "This username already exists");
-                    return View(avm);
+                    return View(utilisateur);
                 }
-                int id = dal.AjouterUserArtiste(avm.artiste.mail, avm.artiste.mot_de_passe);
+                int id = dal.AjouterUserArtiste(utilisateur.mailUA, utilisateur.mot_de_passe, creerArtiste);
                 FormsAuthentication.SetAuthCookie(id.ToString(), false);
                 return Redirect("/");
             }
-            return View(avm);
+            return View();
         }
     }
 }

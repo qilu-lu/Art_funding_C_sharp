@@ -4,10 +4,11 @@
 }
 @if (Model.LoggedIn)
 {
-    <h3>
-        Vous êtes déjà authentifié avec le login :
-        @Model.adresse_email
-    </h3>
+<h3>
+    Vous êtes déjà authentifié avec le loginN :
+    @Model.adress_mail
+   
+</h3>
     @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
 
 }
@@ -20,10 +21,10 @@ else
     {
         <div>
            
-            @Html.LabelFor(m => m.adresse_email)
+            @Html.LabelFor(m => m.adress_mail)
            
-           @Html.TextBoxFor(m => m.adresse_email)
-            @Html.ValidationMessageFor(m => m.adresse_email)
+           @Html.TextBoxFor(m => m.adress_mail)
+            @Html.ValidationMessageFor(m => m.adress_mail)
         </div>
         <div>
             @Html.LabelFor(m => m.mot_de_passe)

@@ -24,10 +24,16 @@ namespace Art_fundingV0.Controllers
             LoginViewModel viewModelentre = new LoginViewModel { LoggedIn = HttpContext.User.Identity.IsAuthenticated };
             if (HttpContext.User.Identity.IsAuthenticated)
             {
-                string adresse_email = viewModelentre.adresse_email;
+                utilisateurentreprise utilisateurentreprise = dal.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name);
+
+                viewModelentre.adress_mail = utilisateurentreprise.adresse_mailUE;
+               // viewModelentre.entreprise = utilisateurentreprise.entreprise;
+                /*string adresse_email = viewModelentre.adress_mail;
                 string mot_de_passe = viewModelentre.mot_de_passe;
-                entreprise entreprise = new entreprise() { adresse_email = adresse_email, mot_de_passe = mot_de_passe };
-                entreprise = dal.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name);
+                
+                 entreprise = new entreprise() { adresse_email = adresse_email, mot_de_passe = mot_de_passe };
+                
+               //viewModelentre.entreprise = entreprise;*/
             }
             return View(viewModelentre);
         }
@@ -36,10 +42,10 @@ namespace Art_fundingV0.Controllers
         {
             if (ModelState.IsValid)
             {
-               utilisateurentreprise entreprise = dal.AuthentifierEntreprise(viewModel.adresse_email, viewModel.mot_de_passe);
+               utilisateurentreprise entreprise = dal.AuthentifierEntreprise(viewModel.adress_mail, viewModel.mot_de_passe);
                 if (entreprise != null)
                 {
-                    FormsAuthentication.SetAuthCookie(entreprise.identreprise.ToString(), false);
+                    FormsAuthentication.SetAuthCookie(entreprise.idUtilisateurEntreprise.ToString(), false);
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
                     return Redirect("/");
@@ -54,24 +60,33 @@ namespace Art_fundingV0.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CreerCompte(entreprise entreprise)
+
+        public ActionResult CreerCompte(utilisateurentreprise utilisateur)
         {
             if (ModelState.IsValid)
             {
                 //verifie si le compte existe deja
-                var EntreprisemailAlreadyExists = dal.ObtientToutesLesEntreprises().FirstOrDefault(u => u.adresse_email.ToLower() == entreprise.adresse_email.ToLower());
+                var EntreprisemailAlreadyExists = dal.getUtilisateurEntrepriseParEmail(utilisateur.adresse_mailUE.ToLower());
                 if (EntreprisemailAlreadyExists != null)
                 {
                     ModelState.AddModelError("Username", "This username already exists");
-                    return View(entreprise);
+                    return View(utilisateur);
                 }
-                int id = dal.AjouterUserEntreprise(entreprise.adresse_email, entreprise.mot_de_passe);
-                dal.ajouterEntreprise(entreprise);
+                int id = dal.AjouterUserEntreprise(utilisateur.adresse_mailUE, utilisateur.mot_de_passeUE, utilisateur.entreprise);
+             //   dal.ajouterEntreprise(entreprise);
                 FormsAuthentication.SetAuthCookie(id.ToString(), false);
-                return Redirect("/");
+                //return Redirect("/");
+               return  RedirectToAction("Index");
             }
-            return View(entreprise);
+            return View(utilisateur);
         }
+
+
+
+
+
+
+
         public ActionResult Deconnexion()
         {
             FormsAuthentication.SignOut();

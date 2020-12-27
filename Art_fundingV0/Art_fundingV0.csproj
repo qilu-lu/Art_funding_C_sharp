@@ -206,6 +206,7 @@
     <Compile Include="AppRoleProvider\CustomAuthorize.cs" />
     <Compile Include="AppRoleProvider\SiteRole.cs" />
     <Compile Include="ViewModels\ArtisteViewModel.cs" />
+    <Compile Include="ViewModels\CreerArtisteViewModel.cs" />
     <Compile Include="ViewModels\EntrepriseViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
   </ItemGroup>
@@ -265,9 +266,9 @@
     <Content Include="Views\AccueilTest\Index.cshtml" />
     <Content Include="Views\userEntreprise\Index.cshtml" />
     <Content Include="Views\UserArtiste\Index.cshtml" />
-    <Content Include="Views\FormulaireEntreprise\Inscription.cshtml" />
     <Content Include="Views\FormulaireEntreprise\FournirDocuments.cshtml" />
     <Content Include="Views\userEntreprise\CreerCompte.cshtml" />
+    <Content Include="Views\UserArtiste\CreerCompte.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

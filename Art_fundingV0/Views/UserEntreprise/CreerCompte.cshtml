@@ -1,4 +1,4 @@
-﻿@model Art_fundingV0.Models.entreprise
+﻿@model Art_fundingV0.Models.utilisateurentreprise
 @{
     Layout = null;
 }
@@ -17,50 +17,50 @@
         {
         <ul>
             <li>
-                @Html.LabelFor(m => m.denomination_Commerciale)
-                @Html.TextBoxFor(m => m.denomination_Commerciale)
+                @Html.LabelFor(m => m.entreprise.denomination_Commerciale)
+                @Html.TextBoxFor(m => m.entreprise.denomination_Commerciale)
 
-                @Html.LabelFor(m => m.raison_Sociale)
-                @Html.TextBoxFor(m => m.raison_Sociale)
+                @Html.LabelFor(m => m.entreprise.raison_Sociale)
+                @Html.TextBoxFor(m => m.entreprise.raison_Sociale)
             </li>
             <li>
-                @Html.LabelFor(m => m.SIRET)
-                @Html.TextBoxFor(m => m.SIRET)
+                @Html.LabelFor(m => m.entreprise.SIRET)
+                @Html.TextBoxFor(m => m.entreprise.SIRET)
 
-                @Html.LabelFor(m => m.prenom_de_l_ayant_droit)
-                @Html.TextBoxFor(m => m.prenom_de_l_ayant_droit)
+                @Html.LabelFor(m => m.entreprise.prenom_de_l_ayant_droit)
+                @Html.TextBoxFor(m => m.entreprise.prenom_de_l_ayant_droit)
             </li>
             <li>
-                @Html.LabelFor(m => m.nom_de_l_ayant_droit)
-                @Html.TextBoxFor(m => m.nom_de_l_ayant_droit)
+                @Html.LabelFor(m => m.entreprise.nom_de_l_ayant_droit)
+                @Html.TextBoxFor(m => m.entreprise.nom_de_l_ayant_droit)
 
-                @Html.LabelFor(m => m.fonction_au_sein_de_l_entreprise)
-                @Html.TextBoxFor(m => m.fonction_au_sein_de_l_entreprise)
+                @Html.LabelFor(m => m.entreprise.fonction_au_sein_de_l_entreprise)
+                @Html.TextBoxFor(m => m.entreprise.fonction_au_sein_de_l_entreprise)
             </li>
             <li>
                 <p>
-                    @Html.LabelFor(m => m.adresse)
-                    @Html.TextBoxFor(m => m.adresse)
+                    @Html.LabelFor(m => m.entreprise.adresse)
+                    @Html.TextBoxFor(m => m.entreprise.adresse)
                 </p>
-                @Html.LabelFor(m => m.code_postale)
-                @Html.TextBoxFor(m => m.code_postale)
+                @Html.LabelFor(m => m.entreprise.code_postale)
+                @Html.TextBoxFor(m => m.entreprise.code_postale)
 
-                @Html.LabelFor(m => m.ville)
-                @Html.TextBoxFor(m => m.ville)
+                @Html.LabelFor(m => m.entreprise.ville)
+                @Html.TextBoxFor(m => m.entreprise.ville)
 
-                @Html.LabelFor(m => m.pays)
-                @Html.TextBoxFor(m => m.pays)
+                @Html.LabelFor(m => m.entreprise.pays)
+                @Html.TextBoxFor(m => m.entreprise.pays)
             </li>
             <li>
-                @Html.LabelFor(m => m.adresse_email)
-                @Html.TextBoxFor(m => m.adresse_email)
+                @Html.LabelFor(m => m.adresse_mailUE)
+                @Html.TextBoxFor(m => m.adresse_mailUE)
 
-                @Html.LabelFor(m => m.numero)
-                @Html.TextBoxFor(m => m.numero)
+                @Html.LabelFor(m => m.entreprise.numero)
+                @Html.TextBoxFor(m => m.entreprise.numero)
             </li>
             <li>
-                @Html.LabelFor(m => m.mot_de_passe)
-                @Html.TextBoxFor(m => m.mot_de_passe)
+                @Html.LabelFor(m => m.mot_de_passeUE)
+                @Html.TextBoxFor(m => m.mot_de_passeUE)
 
 
             </li>

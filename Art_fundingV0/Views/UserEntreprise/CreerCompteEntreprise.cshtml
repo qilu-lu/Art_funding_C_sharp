@@ -12,7 +12,7 @@
     <title>Inscription</title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" method="POST">
         <div>
 
             <asp:ListView ID="ListView1" runat="server"></asp:ListView>
@@ -36,7 +36,7 @@
                 <li>
                     @Html.LabelFor(m => m.SIRET)
                     @Html.TextBoxFor(m => m.SIRET)
-                    
+
                     @Html.LabelFor(m => m.prenom_de_l_ayant_droit)
                     @Html.TextBoxFor(m => m.prenom_de_l_ayant_droit)
                 </li>
@@ -68,14 +68,21 @@
                     @Html.LabelFor(m => m.numero)
                     @Html.TextBoxFor(m => m.numero)
                 </li>
+                <li>
+                    @Html.LabelFor(m => m.mot_de_passe)
+                    @Html.TextBoxFor(m => m.mot_de_passe)
+
+                   
+                </li>
             </ul>
         </div>
-        
+
         <div>
-            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />  
+            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
             <button class="btn-danger">Valider</button>
         </div>
 
     </form>
 </body>
 </html>
+
