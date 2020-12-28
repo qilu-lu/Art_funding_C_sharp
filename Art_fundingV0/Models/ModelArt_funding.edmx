@@ -158,6 +158,10 @@
           <Property Name="mot_de_passeUE" Type="varchar" MaxLength="60" />
           <Property Name="identreprise" Type="int" />
           <Property Name="role" Type="varchar" MaxLength="45" />
+          <Property Name="Nocartebancaire" Type="varchar" MaxLength="45" />
+          <Property Name="MoisExpiration" Type="varchar" MaxLength="45" />
+          <Property Name="AnneeExpiration" Type="varchar" MaxLength="45" />
+          <Property Name="CodeVerfication" Type="varchar" MaxLength="45" />
         </EntityType>
         <Association Name="fk_artiste_categorie">
           <End Role="categorie" Type="Self.categorie" Multiplicity="1" />
@@ -458,6 +462,10 @@
           <Property Name="identreprise" Type="Int32" />
           <Property Name="role" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="entreprise" Relationship="Self.fk_UtilsateurEntreprise_entreprise" FromRole="utilisateurentreprise" ToRole="entreprise" />
+          <Property Name="Nocartebancaire" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="MoisExpiration" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="AnneeExpiration" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="CodeVerfication" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="fk_artiste_categorie">
           <End Role="categorie" Type="Self.categorie" Multiplicity="1" />
@@ -753,6 +761,10 @@
           <EntitySetMapping Name="utilisateurentreprises">
             <EntityTypeMapping TypeName="art_fundingModel.utilisateurentreprise">
               <MappingFragment StoreEntitySet="utilisateurentreprise">
+                <ScalarProperty Name="CodeVerfication" ColumnName="CodeVerfication" />
+                <ScalarProperty Name="AnneeExpiration" ColumnName="AnneeExpiration" />
+                <ScalarProperty Name="MoisExpiration" ColumnName="MoisExpiration" />
+                <ScalarProperty Name="Nocartebancaire" ColumnName="Nocartebancaire" />
                 <ScalarProperty Name="idUtilisateurEntreprise" ColumnName="idUtilisateurEntreprise" />
                 <ScalarProperty Name="adresse_mailUE" ColumnName="adresse_mailUE" />
                 <ScalarProperty Name="mot_de_passeUE" ColumnName="mot_de_passeUE" />

@@ -11,7 +11,8 @@ namespace Art_fundingV0.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class utilisateurentreprise
     {
         public int idUtilisateurEntreprise { get; set; }
@@ -19,7 +20,15 @@ namespace Art_fundingV0.Models
         public string mot_de_passeUE { get; set; }
         public Nullable<int> identreprise { get; set; }
         public string role { get; set; }
+        [Display(Name = "Numéro de carte bancaire")]
+        public string Nocartebancaire { get; set; }
+        [Display(Name = "Mois d'Expiration")]
+        public string MoisExpiration { get; set; }
+        [Display(Name = "Année d'Expiration")]
+        public string AnneeExpiration { get; set; }
+        [Display(Name = "Code de Vérification")]
+        public string CodeVerfication { get; set; }
     
-        public virtual entreprise entreprise { get; set; }
+        public  entreprise entreprise { get; set; }
     }
 }

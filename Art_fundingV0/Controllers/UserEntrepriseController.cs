@@ -10,11 +10,11 @@ namespace Art_fundingV0.Controllers
 {
     public class userEntrepriseController : Controller
     {
-        private IDalEntreprise dalEntreprise;
+        private DalEntreprise dalEntreprise;
         public userEntrepriseController() : this(new DalEntreprise())
         {
         }
-        private userEntrepriseController(IDalEntreprise dalIoc)
+        private userEntrepriseController(DalEntreprise dalIoc)
         {
             dalEntreprise = dalIoc;
         }
@@ -49,7 +49,7 @@ namespace Art_fundingV0.Controllers
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
                     return Redirect("/");
-                    //ici lier avec la page d'accueil d'entreprise
+                    
                 }
                 ModelState.AddModelError("utilisateurentreprise.adresse_emailUE", "wrong login");
                 //view??? error
@@ -73,20 +73,75 @@ namespace Art_fundingV0.Controllers
                     ModelState.AddModelError("Username", "This username already exists");
                     return View();
                 }
+                // int id = dalEntreprise.AjouterUserEntreprise(utilisateur.adresse_mailUE, utilisateur.mot_de_passeUE, utilisateur.entreprise);
                 int id = dalEntreprise.AjouterUserEntreprise(utilisateur.adresse_mailUE, utilisateur.mot_de_passeUE, utilisateur.entreprise);
-             //   dal.ajouterEntreprise(entreprise);
-                FormsAuthentication.SetAuthCookie(id.ToString(), false);
+                    //   dal.ajouterEntreprise(entreprise);
+                    FormsAuthentication.SetAuthCookie(id.ToString(), false);
                 //return Redirect("/");
-               return  RedirectToAction("Index");
+               return  RedirectToAction("paiement");
                 //lier avec le page d'accueil d'artiste
             }
             return View(utilisateur);
         }
 
+        public ActionResult envoyerDossier()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult envoyerDoissier(entreprise entreprise)
+        {
+
+
+
+            return View(entreprise);
+        }
 
 
 
 
+        public ActionResult paiement()
+        {
+            CreerEntrepriseViewModel creerEntrepriseViewModel = new CreerEntrepriseViewModel();
+            List<SelectListItem> list = new List<SelectListItem>();
+            List<SelectListItem> list2 = new List<SelectListItem>();
+            for (int i = 1; i <= 12; i++)
+            {
+                list.Add(new SelectListItem { Text = i + "", Value =i+"", Selected = false });
+            }
+            for (int i = 2020; i <= 2030; i++)
+            {
+                list2.Add(new SelectListItem { Text = i + "", Value = i + "", Selected = false });
+            }
+
+
+            creerEntrepriseViewModel.SelectedMoisIds = new List<int>();
+            creerEntrepriseViewModel.MoisList = list;
+
+            creerEntrepriseViewModel.SelectedAnneeIds = new List<int>();
+            creerEntrepriseViewModel.AnneeList = list2;
+            return View(creerEntrepriseViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult paiement(utilisateurentreprise utilisateur)
+        {
+            if (ModelState.IsValid)
+            {
+                utilisateurentreprise utilisateurentreprise = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name);
+                // int id = dalEntreprise.AjouterUserEntreprise(utilisateur.adresse_mailUE, utilisateur.mot_de_passeUE, utilisateur.entreprise);
+                utilisateurentreprise.Nocartebancaire = utilisateur.Nocartebancaire;
+                utilisateurentreprise.AnneeExpiration = utilisateur.AnneeExpiration;
+                utilisateurentreprise.MoisExpiration = utilisateur.MoisExpiration;
+                utilisateurentreprise.CodeVerfication = utilisateur.CodeVerfication;
+                dalEntreprise.context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+            
+         }
+
+           
 
 
         public ActionResult Deconnexion()

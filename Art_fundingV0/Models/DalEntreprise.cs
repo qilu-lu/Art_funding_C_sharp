@@ -9,21 +9,24 @@ namespace Art_fundingV0.Models
 {
     public class DalEntreprise : IDalEntreprise
     {
-        private art_fundingEntities context;
+        public art_fundingEntities context;
 
         public DalEntreprise()
         {
             context = new art_fundingEntities();
         }
-        public int AjouterUserEntreprise(string adresse_mailUE, string mot_de_passeUE, entreprise entrepriseX)
+        public int AjouterUserEntreprise(string adresse_mailUE, string mot_de_passeUE,entreprise entrepriseX)
         {
             string encodedPassword = EncodeMD5(mot_de_passeUE);
             entrepriseX.adresse_email = adresse_mailUE;
+           
+
             utilisateurentreprise userToAdd = new utilisateurentreprise
             {
                 adresse_mailUE = adresse_mailUE,
                 mot_de_passeUE = encodedPassword,
-                //role="entreprise"
+               
+            //role="entreprise"
                 entreprise = entrepriseX
 
 
@@ -97,6 +100,11 @@ namespace Art_fundingV0.Models
         {
             return context.utilisateurentreprises.FirstOrDefault(u => u.adresse_mailUE == mail);
         }
+        public utilisateurentreprise getUtilisateurEntrepriseParid(int id)
+        {
+            return context.utilisateurentreprises.FirstOrDefault(u => u.identreprise == id);
+        }
+
         public void Dispose()
         {
             context.Dispose();

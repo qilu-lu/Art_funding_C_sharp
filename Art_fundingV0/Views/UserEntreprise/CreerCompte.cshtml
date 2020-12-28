@@ -8,68 +8,212 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
-    @*<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />*@
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Inscription</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Style/styles.css" />
+    <script src="https://kit.fontawesome.com/93f6784514.js" crossorigin="anonymous"></script>
+
 </head>
+
+<header>
+    <nav class="navbar navbar-toggler navbar-dark bg-dark">
+
+        <!--  D R O P D O W N  M E N U  -->
+        <div class="dropdown">
+            <a class="navlink" id="artFunding">Art_Funding</a>
+            <div class="dropdown-content">
+                <a href="#">Transformez votre talent en métier</a>
+                <a href="#">Qui sommes-nous ?</a>
+                <a href="#">Nos partenaires</a>
+            </div>
+        </div>
+        <!--  E N D  D R O P D O W N  M E N U  -->
+        <!--
+    <div class="navbar-header">
+         <a class="navbar-brand" href="#"></a>
+    </div> -->
+
+
+        <div class="nav navbar-nav">
+            <a href="http://google.com">Découvrez nos projets</a>
+        </div>
+        <form class="navbar-form navbar-left" action="/action_page.php" id="search1">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Rechercher...">
+                <div class="input-group-btn" id="search2">
+                    <button class="btn btn-default" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="nav navbar-nav navbar-right">
+            <a href="#"><i class="fas fa-user-circle"></i> Sign Up</a>
+        </div>
+        <div class="nav navbar-nav navbar-right">
+            <a href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
+        </div>
+    </nav>
+</header>
+
 <body>
+
+    <div class="container-fluid">
+        <h1 id="etape1"> Première étape, ne lâchez pas il y en a 2 autres... </h1>
+    </div>
+
     <div>
         @using (Html.BeginForm())
         {
-        <ul>
-            <li>
-                @Html.LabelFor(m => m.entreprise.denomination_Commerciale)
-                @Html.TextBoxFor(m => m.entreprise.denomination_Commerciale)
+            <div>
+                <div class="container-fluid" style="margin-bottom: 3em;">
+                    <div class="row" style="margin-top: 24em;">
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.LabelFor(m => m.entreprise.denomination_Commerciale)
+                        </div>
 
-                @Html.LabelFor(m => m.entreprise.raison_Sociale)
-                @Html.TextBoxFor(m => m.entreprise.raison_Sociale)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.entreprise.SIRET)
-                @Html.TextBoxFor(m => m.entreprise.SIRET)
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.TextBoxFor(m => m.entreprise.denomination_Commerciale)
+                        </div>
 
-                @Html.LabelFor(m => m.entreprise.prenom_de_l_ayant_droit)
-                @Html.TextBoxFor(m => m.entreprise.prenom_de_l_ayant_droit)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.entreprise.nom_de_l_ayant_droit)
-                @Html.TextBoxFor(m => m.entreprise.nom_de_l_ayant_droit)
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.LabelFor(m => m.entreprise.nom_de_l_ayant_droit)
+                        </div>
 
-                @Html.LabelFor(m => m.entreprise.fonction_au_sein_de_l_entreprise)
-                @Html.TextBoxFor(m => m.entreprise.fonction_au_sein_de_l_entreprise)
-            </li>
-            <li>
-                <p>
-                    @Html.LabelFor(m => m.entreprise.adresse)
-                    @Html.TextBoxFor(m => m.entreprise.adresse)
-                </p>
-                @Html.LabelFor(m => m.entreprise.code_postale)
-                @Html.TextBoxFor(m => m.entreprise.code_postale)
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.TextBoxFor(m => m.entreprise.nom_de_l_ayant_droit)
+                        </div>
 
-                @Html.LabelFor(m => m.entreprise.ville)
-                @Html.TextBoxFor(m => m.entreprise.ville)
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.LabelFor(m => m.entreprise.adresse)
+                        </div>
 
-                @Html.LabelFor(m => m.entreprise.pays)
-                @Html.TextBoxFor(m => m.entreprise.pays)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.adresse_mailUE)
-                @Html.TextBoxFor(m => m.adresse_mailUE)
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.TextBoxFor(m => m.entreprise.adresse)
+                        </div>
+                    </div>
+                </div>
 
-                @Html.LabelFor(m => m.entreprise.numero)
-                @Html.TextBoxFor(m => m.entreprise.numero)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.mot_de_passeUE)
-                @Html.TextBoxFor(m => m.mot_de_passeUE)
+                <div class="container-fluid" style="margin-bottom: 3em;">
+                    <div class="row">
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.LabelFor(m => m.entreprise.raison_Sociale)
+                        </div>
+
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.TextBoxFor(m => m.entreprise.raison_Sociale)
+                        </div>
+
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.LabelFor(m => m.entreprise.prenom_de_l_ayant_droit)
+                        </div>
+
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.TextBoxFor(m => m.entreprise.prenom_de_l_ayant_droit)
+                        </div>
+
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.LabelFor(m => m.entreprise.code_postale)
+                        </div>
+
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.TextBoxFor(m => m.entreprise.code_postale)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid" style="margin-bottom: 3em;">
+                    <div class="row">
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.LabelFor(m => m.entreprise.SIRET)
+                        </div>
+
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.TextBoxFor(m => m.entreprise.SIRET)
+                        </div>
+
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.LabelFor(m => m.entreprise.fonction_au_sein_de_l_entreprise)
+                        </div>
+
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.TextBoxFor(m => m.entreprise.fonction_au_sein_de_l_entreprise)
+                        </div>
+
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.LabelFor(m => m.entreprise.ville)
+                        </div>
+
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.TextBoxFor(m => m.entreprise.ville)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid" style="margin-bottom: 3em;">
+                    <div class="row">
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.LabelFor(m => m.entreprise.numero)
+                        </div>
+
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.TextBoxFor(m => m.entreprise.numero)
+                        </div>
+
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.LabelFor(m => m.entreprise.adresse_email)
+                        </div>
+
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.TextBoxFor(m => m.entreprise.adresse_email)
+                        </div>
+
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.LabelFor(m => m.entreprise.pays)
+                        </div>
+
+                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                            @Html.TextBoxFor(m => m.entreprise.pays)
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+                    <button class="btn btn-info" id="etapesuivante">Passez à l'étape suivante</button>
+                </div>
 
 
-            </li>
-        </ul>
-            <input name="envoyer" type="submit">
+                @*<input type="submit" value="Valider" />*@
+
+                @*<input type="button" onclick="javascript: history.go(-1);" value="Abandonner" />*@
+
+                @*</ul>
+                    <input name="envoyer" type="submit">
+                    <input type="button" onclick="javascript: history.go(-1);" value="Abandonner" />*@
+            </div>
         }
-    </div>
 
 
+
+        @*<div>
+                <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+                <button class="btn btn-info" id="etapesuivante">Passez à l'étape suivante</button>
+            </div>*@
+
+
+
+        <footer>
+            <div class="footer">
+                <ul class="icons">
+                    <a href="http://facebook.com"><i class="fab fa-facebook-f" alt="Facebook" id="icon1"></i></a>
+                    <a href="http://instagram.com"><i class="fab fa-instagram" alt="Instagram" id="icon2"></i></a>
+                    <a href="http://linkedin.com"><i class="fab fa-linkedin-in" alt="Linkedin" id="icon3"></i></a>
+                    <a href="/"><i class="far fa-envelope" id="icon4"></i></a>
+                </ul>
+            </div>
+        </footer>
 
 </body>
-</html>
+        </html>

@@ -33,8 +33,7 @@ namespace Art_fundingV0.Models
         public string pays { get; set; }
         public string numero { get; set; }
         public string adresse_mail { get; set; }
-        
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<artiste> artistes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

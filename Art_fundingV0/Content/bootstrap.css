@@ -94,7 +94,7 @@ svg:not(:root) {
   overflow: hidden;
 }
 figure {
-  margin: 1em 40px;
+  margin: 0.5em 40px;
 }
 hr {
   -webkit-box-sizing: content-box;
