@@ -135,9 +135,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AccueilTestController.cs" />
-    <Compile Include="Controllers\FormulaireEntrepriseController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UploadFilesController.cs" />
     <Compile Include="Controllers\UserArtisteController.cs" />
     <Compile Include="Controllers\UserEntrepriseController.cs" />
     <Compile Include="Global.asax.cs">
@@ -158,7 +157,7 @@
     <Compile Include="Models\contrat_entreprise.cs">
       <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Dal.cs" />
+    <Compile Include="Models\DalArtiste.cs" />
     <Compile Include="Models\DalEcole.cs" />
     <Compile Include="Models\DalEntreprise.cs" />
     <Compile Include="Models\document_artiste.cs">
@@ -179,7 +178,7 @@
     <Compile Include="Models\formation_ecole.cs">
       <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\IDal.cs" />
+    <Compile Include="Models\IDalArtiste.cs" />
     <Compile Include="Models\IDalEcole.cs" />
     <Compile Include="Models\IDalEntreprise.cs" />
     <Compile Include="Models\ModelArt_funding.Context.cs">
@@ -268,21 +267,23 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\ViewsEntreprise\LoginEntreprise.cshtml" />
-    <Content Include="Views\AccueilTest\Index.cshtml" />
-    <Content Include="Views\userEntreprise\Index.cshtml" />
-    <Content Include="Views\UserArtiste\Index.cshtml" />
+    <Content Include="Views\userEntreprise\PieceManquant.cshtml" />
+    <Content Include="Views\UserArtiste\Login.cshtml" />
     <Content Include="Views\FormulaireEntreprise\FournirDocuments.cshtml" />
     <Content Include="Views\userEntreprise\CreerCompte.cshtml" />
     <Content Include="Views\UserArtiste\CreerCompte.cshtml" />
     <Content Include="Views\userEntreprise\paiement.cshtml" />
-    <Content Include="Views\userEntreprise\envoyerDossier.cshtml" />
+    <Content Include="Views\UploadFiles\TelechargerDocs.cshtml" />
+    <Content Include="Views\userEntreprise\Index.cshtml" />
+    <Content Include="Views\userEntreprise\Login.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\LayoutAF.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AccueilEntreprise\" />
     <Folder Include="Views\Accueil\" />
     <Folder Include="Views\Login\" />
-    <Folder Include="Views\ViewsArtiste\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

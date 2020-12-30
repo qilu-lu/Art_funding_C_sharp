@@ -11,14 +11,20 @@ namespace Art_fundingV0.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class document_entreprise
     {
+        [Key]
         public int iddocument_entreprise { get; set; }
         public int id_entreprise { get; set; }
+        [DisplayName("Attestation assurance")]
         public byte[] Attestation_assurance { get; set; }
         public byte[] Kbis { get; set; }
         public byte[] RIB { get; set; }
         public byte[] Dernier_statut { get; set; }
+    
+        public virtual entreprise entreprise { get; set; }
     }
 }

@@ -104,7 +104,7 @@ namespace Art_fundingV0.Models
         {
             return context.utilisateurentreprises.FirstOrDefault(u => u.identreprise == id);
         }
-
+      
         public void Dispose()
         {
             context.Dispose();

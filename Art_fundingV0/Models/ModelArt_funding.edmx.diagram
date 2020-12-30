@@ -26,6 +26,7 @@
         <AssociationConnector Association="art_fundingModel.fk_formation_ecole_ecole" ManuallyRouted="false" />
         <AssociationConnector Association="art_fundingModel.fk_UtilsateurEntreprise_entreprise" ManuallyRouted="false" />
         <AssociationConnector Association="art_fundingModel.fk_formation_ecole_formation" ManuallyRouted="false" />
+        <AssociationConnector Association="art_fundingModel.fk_document_entrprise_entrprise" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

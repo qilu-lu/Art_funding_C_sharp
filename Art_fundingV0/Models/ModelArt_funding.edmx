@@ -187,6 +187,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_document_entrprise_entrprise">
+          <End Role="entreprise" Type="Self.entreprise" Multiplicity="1" />
+          <End Role="document_entreprise" Type="Self.document_entreprise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="entreprise">
+              <PropertyRef Name="identreprise" />
+            </Principal>
+            <Dependent Role="document_entreprise">
+              <PropertyRef Name="id_entreprise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_entreprise_artiste">
           <End Role="artiste" Type="Self.artiste" Multiplicity="0..1" />
           <End Role="entreprise" Type="Self.entreprise" Multiplicity="*" />
@@ -269,6 +281,10 @@
           <AssociationSet Name="fk_artiste_ecole" Association="Self.fk_artiste_ecole">
             <End Role="ecole" EntitySet="ecole" />
             <End Role="artiste" EntitySet="artiste" />
+          </AssociationSet>
+          <AssociationSet Name="fk_document_entrprise_entrprise" Association="Self.fk_document_entrprise_entrprise">
+            <End Role="entreprise" EntitySet="entreprise" />
+            <End Role="document_entreprise" EntitySet="document_entreprise" />
           </AssociationSet>
           <AssociationSet Name="fk_entreprise_artiste" Association="Self.fk_entreprise_artiste">
             <End Role="artiste" EntitySet="artiste" />
@@ -371,6 +387,7 @@
           <Property Name="Kbis" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="RIB" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Dernier_statut" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="entreprise" Relationship="art_fundingModel.fk_document_entrprise_entrprise" FromRole="document_entreprise" ToRole="entreprise" />
         </EntityType>
         <EntityType Name="ecole">
           <Key>
@@ -413,6 +430,7 @@
           <Property Name="SIRET" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="artiste" Relationship="Self.fk_entreprise_artiste" FromRole="entreprise" ToRole="artiste" />
           <NavigationProperty Name="utilisateurentreprises" Relationship="Self.fk_UtilsateurEntreprise_entreprise" FromRole="entreprise" ToRole="utilisateurentreprise" />
+          <NavigationProperty Name="document_entreprise" Relationship="art_fundingModel.fk_document_entrprise_entrprise" FromRole="entreprise" ToRole="document_entreprise" />
         </EntityType>
         <EntityType Name="fomation">
           <Key>
@@ -594,7 +612,23 @@
             <End Role="fomation" EntitySet="fomations" />
             <End Role="formation_ecole" EntitySet="formation_ecole" />
           </AssociationSet>
+          <AssociationSet Name="fk_document_entrprise_entrprise" Association="art_fundingModel.fk_document_entrprise_entrprise">
+            <End Role="entreprise" EntitySet="entreprises" />
+            <End Role="document_entreprise" EntitySet="document_entreprise" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="fk_document_entrprise_entrprise">
+          <End Type="art_fundingModel.entreprise" Role="entreprise" Multiplicity="1" />
+          <End Type="art_fundingModel.document_entreprise" Role="document_entreprise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="entreprise">
+              <PropertyRef Name="identreprise" />
+            </Principal>
+            <Dependent Role="document_entreprise">
+              <PropertyRef Name="id_entreprise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

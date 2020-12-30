@@ -1,0 +1,16 @@
+﻿@model Art_fundingV0.ViewModels.LoginViewModel
+@{
+    Layout = null;
+}
+
+<h3>
+
+    votre inscription n'est pas finalisé<br />
+    Etapes manquants:<br />
+    <a href="/uploadFiles/TelechargerDocs">Fournir les piéce d'identite</a><br />
+    <a href="/UserEntreprise/paiement">paiment</a><br />
+
+    @*<a href="/userEntreprise/Index">Se connecter en tant qu'artiste</a>*@
+</h3>
+    @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
+
