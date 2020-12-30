@@ -1,16 +1,8 @@
 ﻿@model  Art_fundingV0.ViewModels.CreerEntrepriseViewModel
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/LayoutAF.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>paiement</title>
-</head>
-<body>
     @using (Html.BeginForm())
     {
         <div>
@@ -39,5 +31,3 @@
         <input type="button" onclick="javascript: history.go(-1);" value="Abandonner" />
         <br />
     }
-</body>
-</html>

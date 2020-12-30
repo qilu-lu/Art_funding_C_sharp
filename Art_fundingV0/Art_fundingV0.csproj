@@ -137,6 +137,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UploadFilesController.cs" />
+    <Compile Include="Controllers\AccueilTestController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\FormulaireEntrepriseController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserArtisteController.cs" />
     <Compile Include="Controllers\UserEntrepriseController.cs" />
     <Compile Include="Global.asax.cs">
@@ -277,6 +281,9 @@
     <Content Include="Views\userEntreprise\Index.cshtml" />
     <Content Include="Views\userEntreprise\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\userEntreprise\envoyerDossier.cshtml" />
+    <Content Include="Views\Dashboard\AccueilDashboard.cshtml" />
+    <Content Include="Views\Dashboard\BoiteArtiste.cshtml" />
     <Content Include="Views\Shared\LayoutAF.cshtml" />
   </ItemGroup>
   <ItemGroup>
