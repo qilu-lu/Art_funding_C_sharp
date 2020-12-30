@@ -137,10 +137,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UploadFilesController.cs" />
-    <Compile Include="Controllers\AccueilTestController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
-    <Compile Include="Controllers\FormulaireEntrepriseController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserArtisteController.cs" />
     <Compile Include="Controllers\UserEntrepriseController.cs" />
     <Compile Include="Global.asax.cs">
