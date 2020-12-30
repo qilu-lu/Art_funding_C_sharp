@@ -136,6 +136,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RedigerMailController.cs" />
     <Compile Include="Controllers\UploadFilesController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\UserArtisteController.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Models\categorie.cs">
       <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\contrat_abonnement.cs">
       <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
@@ -282,6 +284,8 @@
     <Content Include="Views\Dashboard\AccueilDashboard.cshtml" />
     <Content Include="Views\Dashboard\BoiteArtiste.cshtml" />
     <Content Include="Views\Shared\LayoutAF.cshtml" />
+    <Content Include="Views\RedigerMail\ContactAsync.cshtml" />
+    <Content Include="Views\RedigerMail\SuccessMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
