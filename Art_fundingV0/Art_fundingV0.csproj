@@ -136,6 +136,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccueilTestController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\FormulaireEntrepriseController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserArtisteController.cs" />
@@ -277,6 +278,9 @@
     <Content Include="Views\UserArtiste\CreerCompte.cshtml" />
     <Content Include="Views\userEntreprise\paiement.cshtml" />
     <Content Include="Views\userEntreprise\envoyerDossier.cshtml" />
+    <Content Include="Views\Dashboard\AccueilDashboard.cshtml" />
+    <Content Include="Views\Dashboard\BoiteArtiste.cshtml" />
+    <Content Include="Views\Shared\LayoutAF.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

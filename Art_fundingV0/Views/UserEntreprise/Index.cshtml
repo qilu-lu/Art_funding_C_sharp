@@ -1,17 +1,18 @@
 ﻿@model Art_fundingV0.ViewModels.LoginViewModel
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/LayoutAF.cshtml";
 }
+
 @if (Model.LoggedIn)
 {
-<h3>
-    Vous êtes déjà authentifié avec le loginE :
-    @Model.adress_mail
-    votre inscription n'est pas finalisé
-    Etapes manquants:
-    <a href="/userEntreprise/envoyerdossiers">Fournir les piéce d'identite</a><br />
-    @*<a href="/userEntreprise/Index">Se connecter en tant qu'artiste</a>*@
-</h3>
+    <h3>
+        Vous êtes déjà authentifié avec le loginE :
+        @Model.adress_mail
+        votre inscription n'est pas finalisé
+        Etapes manquants:
+        <a href="/userEntreprise/envoyerdossiers">Fournir les piéce d'identite</a><br />
+        @*<a href="/userEntreprise/Index">Se connecter en tant qu'artiste</a>*@
+    </h3>
     @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
 
 }
@@ -22,20 +23,23 @@ else
     </p>
     using (Html.BeginForm())
     {
-        <div>
-           
-            @Html.LabelFor(m => m.adress_mail)
-           
-           @Html.TextBoxFor(m => m.adress_mail)
-            @Html.ValidationMessageFor(m => m.adress_mail)
-        </div>
-        <div>
-            @Html.LabelFor(m => m.mot_de_passe)
-            @Html.PasswordFor(m => m.mot_de_passe)
-            @Html.ValidationMessageFor(m => m.mot_de_passe)
-        </div>
+<div class="container">
+    <div>
+
+        @Html.LabelFor(m => m.adress_mail)
+
+        @Html.TextBoxFor(m => m.adress_mail)
+        @Html.ValidationMessageFor(m => m.adress_mail)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.mot_de_passe)
+        @Html.PasswordFor(m => m.mot_de_passe)
+        @Html.ValidationMessageFor(m => m.mot_de_passe)
+    </div>
+</div>
         <input type="submit" value="Se connecter" />
         <br />
+
         @Html.ActionLink("Créer un compte", "CreerCompte")
     }
 }
