@@ -1,7 +1,10 @@
 ﻿body {
     /* overflow: scroll; */ /*scrolling horizontale*/
     /*background-image: url('../Content/images/image formulaire.PNG');*/
-    background-image: url('../Content/images/galerie.jpg');
+    /*background-image: url('../Content/images/galerie.jpg');*/
+   
+    /*background-image: url('../Content/images/photo_fond.jpg');*/ 
+    background-image: url('../Content/images/image formulaire.PNG');
     background-repeat: no-repeat;
     background-size: cover;
 }
