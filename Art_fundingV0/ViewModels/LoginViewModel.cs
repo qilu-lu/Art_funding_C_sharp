@@ -16,7 +16,11 @@ namespace Art_fundingV0.ViewModels
         
         [Required(ErrorMessage = "Le champs mot de passe est obligatoire")]
         public string mot_de_passe { get; set; }
-     
-       public bool LoggedIn { get; set; }
+        public bool paiementNExistePas { get; set; }
+         public bool docNExistePas { get; set; }
+
+       // bool docNExistePas = utilisateurentreprise.entreprise.document_entreprise == null || utilisateurentreprise.entreprise.document_entreprise.Count() == 0;
+
+        public bool LoggedIn { get; set; }
     }
 }

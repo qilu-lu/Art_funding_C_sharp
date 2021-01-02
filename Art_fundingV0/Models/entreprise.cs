@@ -40,7 +40,7 @@ namespace Art_fundingV0.Models
         [Display(Name = "Fonction au sein de l'entreprise")]
         public string fonction_au_sein_de_l_entreprise { get; set; }
         [Required]
-        [Display(Name = "Adresse postale")]
+        [Display(Name = "Adresse")]
         public string adresse { get; set; }
         [Required]
         [Display(Name = "Code postale")]
@@ -51,8 +51,8 @@ namespace Art_fundingV0.Models
         [Required]
         [Display(Name = "Pays")]
         public string pays { get; set; }
-        [Required]
-        [Display(Name = "Adresse e-mail")]
+       
+        
         public string adresse_email { get; set; }
         [Required]
         [RegularExpression(@"^0[0-9]{9}$", ErrorMessage = "Le numéro de téléphone est incorrect")]

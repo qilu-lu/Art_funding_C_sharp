@@ -96,11 +96,7 @@ namespace Art_fundingV0.Controllers
             }
             return View();
         }
-        public ActionResult Deconnexion()
-        {
-            FormsAuthentication.SignOut();
-            return Redirect("/");
-        }
+
     }
 }
 

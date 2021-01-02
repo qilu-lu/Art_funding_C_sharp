@@ -22,7 +22,7 @@ namespace Art_fundingV0.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult TelechargerDocs([Bind(Include = "iddocument_entreprise, Attestation_assurance,Kbis,RIB ")] document_entreprise document_Entreprise, HttpPostedFileBase file, HttpPostedFileBase file2, HttpPostedFileBase file3, HttpPostedFileBase file4)
+        public ActionResult TelechargerDocs([Bind(Include = "iddocument_entreprise, Attestation_assurance,Kbis,RIB,Dernier_statut ")] document_entreprise document_Entreprise, HttpPostedFileBase file, HttpPostedFileBase file2, HttpPostedFileBase file3, HttpPostedFileBase file4)
         {
             
             if (ModelState.IsValid)
@@ -57,7 +57,7 @@ namespace Art_fundingV0.Controllers
                     document_Entreprise.Dernier_statut = imageData4;
                     int id;
                     if (int.TryParse(HttpContext.User.Identity.Name, out id)) { 
-                    entreprise entreprise = context.entreprises.Find(id);
+                    entreprise entreprise = context.utilisateurentreprises.Find(id).entreprise;
                 
                    
                     document_Entreprise.entreprise=entreprise;
@@ -66,7 +66,8 @@ namespace Art_fundingV0.Controllers
                     context.document_entreprise.Add(document_Entreprise);
                     context.SaveChanges();
                     ViewBag.success = "Uploaded Filed Saved Succesfully in a folder!";
-                    return RedirectToAction("TelechargerDocs");
+                    return RedirectToAction("/", "UserEntreprise");
+                        //pourquoi la view piecemanquant
                     }
                 }
             }
