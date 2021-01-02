@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.TextBoxFor(m => m.utilisateuartiste.artiste.prenom)
+                        @Html.TextBoxFor(m => m.utilisateurartiste.artiste.prenom)
                     </div>
 
                     <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
@@ -148,17 +148,7 @@
                             @Html.ValidationMessageFor(m => m.utilisateurartiste.artiste.Disponibilite)
                         </div>
 
-                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                            @Html.LabelFor(m => m.utilisateurartiste.artiste.Disponibilite)
-                        </div>
 
-                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                            @Html.TextBoxFor(m => m.utilisateurartiste.artiste.Disponibilite)
-                        </div>
-
-                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                            @Html.ValidationMessageFor(m => m.utilisateurartiste.artiste.Disponibilite)
-                        </div>
 
                         <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
                             @Html.LabelFor(m => m.utilisateurartiste.mailUA)
@@ -181,8 +171,13 @@
                         </div>
 
                         <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                            @Html.ValidationMessageFor(m => m.utilisateurartiste.mot_de_passe
+                            @Html.ValidationMessageFor(m => m.utilisateurartiste.mot_de_passe)
                         </div>
+                        @Html.LabelFor(m => m.SelectedEcoleIds)
+                        @Html.ListBoxFor(model => model.SelectedEcoleIds, Model.EcoleList)
+
+                        @Html.LabelFor(m => m.SelectedCategorieIds)
+                        @Html.ListBoxFor(model => model.SelectedCategorieIds, Model.CategorieList)
 
                     </div>
 

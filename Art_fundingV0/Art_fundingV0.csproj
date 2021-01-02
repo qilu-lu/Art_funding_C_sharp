@@ -290,6 +290,7 @@
     <Content Include="Views\Shared\LayoutAF.cshtml" />
     <Content Include="Views\RedigerMail\ContactAsync.cshtml" />
     <Content Include="Views\RedigerMail\SuccessMessage.cshtml" />
+    <Content Include="Views\UserArtiste\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

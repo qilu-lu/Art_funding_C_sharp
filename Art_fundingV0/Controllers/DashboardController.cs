@@ -21,7 +21,7 @@ namespace Art_fundingV0.Controllers
 
         // Les vues endessous ne sont pas encore créer
 
-        public ActionResult ArtisteContactés()
+        public ActionResult ArtisteContactes()
         {
             return View();
         }

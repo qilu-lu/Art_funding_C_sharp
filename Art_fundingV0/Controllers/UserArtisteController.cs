@@ -22,6 +22,12 @@ namespace Art_fundingV0.Controllers
             dalEcole = dalecolen;
         }
         [HttpGet]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ActionResult Login()
         {
             LoginViewModel viewModelart = new LoginViewModel { LoggedIn = HttpContext.User.Identity.IsAuthenticated };
@@ -96,6 +102,7 @@ namespace Art_fundingV0.Controllers
             }
             return View();
         }
+
 
     }
 }

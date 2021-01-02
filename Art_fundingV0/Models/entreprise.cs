@@ -11,8 +11,7 @@ namespace Art_fundingV0.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class entreprise
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,47 +22,17 @@ namespace Art_fundingV0.Models
         }
     
         public int identreprise { get; set; }
-        [Required]
-        [Display(Name = "Dénomination commerciale")]
         public string denomination_Commerciale { get; set; }
-        [Required]
-        [Display(Name = "Raison sociale")]
         public string raison_Sociale { get; set; }
-
-        [Required]
-        [Display(Name = "Nom de l'ayant droit")]
         public string nom_de_l_ayant_droit { get; set; }
-        [Required]
-        [Display(Name = "Prénom de l'ayant droit")]
         public string prenom_de_l_ayant_droit { get; set; }
-        [Required]
-        [Display(Name = "Fonction au sein de l'entreprise")]
         public string fonction_au_sein_de_l_entreprise { get; set; }
-        [Required]
-        [Display(Name = "Adresse")]
         public string adresse { get; set; }
-        [Required]
-        [Display(Name = "Code postale")]
         public int code_postale { get; set; }
-        [Required]
-        [Display(Name = "Ville")]
         public string ville { get; set; }
-        [Required]
-        [Display(Name = "Pays")]
         public string pays { get; set; }
-       
-        
         public string adresse_email { get; set; }
-        [Required]
-        [RegularExpression(@"^0[0-9]{9}$", ErrorMessage = "Le numéro de téléphone est incorrect")]
-        [Display(Name = "Téléphone")]
         public string numero { get; set; }
-
-
-
-
-      
-      
         public Nullable<int> artiste_choisi_id { get; set; }
         public int contrat_abonnement_id { get; set; }
         public Nullable<int> contrat_avec_artiste_id { get; set; }

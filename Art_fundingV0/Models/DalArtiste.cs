@@ -30,8 +30,8 @@ namespace Art_fundingV0.Models
            utilisateurartiste userToAdd = new utilisateurartiste
            {
                mailUA = mailUA,
-               mot_de_passe = mot_de_passeUA,
-               artiste=artiste 
+               mot_de_passe = encodedPassword,
+               artiste =artiste 
             
             };
             context.utilisateurartistes.Add(userToAdd);
@@ -91,7 +91,9 @@ namespace Art_fundingV0.Models
             return context.utilisateurartistes.FirstOrDefault(u => u.mailUA == mail && u.mot_de_passe == motDePasseEncode);
     }
 
-        
+
+
+
         private string EncodeMD5(string motDePasse)
     {
         string motDePasseSel = "email" + motDePasse + "ASP.NET MVC";

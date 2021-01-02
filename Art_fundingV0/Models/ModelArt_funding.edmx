@@ -145,7 +145,7 @@
           </Key>
           <Property Name="idUtilisateurArtiste" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="mailUA" Type="varchar" MaxLength="45" />
-          <Property Name="mot_de_passe" Type="varchar" MaxLength="45" />
+          <Property Name="mot_de_passe" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="idartiste" Type="int" />
           <Property Name="role" Type="varchar" MaxLength="45" />
         </EntityType>
@@ -465,7 +465,7 @@
           </Key>
           <Property Name="idUtilisateurArtiste" Type="Int32" Nullable="false" />
           <Property Name="mailUA" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="mot_de_passe" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="mot_de_passe" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="idartiste" Type="Int32" />
           <Property Name="role" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="artiste" Relationship="Self.fk_UtilisateurArtiste_Artiste" FromRole="utilisateurartiste" ToRole="artiste" />
