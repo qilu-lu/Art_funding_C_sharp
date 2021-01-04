@@ -18,44 +18,78 @@ namespace Art_fundingV0.Controllers
         {
             dalEntreprise = dalIoc;
         }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            //LoginViewModel viewModelentre = new LoginViewModel { LoggedIn = HttpContext.User.Identity.IsAuthenticated };
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                return Redirect("/");
+            }
+            return View();
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
-            LoginViewModel viewModelentre = new LoginViewModel { LoggedIn = HttpContext.User.Identity.IsAuthenticated };
-            if (HttpContext.User.Identity.IsAuthenticated)
+            //LoginViewModel viewModelentre = new LoginViewModel { LoggedIn = HttpContext.User.Identity.IsAuthenticated };
+            if (!HttpContext.User.Identity.IsAuthenticated)
             {
-                utilisateurentreprise utilisateurentreprise = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name);
-
-                viewModelentre.adress_mail = utilisateurentreprise.adresse_mailUE;
-               // viewModelentre.entreprise = utilisateurentreprise.entreprise;
-                /*string adresse_email = viewModelentre.adress_mail;
-                string mot_de_passe = viewModelentre.mot_de_passe;
-                
-                 entreprise = new entreprise() { adresse_email = adresse_email, mot_de_passe = mot_de_passe };
-                
-               //viewModelentre.entreprise = entreprise;*/
+                return Redirect("/Login");
             }
-            return View(viewModelentre);
+
+            utilisateurentreprise utilisateurentreprise = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name);
+            bool paiementNExistePas = utilisateurentreprise.Nocartebancaire == null;
+
+            bool docNExistePas = utilisateurentreprise.entreprise.document_entreprise == null || utilisateurentreprise.entreprise.document_entreprise.Count() == 0;
+            if (paiementNExistePas || docNExistePas)
+            {
+                return RedirectToAction("PieceManquant");
+            }
+            // return RedirectToAction("Index");
+            return View();
         }
+
         [HttpPost]
-        public ActionResult Index(LoginViewModel viewModel, string returnUrl)
+        public ActionResult Login(LoginViewModel viewModel, string returnUrl)
         {
             if (ModelState.IsValid)
             {
-               utilisateurentreprise entreprise = dalEntreprise.AuthentifierEntreprise(viewModel.adress_mail, viewModel.mot_de_passe);
+                utilisateurentreprise entreprise = dalEntreprise.AuthentifierEntreprise(viewModel.adress_mail, viewModel.mot_de_passe);
                 if (entreprise != null)
                 {
                     FormsAuthentication.SetAuthCookie(entreprise.idUtilisateurEntreprise.ToString(), false);
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
-                    return Redirect("/");
-                    
+                    return Redirect("/UserEntreprise/Index");
+
                 }
                 ModelState.AddModelError("utilisateurentreprise.adresse_emailUE", "wrong login");
                 //view??? error
             }
             return View(viewModel);
         }
+        [HttpGet]
+        public ActionResult PieceManquant()
+        {
+            LoginViewModel viewModelentre = new LoginViewModel { LoggedIn = HttpContext.User.Identity.IsAuthenticated };
+
+            utilisateurentreprise utilisateurentreprise = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name);
+           
+            viewModelentre.paiementNExistePas = utilisateurentreprise.Nocartebancaire == null;
+            viewModelentre.docNExistePas = utilisateurentreprise.entreprise.document_entreprise == null || utilisateurentreprise.entreprise.document_entreprise.Count() == 0;
+            
+            if (viewModelentre.paiementNExistePas || viewModelentre.docNExistePas)
+            {
+                return View(viewModelentre);
+            }
+
+            return Redirect("/UserEntreprise/Index");
+        }
+
+
+
         public ActionResult CreerCompte()
         {
             return View();
@@ -73,29 +107,17 @@ namespace Art_fundingV0.Controllers
                     ModelState.AddModelError("Username", "This username already exists");
                     return View();
                 }
-                // int id = dalEntreprise.AjouterUserEntreprise(utilisateur.adresse_mailUE, utilisateur.mot_de_passeUE, utilisateur.entreprise);
                 int id = dalEntreprise.AjouterUserEntreprise(utilisateur.adresse_mailUE, utilisateur.mot_de_passeUE, utilisateur.entreprise);
-                    //   dal.ajouterEntreprise(entreprise);
-                    FormsAuthentication.SetAuthCookie(id.ToString(), false);
-                //return Redirect("/");
-               return  RedirectToAction("paiement");
+                FormsAuthentication.SetAuthCookie(id.ToString(), false);
+                return RedirectToAction("paiement");
                 //lier avec le page d'accueil d'artiste
             }
             return View(utilisateur);
         }
 
-        public ActionResult envoyerDossier()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult envoyerDoissier(entreprise entreprise)
-        {
 
 
 
-            return View(entreprise);
-        }
 
 
 
@@ -107,7 +129,7 @@ namespace Art_fundingV0.Controllers
             List<SelectListItem> list2 = new List<SelectListItem>();
             for (int i = 1; i <= 12; i++)
             {
-                list.Add(new SelectListItem { Text = i + "", Value =i+"", Selected = false });
+                list.Add(new SelectListItem { Text = i + "", Value = i + "", Selected = false });
             }
             for (int i = 2020; i <= 2030; i++)
             {
@@ -124,30 +146,24 @@ namespace Art_fundingV0.Controllers
         }
 
         [HttpPost]
-        public ActionResult paiement(utilisateurentreprise utilisateur)
+        public ActionResult paiement(CreerEntrepriseViewModel utilisateur)
         {
+            // utilisateur = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name);
             if (ModelState.IsValid)
             {
                 utilisateurentreprise utilisateurentreprise = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name);
                 // int id = dalEntreprise.AjouterUserEntreprise(utilisateur.adresse_mailUE, utilisateur.mot_de_passeUE, utilisateur.entreprise);
-                utilisateurentreprise.Nocartebancaire = utilisateur.Nocartebancaire;
-                utilisateurentreprise.AnneeExpiration = utilisateur.AnneeExpiration;
-                utilisateurentreprise.MoisExpiration = utilisateur.MoisExpiration;
-                utilisateurentreprise.CodeVerfication = utilisateur.CodeVerfication;
+                utilisateurentreprise.Nocartebancaire = utilisateur.utilisateurentreprise.Nocartebancaire;
+                utilisateurentreprise.AnneeExpiration = "" + utilisateur.SelectedAnneeIds.First();
+                utilisateurentreprise.MoisExpiration = "" + utilisateur.SelectedMoisIds.First();
+                utilisateurentreprise.CodeVerfication = utilisateur.utilisateurentreprise.CodeVerfication;
+                //utilisateurentreprise =utilisateur ;
                 dalEntreprise.context.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View();
-            
-         }
 
-           
-
-
-        public ActionResult Deconnexion()
-        {
-            FormsAuthentication.SignOut();
-            return Redirect("/");
         }
+       
     }
 }

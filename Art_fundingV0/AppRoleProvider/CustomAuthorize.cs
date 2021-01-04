@@ -12,15 +12,7 @@ namespace Art_fundingV0.AppRoleProvider
         {
             filterContext.Controller.ViewBag.authorize = false;
 
-            //string retUrl = filterContext.HttpContext.Request.RawUrl;
-            //filterContext.Result =
-            //                 new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary
-            //                         {{ "controller", filterContext.Controller.ToString()},
-            //                          { "action", filterContext.ActionDescriptor.ToString() },
-            //                          { "returnUrl",    retUrl } });
-
-            //filterContext.Result = new RedirectToRouteResult(new
-            //RouteValueDictionary(new { controller = "Accueil", action = "Index" }));
+           
 
         }
     }

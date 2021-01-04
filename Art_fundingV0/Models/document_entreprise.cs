@@ -20,5 +20,7 @@ namespace Art_fundingV0.Models
         public byte[] Kbis { get; set; }
         public byte[] RIB { get; set; }
         public byte[] Dernier_statut { get; set; }
+    
+        public virtual entreprise entreprise { get; set; }
     }
 }

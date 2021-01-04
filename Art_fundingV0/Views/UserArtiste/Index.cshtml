@@ -1,38 +1,17 @@
-﻿@model Art_fundingV0.ViewModels.LoginViewModel
+﻿
 @{
-    Layout = "~/Views/Shared/LayoutAF.cshtml";
-}
-@if (Model.LoggedIn)
-{
-    <h3>
-        Vous êtes déjà authentifié avec le loginA :
-        @Model.adress_mail
-    </h3>
-    @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
-
-}
-else
-{
-    <p>
-        Veuillez vous authentifier :
-    </p>
-    using (Html.BeginForm())
-    {
-        <div>
-
-            @Html.LabelFor(m => m.adress_mail)
-
-            @Html.TextBoxFor(m => m.adress_mail)
-            @Html.ValidationMessageFor(m => m.adress_mail)
-        </div>
-        <div>
-            @Html.LabelFor(m => m.mot_de_passe)
-            @Html.PasswordFor(m => m.mot_de_passe)
-            @Html.ValidationMessageFor(m => m.mot_de_passe)
-        </div>
-        <input type="submit" value="Se connecter" />
-        <br />
-        @Html.ActionLink("Créer un compte", "CreerCompte")
-    }
+    Layout = null;
 }
 
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+    </div>
+</body>
+</html>

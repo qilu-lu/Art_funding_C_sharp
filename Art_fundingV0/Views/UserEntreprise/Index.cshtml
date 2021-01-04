@@ -1,45 +1,66 @@
-﻿@model Art_fundingV0.ViewModels.LoginViewModel
+﻿@model  Art_fundingV0.Models.utilisateurentreprise
 @{
     Layout = "~/Views/Shared/LayoutAF.cshtml";
 }
 
-@if (Model.LoggedIn)
-{
-    <h3>
-        Vous êtes déjà authentifié avec le loginE :
-        @Model.adress_mail
-        votre inscription n'est pas finalisé
-        Etapes manquants:
-        <a href="/userEntreprise/envoyerdossiers">Fournir les piéce d'identite</a><br />
-        @*<a href="/userEntreprise/Index">Se connecter en tant qu'artiste</a>*@
-    </h3>
-    @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
-
-}
-else
-{
-    <p>
-        Veuillez vous authentifier :
-    </p>
-    using (Html.BeginForm())
-    {
-<div class="container">
+    <!--   	<img class="center" src="images/imagePrincipale.jpeg">
+        <p id="art"><span>art_</span></p>
+        <p id="fun">fun</p>
+        <p id="ding"><span>ding</span></p> -->
+    <!-- <h2><span>Transformer l'art en métier</span></h2>
+    <h3 id="entreprise"><a href="https://fr.wikipedia.org/wiki/entreprise">Entreprise</h3>
+    <h3 id="artiste"><a href="https://fr.wikipedia.org/wiki/Artiste">Artiste</h3> -->
     <div>
-
-        @Html.LabelFor(m => m.adress_mail)
-
-        @Html.TextBoxFor(m => m.adress_mail)
-        @Html.ValidationMessageFor(m => m.adress_mail)
+        <h1 id="transformez">"Transformez le talent en savoir-faire." <span>Art_Funding</span></h1>
     </div>
-    <div>
-        @Html.LabelFor(m => m.mot_de_passe)
-        @Html.PasswordFor(m => m.mot_de_passe)
-        @Html.ValidationMessageFor(m => m.mot_de_passe)
-    </div>
-</div>
-        <input type="submit" value="Se connecter" />
-        <br />
 
-        @Html.ActionLink("Créer un compte", "CreerCompte")
-    }
-}
+    <!---<img class="center" src="images/principale.jpeg"> -->
+    <div class="container-fluid" id="coverflow">
+        <div class="gallery">
+            <a href="">
+                <img class="gallery-item" src="/Content/images/peinture_4.jpg">
+            </a>
+            <p>Nos peintres</p>
+        </div>
+        <div class="gallery">
+            <a href="">
+                <img class="gallery-item" src="images/2.jpg">
+            </a>
+            <p>Nos photographes</p>
+        </div>
+        <div class="gallery">
+            <a href="">
+                <img class="gallery-item" src="images/5.png">
+            </a>
+            <p>Nos designers</p>
+        </div>
+        <div class="gallery">
+            <a href="">
+                <img class="gallery-item" src="images/3.jpg">
+            </a>
+            <p>Nos stylistes</p>
+        </div>
+        <div class="gallery">
+            <a href="">
+                <img class="gallery-item" src="images/6.jpg">
+            </a>
+            <p>Nos artistes du monde</p>
+        </div>
+        <div class="gallery">
+            <a href="http://google.fr">
+                <img class="gallery-item" src="images/1.jpg">
+            </a>
+            <p>Nos dessinateurs</p>
+        </div>
+
+        <!-- <section class="container" id="content">
+            <img src="111.jpg">
+        </section> -->
+
+    </div>
+
+
+
+
+
+
