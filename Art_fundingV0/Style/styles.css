@@ -1,8 +1,4 @@
-﻿body {
-    /* overflow: scroll; */ /*scrolling horizontale*/
-    /*background-image: url('../Content/images/image formulaire.PNG');*/
-    /*background-image: url('../Content/images/galerie.jpg');*/
-   
+body {
     /*background-image: url('../Content/images/photo_fond.jpg');*/ 
     background-image: url('../Content/images/image formulaire.PNG');
     background-repeat: no-repeat;
@@ -12,14 +8,12 @@
 
 
 
-/*
-.navbar-default .navbar-brand{
-    color: !#ECAF2E; красивый бронзовый на темном
-}
-*/
 a {
     color: white;
+    text-decoration: none;
 }
+
+
 
 #transformez {
     color: #343a40; /*#FFB30F;*/ /*#F9B21A;*/
@@ -35,9 +29,8 @@ a {
 
 /*  D R O P D O W N   M E N U  */
 #artFunding {
-    background-color: #343a40;
     color: white;
-    padding: 16px;
+    /*padding: 16px;*/
     /*font-family:  'Roboto Slab', serif;/* 'Raleway';*/
     font-size: 1.3em;
     border: none;
@@ -58,7 +51,7 @@ a {
     display: none;
     position: absolute;
     margin-top: 0.4em;
-    padding-top: 1.0.5em;
+    padding-top: 0.5em;
     background-color: none;
     min-width: 160px;
     /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);

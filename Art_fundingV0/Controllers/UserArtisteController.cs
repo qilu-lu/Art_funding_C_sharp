@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,6 +14,7 @@ namespace Art_fundingV0.Controllers
 
         private IDalArtiste dalArtiste;
         private IDalEcole dalEcole;
+        private art_fundingEntities context = new art_fundingEntities();
         public UserArtisteController() : this(new DalArtiste(), new DalEcole())
         {
         }
@@ -33,10 +35,10 @@ namespace Art_fundingV0.Controllers
             LoginViewModel viewModelart = new LoginViewModel { LoggedIn = HttpContext.User.Identity.IsAuthenticated };
             if (HttpContext.User.Identity.IsAuthenticated)
             {
-                
+
                 utilisateurartiste utilisateurartiste = dalArtiste.ObtientTousLesArtistes(HttpContext.User.Identity.Name);
                 viewModelart.adress_mail = utilisateurartiste.mailUA;
-                
+                //  return Redirect("Index");
             }
             return View(viewModelart);
         }
@@ -51,7 +53,7 @@ namespace Art_fundingV0.Controllers
                     FormsAuthentication.SetAuthCookie(artiste.idartiste.ToString(), false);
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
-                    return Redirect("/");
+                    return Redirect("remplirphoto");
                 }
                 ModelState.AddModelError("utilisateurArtiste.mailUA", "wrong login");
                 //view??? error
@@ -97,14 +99,49 @@ namespace Art_fundingV0.Controllers
                 }
                 int id = dalArtiste.AjouterUserArtiste(utilisateur.mailUA, utilisateur.mot_de_passe, creerArtiste);
                 FormsAuthentication.SetAuthCookie(id.ToString(), false);
-                
+
                 return RedirectToAction("Index");
             }
             return View();
         }
+        public ActionResult remplirphoto()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult remplirphoto(IEnumerable<HttpPostedFileBase> filesToUpload)
+        {
+            if (ModelState.IsValid)
+            {
+                int id = StringUtil.toInt(HttpContext.User.Identity.Name);
+                foreach (HttpPostedFileBase fileToUpload in filesToUpload)
+                {
+                    if (fileToUpload != null && fileToUpload.ContentLength > 0)
+                    {
+                        byte[] imageData = null;
+                        using (var binaryReader = new BinaryReader(fileToUpload.InputStream))
+                        {
+                            imageData = binaryReader.ReadBytes(fileToUpload.ContentLength);
+                        }
+                        photo photo = new photo();
+                        photo.photo1 = imageData;
+                        photo.idartist = id;
+                        context.photos.Add(photo);
+                        // document_Entreprise.entreprise = entreprise;
+                    }
+                }
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
+            return View();
+        }
 
     }
+
+
+
 }
 
 

@@ -150,6 +150,7 @@
     <Compile Include="Models\categorie.cs">
       <DependentUpon>ModelArt_funding.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StringUtil.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\contrat_abonnement.cs">
       <DependentUpon>ModelArt_funding.tt</DependentUpon>
@@ -226,6 +227,7 @@
     <Content Include="Content\images\peinture_4.jpg" />
     <Content Include="Content\images\photo fond.jpg" />
     <Content Include="Content\images\photo_fond.jpg" />
+    <Content Include="Content\Video\Notebook and Pen in Female Hand.mp4" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -261,6 +263,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Style\styles.css" />
+    <Content Include="Style\stylesUA.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -291,6 +294,9 @@
     <Content Include="Views\RedigerMail\ContactAsync.cshtml" />
     <Content Include="Views\RedigerMail\SuccessMessage.cshtml" />
     <Content Include="Views\UserArtiste\Index.cshtml" />
+    <Content Include="Views\UserArtiste\remplirphoto.cshtml" />
+    <Content Include="Views\userEntreprise\choisirCategorie.cshtml" />
+    <Content Include="Views\Shared\LayoutUA.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
