@@ -216,6 +216,7 @@
     <Compile Include="ViewModels\CreerEntrepriseViewModel.cs" />
     <Compile Include="ViewModels\EntrepriseViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -297,6 +298,7 @@
     <Content Include="Views\UserArtiste\remplirphoto.cshtml" />
     <Content Include="Views\userEntreprise\choisirCategorie.cshtml" />
     <Content Include="Views\Shared\LayoutUA.cshtml" />
+	<Content Include="Views\SelectionArtiste\SelectionArtiste.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
