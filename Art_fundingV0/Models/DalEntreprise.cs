@@ -104,7 +104,38 @@ namespace Art_fundingV0.Models
         {
             return context.utilisateurentreprises.FirstOrDefault(u => u.identreprise == id);
         }
-      
+        //public List<boite_artiste> GetBoiteArtisteItems(int idboite)
+        //{
+        //    return
+        //           (boite_artiste =
+        //               context.boite_artiste.Where(c => c.idBoite_Artiste ==idboite)
+        //                   .Include(s => s.artiste)
+        //                   .ToList());
+        //}
+
+
+        public void AjouterArtisteContacte(int idBoiteArtiste)
+        {
+            boite_artiste boite_artiste = context.boite_artiste.Find(idBoiteArtiste);
+            if (boite_artiste != null)
+            {
+                //boite_artiste.id_artiste = idartiste;
+                //boite_artiste.id_entreprise = identreprise;
+                boite_artiste.etat = "Contacte";
+            }
+            context.SaveChanges();
+        }
+        public List<artiste> ObtientArtistesContacte(int idEntreprise)
+        {
+            List<boite_artiste> listeBoite = context.boite_artiste.Where(boite => boite.id_entreprise == idEntreprise && boite.etat == "Contacte").ToList();
+            List<artiste> artistes = new List<artiste>();
+            foreach (boite_artiste Boite in listeBoite)
+            {
+                artistes.Add(Boite.artiste);
+            }
+            return artistes;
+        }
+
         public void Dispose()
         {
             context.Dispose();

@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/LayoutAF.cshtml";
+}
+<div>
+    <h1>Artistes contactés</h1>
+    <div class="container">
+        <div class="row">
+            @foreach (var artiste in Model)
+            {
+                <div class="col-12 m-2">
+                    <div class="d-flex position-relative border plop">
+                        <img src="~/Content/images/Art Otter.png" class="flex-shrink-0 me-3" alt="ProjetArtiste" width="200">
+                        <div>
+                            <h5>@artiste.nom @artiste.prenom @artiste.categorie.nom</h5>
+                            <p>@artiste.description</p>
+                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                            <a href="#" class="btn btn-primary stretched-link">Voir le projet</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -24,13 +24,14 @@ namespace Art_fundingV0.Models
         artiste ObtientTousLesArtistes(int id);
         utilisateurartiste ObtientTousLesArtistes(string idStr);
         utilisateurartiste getUtilisateurArtisteParEmail(string mail);
-      
+
+
+        List<artiste> RechercheArtistes(string SearchString);
 
 
 
 
-      
 
-        
+
     }
 }

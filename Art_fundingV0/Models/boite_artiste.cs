@@ -12,13 +12,13 @@ namespace Art_fundingV0.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class document_artiste
+    public partial class boite_artiste
     {
-        public long id_document_artiste { get; set; }
-        public int id_artiste { get; set; }
-        public byte[] CNI { get; set; }
-        public byte[] justificatif_de_domicile { get; set; }
+        public int idBoite_Artiste { get; set; }
+        public Nullable<int> id_entreprise { get; set; }
+        public Nullable<int> id_artiste { get; set; }
     
         public virtual artiste artiste { get; set; }
+        public virtual entreprise entreprise { get; set; }
     }
 }

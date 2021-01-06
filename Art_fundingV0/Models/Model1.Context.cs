@@ -26,6 +26,7 @@ namespace Art_fundingV0.Models
         }
     
         public virtual DbSet<artiste> artistes { get; set; }
+        public virtual DbSet<boite_artiste> boite_artiste { get; set; }
         public virtual DbSet<categorie> categories { get; set; }
         public virtual DbSet<contrat_abonnement> contrat_abonnement { get; set; }
         public virtual DbSet<contrat_ecole> contrat_ecole { get; set; }

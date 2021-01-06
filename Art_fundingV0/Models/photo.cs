@@ -15,7 +15,9 @@ namespace Art_fundingV0.Models
     public partial class photo
     {
         public int idphoto { get; set; }
-        public long idartist { get; set; }
+        public Nullable<int> idartist { get; set; }
         public byte[] photo1 { get; set; }
+    
+        public virtual artiste artiste { get; set; }
     }
 }

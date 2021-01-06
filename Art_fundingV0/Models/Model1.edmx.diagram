@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3a98e5df556348cca17ced06323ea33b" Name="Diagram1">
+        <EntityTypeShape EntityType="art_fundingModel.artiste" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="art_fundingModel.boite_artiste" Width="1.5" PointX="10.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="art_fundingModel.categorie" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="art_fundingModel.contrat_abonnement" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="art_fundingModel.contrat_ecole" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="art_fundingModel.contrat_entreprise" Width="1.5" PointX="7.5" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="art_fundingModel.document_artiste" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="art_fundingModel.document_entreprise" Width="1.5" PointX="7.5" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="art_fundingModel.ecole" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="art_fundingModel.entreprise" Width="1.5" PointX="5.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="art_fundingModel.fomation" Width="1.5" PointX="3.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="art_fundingModel.formation_ecole" Width="1.5" PointX="6" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="art_fundingModel.photo" Width="1.5" PointX="5.25" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="art_fundingModel.utilisateurartiste" Width="1.5" PointX="5.25" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="art_fundingModel.utilisateurentreprise" Width="1.5" PointX="7.5" PointY="21.25" IsExpanded="true" />
+        <AssociationConnector Association="art_fundingModel.fk_artiste_categorie" ManuallyRouted="false" />
+        <AssociationConnector Association="art_fundingModel.fk_artiste_ecole" ManuallyRouted="false" />
+        <AssociationConnector Association="art_fundingModel.fk_boite_artiste_artiste" ManuallyRouted="false" />
+        <AssociationConnector Association="art_fundingModel.fk_document_artiste_artiste" ManuallyRouted="false" />
+        <AssociationConnector Association="art_fundingModel.fk_entreprise_artiste" ManuallyRouted="false" />
+        <AssociationConnector Association="art_fundingModel.fk_photo_artiste" ManuallyRouted="false" />
+        <AssociationConnector Association="art_fundingModel.fk_UtilisateurArtiste_Artiste" ManuallyRouted="false" />
+        <AssociationConnector Association="art_fundingModel.fk_boite_artiste_enreprise" ManuallyRouted="false" />
+        <AssociationConnector Association="art_fundingModel.fk_contrat_entreprise_entreprise" ManuallyRouted="false" />
+        <AssociationConnector Association="art_fundingModel.fk_document_entrprise_entrprise" ManuallyRouted="false" />
+        <AssociationConnector Association="art_fundingModel.fk_formation_ecole_ecole" ManuallyRouted="false" />
+        <AssociationConnector Association="art_fundingModel.fk_UtilsateurEntreprise_entreprise" ManuallyRouted="false" />
+        <AssociationConnector Association="art_fundingModel.fk_formation_ecole_formation" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

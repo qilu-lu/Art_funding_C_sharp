@@ -177,3 +177,6 @@ a:hover, i:hover {
     font-style: normal;
     font-weight: normal;
 }
+.card {
+    width: 17em;
+}

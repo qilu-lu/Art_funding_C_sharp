@@ -19,7 +19,8 @@ namespace Art_fundingV0.Models
         entreprise ObtientToutesLesEntreprises(int id);
         utilisateurentreprise ObtientToutesLesEntreprises(string idStr);
         utilisateurentreprise getUtilisateurEntrepriseParid(int id);
-
+        void AjouterArtisteContacte(int idBoiteArtiste);
+        List<artiste> ObtientArtistesContacte(int idEntreprise);
 
 
 

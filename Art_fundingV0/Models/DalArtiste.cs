@@ -59,7 +59,28 @@ namespace Art_fundingV0.Models
             return userToAdd.idUtilisateurArtiste;
         }
 
-       
+        internal bool VerificationContrat()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal bool VerificationDocEmis()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SupprimerBoiteArtiste(int identreprise, int? idArtiste)
+        {
+            boite_artiste boiteArtiste = context.boite_artiste.FirstOrDefault(u => u.id_entreprise == identreprise && u.id_artiste == idArtiste);
+            context.boite_artiste.Remove(boiteArtiste);
+            context.SaveChanges();
+        }
+        public void AjouterBoiteArtiste(int? idArtiste)
+        {
+            boite_artiste boiteArtiste = context.boite_artiste.FirstOrDefault(u=> u.id_artiste == idArtiste);
+            context.boite_artiste.Add(boiteArtiste);
+            context.SaveChanges();
+        }
         public void ModifierArtiste(int idartiste, string nom, string prenom, DateTime date_de_naissance, string adresse, string code_postale, string ville, string pays, string mail, string numero, int projet_id, string description, long ecole_choisie_id, int? formation_choisie_id, string mot_de_passe, DateTime? disponibilite, int categorie_id)
         {
 
@@ -85,7 +106,37 @@ namespace Art_fundingV0.Models
             context.SaveChanges();
         }
 
-    public utilisateurartiste AuthentifierArtiste(string mail, string motDePasse)
+        //public bool VerificationDocEmis(byte[] CNI, byte[] justifDom)
+        //{
+        //    if (context.document_artiste.FirstOrDefault(d => d.CNI == CNI && d.justificatif_de_domicile == justifDom) == null)
+        //    {
+        //        return false;
+        //    }
+        //    return true;
+        //}
+        public bool VerificationDoc(int id)
+        {
+            if (context.document_artiste.FirstOrDefault(d => d.id_artiste==id) == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool VerificationContrat(int id)
+        {
+            if (context.contrat_ecole.FirstOrDefault(d => d.artiste_id == id) == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+
+
+
+        public utilisateurartiste AuthentifierArtiste(string mail, string motDePasse)
     {
         string motDePasseEncode = EncodeMD5(motDePasse);
             return context.utilisateurartistes.FirstOrDefault(u => u.mailUA == mail && u.mot_de_passe == motDePasseEncode);
@@ -99,11 +150,17 @@ namespace Art_fundingV0.Models
         string motDePasseSel = "email" + motDePasse + "ASP.NET MVC";
         return BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.Default.GetBytes(motDePasseSel)));
     }
+        
 
-
-    public List<artiste> ObtientTousLesArtistes()
+        public List<artiste> ObtientTousLesArtistes()
        {
             return context.artistes.ToList();
+        }
+
+
+        public byte[] ObtientPhoto(int id)
+        {
+            return context.photos.FirstOrDefault(u => u.idphoto == id).photo1;
         }
 
 
@@ -111,13 +168,12 @@ namespace Art_fundingV0.Models
         {
             return context.artistes.FirstOrDefault(u => u.idartiste == id);
         }
-      
+
         public utilisateurartiste ObtientUtilisateurA(int id)
         {
             return context.utilisateurartistes.FirstOrDefault(u => u.idUtilisateurArtiste == id);
         }
 
-       
         public utilisateurartiste ObtientTousLesArtistes(string idString)
         {
             int id;
@@ -125,6 +181,50 @@ namespace Art_fundingV0.Models
                 return ObtientUtilisateurA(id);
             return null;
         }
+
+        public List<boite_artiste> ObtientTousLesBoites()
+        {
+            return context.boite_artiste.ToList();
+        }
+
+        public List<boite_artiste> ObtientTousLesBoitesparentreprise(int id)
+        {
+            List<boite_artiste> liste = context.boite_artiste.Where(boite => boite.id_entreprise == id).ToList();
+         /*   List<boite_artiste> liste2 = new List<boite_artiste>();
+            foreach (boite_artiste boite in liste)
+            {
+                if (boite.id_entreprise == id)
+                {
+                    liste2.Add(boite);
+                }
+            }*/
+            return liste;
+        }
+       
+
+
+        public boite_artiste ObtientTousLesBoites(int id)
+        {
+            return context.boite_artiste.FirstOrDefault(u => u.idBoite_Artiste == id);
+        }
+
+        public List<artiste> ObtientArtistesContacte(int idEntreprise)
+        {
+            //List<artiste> artistes = context.artistes.Where(a => a.boite_artiste.Contains(id_entreprise(idEntreprise)).ToString() && a.boite_artiste.Contains(etat("Contacte")).ToString());
+            List<boite_artiste> listeBoite = context.boite_artiste.Where(boite => boite.id_entreprise == idEntreprise && boite.etat == "Contacte").ToList();
+            List<artiste> listeartiste = new List<artiste>();
+            foreach (boite_artiste boite in listeBoite)
+            {
+                listeartiste.Add(boite.artiste);
+            }
+          
+            return listeartiste;
+        }
+
+
+
+
+
 
         public void Dispose()
         {
@@ -135,7 +235,12 @@ namespace Art_fundingV0.Models
         {
             return context.utilisateurartistes.FirstOrDefault(u => u.mailUA == mail);
         }
-        
+        public List<artiste> RechercheArtistes(string SearchString)
+        {
+            List<artiste> artistes = context.artistes.Where(a => a.nom.Contains(SearchString) || a.categorie.nom.Contains(SearchString) || a.prenom.Contains(SearchString)).ToList();
+            return artistes;
+        }
+
 
     }
 }

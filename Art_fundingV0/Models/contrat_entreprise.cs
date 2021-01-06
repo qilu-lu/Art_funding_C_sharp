@@ -19,5 +19,7 @@ namespace Art_fundingV0.Models
         public Nullable<int> entreprise_id { get; set; }
         public Nullable<int> ecole_id { get; set; }
         public Nullable<int> artiste_id { get; set; }
+    
+        public virtual entreprise entreprise { get; set; }
     }
 }

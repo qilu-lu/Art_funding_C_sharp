@@ -17,7 +17,10 @@ namespace Art_fundingV0.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public artiste()
         {
+            this.boite_artiste = new HashSet<boite_artiste>();
+            this.document_artiste = new HashSet<document_artiste>();
             this.entreprises = new HashSet<entreprise>();
+            this.photos = new HashSet<photo>();
             this.utilisateurartistes = new HashSet<utilisateurartiste>();
         }
     
@@ -39,7 +42,13 @@ namespace Art_fundingV0.Models
         public virtual categorie categorie { get; set; }
         public virtual ecole ecole { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<boite_artiste> boite_artiste { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<document_artiste> document_artiste { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<entreprise> entreprises { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<photo> photos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<utilisateurartiste> utilisateurartistes { get; set; }
     }

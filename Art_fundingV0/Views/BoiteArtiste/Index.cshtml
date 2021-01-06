@@ -1,0 +1,52 @@
+﻿@model Art_fundingV0.ViewModels.BoiteArtisteViewModel
+
+@{
+    Layout = "~/Views/Shared/LayoutAF.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+
+
+
+
+
+    <title>Index</title>
+
+    <body>
+        <div>
+            <table>
+                <tr>
+
+
+                    <td>Prénom</td>
+                    <td>Nom</td>
+                    <td>Catégorie</td>
+                    <td>Disponibilité</td>
+                    <td>Lien vers portfolio</td>
+                    <td>Supprimer</td>
+                </tr>
+                @foreach (var d in Model.list)
+                {
+                    <tr>
+                        <td>@d.artiste.prenom</td>
+                        <td>@d.artiste.nom</td>
+                        <td>@d.artiste.categorie.nom</td>
+                        <td>@d.artiste.Disponibilite.Value.ToString("MM/dd/yyyy")</td>
+                        <td><a title="Portfolio" href="/BoiteArtiste/portfoliu?idArtiste=@d.artiste.idartiste">Lien</a></td>
+                        <td>  <a class="delete" title="Delete" href="/BoiteArtiste/Supprimer?idArtiste=@d.artiste.idartiste"><i class="fas fa-trash-alt"></i></a></td>
+
+
+                    </tr>
+                }
+
+            </table>
+
+
+
+
+
+        </div>
+    </body>
+
+}
