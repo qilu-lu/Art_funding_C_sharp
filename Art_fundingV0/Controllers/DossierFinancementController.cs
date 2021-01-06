@@ -1,4 +1,5 @@
 ﻿using Art_fundingV0.Models;
+using Art_fundingV0.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,27 +12,22 @@ namespace Art_fundingV0.Controllers
     {
         private DalArtiste dalArtiste;
      
-        public DossierFinancementController(DalArtiste dalArtiste)
+        public DossierFinancementController()
         {
-            this.dalArtiste = dalArtiste;
+            this.dalArtiste = new DalArtiste();
+            // this.dalEntreprise = dalEntreprise;
         }
 
         // GET: DossierFinancement
-       public ActionResult EtapeDossiersFinancement()
+        // GET: DossierFinancement
+        public ActionResult EtapeDossiersFinancement()
         {
-            if (dalArtiste.VerificationDocEmis())
-            {
-                // etape dossier pré_finnancement
+            DossierFinancementViewModel DossierFinancementViewModel = new DossierFinancementViewModel();
+             int identreprise = StringUtil.toInt(HttpContext.User.Identity.Name);
           
-
-                if (dalArtiste.VerificationContrat())
-                {
-                    //Veuiller accepter le financement , une fois arriver il regirige vers une chekbox > elle regirige vers une page avec un pdg avec le contrat à charger
-                    return View();
-                }
-                return View();
-        }
-            return View();
+            List<artiste> TousLesArtistesFinancement = dalArtiste.ObtientArtistesContacte(identreprise);
+            DossierFinancementViewModel.TousLesArtistesFinancement = TousLesArtistesFinancement;
+            return View(DossierFinancementViewModel);
         }
     }
-}
+    }

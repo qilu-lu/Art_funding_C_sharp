@@ -208,23 +208,17 @@ namespace Art_fundingV0.Models
             return context.boite_artiste.FirstOrDefault(u => u.idBoite_Artiste == id);
         }
 
-        public List<artiste> ObtientArtistesContacte(int idEntreprise)
-        {
-            //List<artiste> artistes = context.artistes.Where(a => a.boite_artiste.Contains(id_entreprise(idEntreprise)).ToString() && a.boite_artiste.Contains(etat("Contacte")).ToString());
-            List<boite_artiste> listeBoite = context.boite_artiste.Where(boite => boite.id_entreprise == idEntreprise && boite.etat == "Contacte").ToList();
-            List<artiste> listeartiste = new List<artiste>();
-            foreach (boite_artiste boite in listeBoite)
-            {
-                listeartiste.Add(boite.artiste);
-            }
+        //public List<artiste> ObtientArtistesContacte(int idEntreprise)
+        //{
+        //    List<boite_artiste> listeBoite = context.boite_artiste.Where(boite => boite.id_entreprise == idEntreprise && boite.etat == "Contacte").ToList();
+        //    List<artiste> listeartiste = new List<artiste>();
+        //    foreach (boite_artiste boite in listeBoite)
+        //    {
+        //        listeartiste.Add(boite.artiste);
+        //    }
           
-            return listeartiste;
-        }
-
-
-
-
-
+        //    return listeartiste;
+        //}
 
         public void Dispose()
         {
@@ -240,8 +234,26 @@ namespace Art_fundingV0.Models
             List<artiste> artistes = context.artistes.Where(a => a.nom.Contains(SearchString) || a.categorie.nom.Contains(SearchString) || a.prenom.Contains(SearchString)).ToList();
             return artistes;
         }
-
-
+        public List<artiste> ObtientArtistesContacte(int idEntreprise)
+        {
+            List<boite_artiste> listeBoite = context.boite_artiste.Where(boite => boite.id_entreprise == idEntreprise && boite.etat == "Contacte").ToList();
+            List<artiste> artistes = new List<artiste>();
+            foreach (boite_artiste Boite in listeBoite)
+            {
+                artistes.Add(Boite.artiste);
+            }
+            return artistes;
+        }
+        //public List<artiste> TrouverLesArtistesFinances(int idBoiteArtisteContactes)
+        //{
+        //    List<boite_artiste> listeDossierFinancement = context.boite_artiste.Where(boite => boite.id_entreprise == idBoiteArtisteContactes && boite.etat == "contacte" && boite.artiste.contrat_ecole!=null).ToList();
+        //    List<artiste> artistesFinances = new List<artiste>();
+        //    foreach (boite_artiste artisteFi in listeDossierFinancement)
+        //    { if(artisteFi.artiste.contrat_ecole.Count()>0)
+        //        artistesFinances.Add(artisteFi.artiste);
+        //    }
+        //    return artistesFinances;
+        //}
     }
 }
 

@@ -27,6 +27,7 @@ namespace Art_fundingV0.Models
 
 
         List<artiste> RechercheArtistes(string SearchString);
+        List<artiste> ObtientArtistesContacte(int idEntreprise);
 
 
 

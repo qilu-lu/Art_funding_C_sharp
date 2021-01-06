@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="art_fundingModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="art_fundingModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="artiste">
           <Key>
             <PropertyRef Name="idartiste" />
@@ -31,6 +31,7 @@
           <Property Name="idBoite_Artiste" Type="int" Nullable="false" />
           <Property Name="id_entreprise" Type="int" />
           <Property Name="id_artiste" Type="int" />
+          <Property Name="etat" Type="varchar" MaxLength="45" />
         </EntityType>
         <EntityType Name="categorie">
           <Key>
@@ -219,6 +220,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_contrat_ecole_artiste">
+          <End Role="artiste" Type="Self.artiste" Multiplicity="0..1" />
+          <End Role="contrat_ecole" Type="Self.contrat_ecole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="artiste">
+              <PropertyRef Name="idartiste" />
+            </Principal>
+            <Dependent Role="contrat_ecole">
+              <PropertyRef Name="artiste_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_contrat_entreprise_entreprise">
           <End Role="entreprise" Type="Self.entreprise" Multiplicity="0..1" />
           <End Role="contrat_entreprise" Type="Self.contrat_entreprise" Multiplicity="*" />
@@ -359,6 +372,10 @@
             <End Role="entreprise" EntitySet="entreprise" />
             <End Role="boite_artiste" EntitySet="boite_artiste" />
           </AssociationSet>
+          <AssociationSet Name="fk_contrat_ecole_artiste" Association="Self.fk_contrat_ecole_artiste">
+            <End Role="artiste" EntitySet="artiste" />
+            <End Role="contrat_ecole" EntitySet="contrat_ecole" />
+          </AssociationSet>
           <AssociationSet Name="fk_contrat_entreprise_entreprise" Association="Self.fk_contrat_entreprise_entreprise">
             <End Role="entreprise" EntitySet="entreprise" />
             <End Role="contrat_entreprise" EntitySet="contrat_entreprise" />
@@ -396,8 +413,7 @@
             <End Role="utilisateurentreprise" EntitySet="utilisateurentreprise" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="art_fundingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -426,6 +442,7 @@
           <NavigationProperty Name="entreprises" Relationship="Self.fk_entreprise_artiste" FromRole="artiste" ToRole="entreprise" />
           <NavigationProperty Name="photos" Relationship="Self.fk_photo_artiste" FromRole="artiste" ToRole="photo" />
           <NavigationProperty Name="utilisateurartistes" Relationship="Self.fk_UtilisateurArtiste_Artiste" FromRole="artiste" ToRole="utilisateurartiste" />
+          <NavigationProperty Name="contrat_ecole" Relationship="art_fundingModel.fk_contrat_ecole_artiste" FromRole="artiste" ToRole="contrat_ecole" />
         </EntityType>
         <EntityType Name="boite_artiste">
           <Key>
@@ -434,6 +451,7 @@
           <Property Name="idBoite_Artiste" Type="Int32" Nullable="false" />
           <Property Name="id_entreprise" Type="Int32" />
           <Property Name="id_artiste" Type="Int32" />
+          <Property Name="etat" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="artiste" Relationship="Self.fk_boite_artiste_artiste" FromRole="boite_artiste" ToRole="artiste" />
           <NavigationProperty Name="entreprise" Relationship="Self.fk_boite_artiste_enreprise" FromRole="boite_artiste" ToRole="entreprise" />
         </EntityType>
@@ -460,6 +478,7 @@
           <Property Name="fichier_contrat" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ecole_id" Type="Int32" />
           <Property Name="artiste_id" Type="Int32" />
+          <NavigationProperty Name="artiste" Relationship="art_fundingModel.fk_contrat_ecole_artiste" FromRole="contrat_ecole" ToRole="artiste" />
         </EntityType>
         <EntityType Name="contrat_entreprise">
           <Key>
@@ -817,7 +836,23 @@
             <End Role="fomation" EntitySet="fomations" />
             <End Role="formation_ecole" EntitySet="formation_ecole" />
           </AssociationSet>
+          <AssociationSet Name="fk_contrat_ecole_artiste" Association="art_fundingModel.fk_contrat_ecole_artiste">
+            <End Role="artiste" EntitySet="artistes" />
+            <End Role="contrat_ecole" EntitySet="contrat_ecole" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="fk_contrat_ecole_artiste">
+          <End Type="art_fundingModel.artiste" Role="artiste" Multiplicity="0..1" />
+          <End Type="art_fundingModel.contrat_ecole" Role="contrat_ecole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="artiste">
+              <PropertyRef Name="idartiste" />
+            </Principal>
+            <Dependent Role="contrat_ecole">
+              <PropertyRef Name="artiste_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -850,6 +885,7 @@
                 <ScalarProperty Name="idBoite_Artiste" ColumnName="idBoite_Artiste" />
                 <ScalarProperty Name="id_entreprise" ColumnName="id_entreprise" />
                 <ScalarProperty Name="id_artiste" ColumnName="id_artiste" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

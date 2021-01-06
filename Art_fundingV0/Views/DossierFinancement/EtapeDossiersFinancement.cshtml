@@ -1,18 +1,25 @@
-﻿@model Art_fundingV0.ViewModels.DossierFinancementViewModel
+﻿@model Art_fundingV0.Models.
 @{
     Layout = null;
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>EtapeDossiersFinancement</title>
-</head>
-<body>
-    <div>
-        @*@Html.LabelFor(m => m.documentArtiste.artiste.)*@
-    </div>
-</body>
-</html>
+@using (Html.BeginForm())
+{
+    <title>Index</title>
+    <body>
+        <div>
+            <table>
+                @foreach (var d in Model.TousLesArtistesFinancement)
+                {
+                    <tr>
+                        <td>@d.prenom</td>
+                        <td>@d.nom</td>
+                        <td>@d.Disponibilite</td>
+                        <td>@d.date_de_naissance</td>
+                        @*<td><a title="Portfolio" href="/BoiteArtiste/portfoliu?idArtiste=@d.artiste.idartiste">Lien</a></td>
+                            <td>  <a class="delete" title="Delete" href="/BoiteArtiste/Supprimer?idArtiste=@d.artiste.idartiste"><i class="fas fa-trash-alt"></i></a></td>*@
+                    </tr>
+                }
+            </table>
+        </div>
+    </body>
+}

@@ -9,7 +9,8 @@ namespace Art_fundingV0.ViewModels
     public class DossierFinancementViewModel
     {
         public document_artiste documentArtiste { get; set; }
+        public artiste artiste { get; set; }
         public string messageDoc{ get;set; }
-
+        public List<artiste> TousLesArtistesFinancement { get; set; }
     }
 }

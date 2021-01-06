@@ -17,6 +17,7 @@ namespace Art_fundingV0.Models
         public int idBoite_Artiste { get; set; }
         public Nullable<int> id_entreprise { get; set; }
         public Nullable<int> id_artiste { get; set; }
+        public string etat { get; set; }
     
         public virtual artiste artiste { get; set; }
         public virtual entreprise entreprise { get; set; }

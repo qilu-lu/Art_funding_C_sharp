@@ -33,7 +33,7 @@ namespace Art_fundingV0.Controllers
         {
             int identreprise = StringUtil.toInt(HttpContext.User.Identity.Name);
             List<artiste> listArtiste = new List<artiste>();
-            listArtiste = dalEntreprise.ObtientArtistesContacte(identreprise);
+            listArtiste = dalArtiste.ObtientArtistesContacte(identreprise);
             return View(listArtiste);
         }
         public ActionResult DossierDeFinancement()

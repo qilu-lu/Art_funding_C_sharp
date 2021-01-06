@@ -125,16 +125,30 @@ namespace Art_fundingV0.Models
             }
             context.SaveChanges();
         }
-        public List<artiste> ObtientArtistesContacte(int idEntreprise)
-        {
-            List<boite_artiste> listeBoite = context.boite_artiste.Where(boite => boite.id_entreprise == idEntreprise && boite.etat == "Contacte").ToList();
-            List<artiste> artistes = new List<artiste>();
-            foreach (boite_artiste Boite in listeBoite)
-            {
-                artistes.Add(Boite.artiste);
-            }
-            return artistes;
-        }
+        //public List<artiste> ObtientArtistesContacte(int idEntreprise)
+        //{
+        //    List<boite_artiste> listeBoite = context.boite_artiste.Where(boite => boite.id_entreprise == idEntreprise && boite.etat == "Contacte").ToList();
+        //    List<artiste> artistes = new List<artiste>();
+        //    foreach (boite_artiste Boite in listeBoite)
+        //    {
+        //        artistes.Add(Boite.artiste);
+        //    }
+        //    return artistes;
+        //}
+        //cni et justificatif >> ok pr continuer avec l'entreprise et sont en préfinancement
+        //public List<artiste> TrouverLesArtistesFinances(int idBoiteArtisteContactes)
+        //{
+        //    List<boite_artiste> listeDossierFinancement = context.boite_artiste.Where(boite => boite.id_entreprise == idBoiteArtisteContactes && boite.etat == "Contacte" && boite.artiste.document_artiste != null).ToList();
+        //    List<artiste> artistesFinances = new List<artiste>();
+        //    foreach (boite_artiste artisteFi in listeDossierFinancement)
+        //    {
+        //        artistesFinances.Add(artisteFi.artiste);
+        //    }
+        //    return artistesFinances;
+        //}
+
+
+
 
         public void Dispose()
         {

@@ -18,5 +18,7 @@ namespace Art_fundingV0.Models
         public byte[] fichier_contrat { get; set; }
         public Nullable<int> ecole_id { get; set; }
         public Nullable<int> artiste_id { get; set; }
+    
+        public virtual artiste artiste { get; set; }
     }
 }
