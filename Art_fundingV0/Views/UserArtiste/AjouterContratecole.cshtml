@@ -1,4 +1,4 @@
-﻿@model Art_fundingV0.Models.document_entreprise
+﻿@model Art_fundingV0.Models.contrat_ecole
 @{
     Layout = null;
 }
@@ -9,11 +9,11 @@
     <title>TelechargerDocs</title>
 </head>
 <body>
-   
+
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    @using (Html.BeginForm("TelechargerDocs", "UploadFiles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("AjouterContratecole", "UserArtiste", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
@@ -22,16 +22,12 @@
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
-                @Html.LabelFor(model => model.Attestation_assurance, htmlAttributes: new { @class = "control-label col-md-2" })
-                @Html.LabelFor(model => model.Kbis, htmlAttributes: new { @class = "control-label col-md-2" })
-                @Html.LabelFor(model => model.RIB, htmlAttributes: new { @class = "control-label col-md-2" })
-                @Html.LabelFor(model => model.Dernier_statut, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.fichier_contrat, htmlAttributes: new { @class = "control-label col-md-2" })
+                
 
                 <div class="col-md-10">
                     <input name="file" type="file"><br />
-                    <input name="file2" type="file"><br />
-                    <input name="file3" type="file"><br />
-                    <input name="file4" type="file"><br />
+                    
                 </div>
             </div>
 

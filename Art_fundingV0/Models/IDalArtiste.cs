@@ -30,7 +30,7 @@ namespace Art_fundingV0.Models
         List<artiste> ObtientArtistesContacte(int idEntreprise);
 
 
-
+        byte[] ObtientContratEcole(int id);
 
 
 

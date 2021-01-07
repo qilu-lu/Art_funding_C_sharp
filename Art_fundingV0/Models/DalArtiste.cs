@@ -162,6 +162,10 @@ namespace Art_fundingV0.Models
         {
             return context.photos.FirstOrDefault(u => u.idphoto == id).photo1;
         }
+        public byte[] ObtientContratEcole(int id)
+        {
+            return context.contrat_ecole.FirstOrDefault(u => u.idcontrat_ecole == id).fichier_contrat;
+        }
 
 
         public artiste ObtientTousLesArtistes(int id)
@@ -236,7 +240,7 @@ namespace Art_fundingV0.Models
         }
         public List<artiste> ObtientArtistesContacte(int idEntreprise)
         {
-            List<boite_artiste> listeBoite = context.boite_artiste.Where(boite => boite.id_entreprise == idEntreprise && boite.etat == "Contacte").ToList();
+            List<boite_artiste> listeBoite = context.boite_artiste.Where(boite => boite.id_entreprise == idEntreprise && boite.etat.Equals("Contacte")).ToList();
             List<artiste> artistes = new List<artiste>();
             foreach (boite_artiste Boite in listeBoite)
             {

@@ -1,4 +1,4 @@
-﻿@model Art_fundingV0.Models.
+﻿@model Art_fundingV0.ViewModels.DossierFinancementViewModel
 @{
     Layout = null;
 }
@@ -13,13 +13,40 @@
                     <tr>
                         <td>@d.prenom</td>
                         <td>@d.nom</td>
-                        <td>@d.Disponibilite</td>
-                        <td>@d.date_de_naissance</td>
+                        <td>@d.Disponibilite.Value.ToString("mm/dd/yyyy")</td>
+                        <td>@d.date_de_naissance.ToString("mm/dd/yyyy")</td>
                         @*<td><a title="Portfolio" href="/BoiteArtiste/portfoliu?idArtiste=@d.artiste.idartiste">Lien</a></td>
                             <td>  <a class="delete" title="Delete" href="/BoiteArtiste/Supprimer?idArtiste=@d.artiste.idartiste"><i class="fas fa-trash-alt"></i></a></td>*@
-                    </tr>
-                }
+                        <td>
+                            @if (d.document_artiste.Count > 0)
+                            {
+                                if (d.contrat_ecole.Count > 0)
+                                {
+                                    @Html.LabelFor(m => m.messagesaveccontrat)
+                                <td>
+                                    @foreach (var c in d.contrat_ecole)
+                                    {
+                                        <a title="telechargercontrat" href="/UserArtiste/getContrat?idcontrat=@c.idcontrat_ecole">Telecharger</a>
+                                    }
+
+                                </td>
+                            }
+                            else
+                            {
+                                @Html.LabelFor(m => m.messageavecdoc)
+                            }
+                        }
+
+
+                        else if (d.document_artiste.Count <= 0)
+                        {
+                            @Html.LabelFor(m => m.messagesansdoc)
+                        }
+
+                            </td>
+                        </tr>
+                    }
             </table>
         </div>
     </body>
-}
+}             

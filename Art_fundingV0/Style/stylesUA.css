@@ -2,8 +2,8 @@ body{
     height: 80%;
 }
 
+
 .fullscreen-bg {
-    /*overflow: hidden;*/
     z-index: -100;
     position: relative;
     height: 100%;
@@ -12,32 +12,52 @@ body{
 }
 
 .fullscreen-bg__video {
+    z-index: -100;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
 }
 
-.overlay {
-    /*background: rgba(0,0,0,0.6);*/
+.bg-picture {
+    background-image: url('../Content/images/HomeBackgroundFond.png');
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*min-height: 500px;*/
+}
+
+/*.overlay {
+   
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 4;
+    }*/
+
+
+    #gradient {
+        text-align: center;
+        color: black;
+        font-size: 52px;
+        margin-top: 9px;
+    }
+
+      
+    
+
+
+
+#artF {
+    font-family: 'HYPED_Font', sans-serif;
+    font-size: 2.2em;
 }
 
-    .overlay h1 {
-        text-align: center;
-        color: #fff;
-        font-size: 70px;
-        margin-top: 10%;
-    }
-
-    .overlay .container-sm { 
-        margin-top: 12%;
-    }
+#connecte {
+    text-decoration: line-through;
+}
 
 a {
     color: white;
@@ -45,10 +65,17 @@ a {
 }
 
 /*  D R O P D O W N   M E N U  */
+.navbar {
+    position: fixed; 
+    
+    
+}
+
 #artFunding {
     color: white;
     /*padding: 16px;*/
     /*font-family:  'Roboto Slab', serif;/* 'Raleway';*/
+    font-family: 'HYPED_Font', sans-serif; 
     font-size: 1.3em;
     border: none;
 }
@@ -124,7 +151,7 @@ a:hover, i:hover {
     height: 4em;
     bottom: 0;
     background-color: #262C30; /*#141719;*/ /*#1E2832;*/ /*#2C2730;*/ /*#48414F;*/ /*#241631;*/ /*#2C3A49;*/ /*#455872;*/ /*#0B0E12;*/ /*#232d50;*/ /*#372d2b;*/
-    color: rgba(255, 255, 255, 0.75);
+    /*color: rgba(255, 255, 255, 0.75);*/
     text-align: center;
     display: flex;
     flex-wrap: nowrap;
@@ -139,11 +166,32 @@ a:hover, i:hover {
     margin: 0.5em;
     font-size: 1.3em;
 }
-.container-sm{
-    opacity: 0.8;
-}
 
 .htmllabel {
-    color: yellow;
-    font-size: 25px;
+    color: !important yellow;
+    font-size: !important 25px;
+}
+
+#briefcase i {
+    font-size: 45px;
+    color: white;
+    /*margin-left: 1em;*/ 
+    margin-top: 90px;
+}
+
+#palette i {
+    font-size: 45px;
+    color: white;
+    /*margin-right: 1em;*/
+    margin-top: 90px;
+   
+}
+
+#palette {
+ z-index: 1000; 
+}
+
+@font-face {
+    font-family: 'HYPED_Font';
+    src: url('../fonts/HYPED_Font.otf') format('opentype');
 }

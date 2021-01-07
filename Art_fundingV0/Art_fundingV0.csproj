@@ -230,7 +230,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\HomeBackgroundFond.png" />
     <Content Include="Content\images\galerie.jpg" />
+    <Content Include="Content\images\HomeBackgroundFond.png" />
     <Content Include="Content\images\image formulaire.PNG" />
     <Content Include="Content\images\peinture_4.jpg" />
     <Content Include="Content\images\photo fond.jpg" />
@@ -260,6 +262,7 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\HYPED_Font.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -305,13 +308,16 @@
     <Content Include="Views\UserArtiste\Index.cshtml" />
     <Content Include="Views\UserArtiste\remplirphoto.cshtml" />
     <Content Include="Views\userEntreprise\choisirCategorie.cshtml" />
-    <Content Include="Views\Shared\LayoutUA.cshtml" />
     <Content Include="Views\SelectionArtiste\SelectionArtiste.cshtml" />
     <Content Include="Views\BoiteArtiste\Index.cshtml" />
     <Content Include="Views\SelectionArtiste\RechercheArtiste.cshtml" />
     <Content Include="Views\BoiteArtiste\Portfoliu.cshtml" />
     <Content Include="Views\DossierFinancement\EtapeDossiersFinancement.cshtml" />
     <Content Include="Views\Dashboard\ArtisteContactes.cshtml" />
+    <Content Include="Views\UserArtiste\chargerDocs.cshtml" />
+    <Content Include="Views\DossierFinancement\Contrat.cshtml" />
+    <Content Include="Views\Shared\LayoutUA.cshtml" />
+    <Content Include="Views\UserArtiste\AjouterContratecole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -10,12 +10,12 @@ namespace Art_fundingV0.Controllers
 {
     public class DossierFinancementController : Controller
     {
-        private DalArtiste dalArtiste;
-     
+        private IDalArtiste dalArtiste;
+        private IDalEntreprise dalEntreprise;
         public DossierFinancementController()
         {
             this.dalArtiste = new DalArtiste();
-            // this.dalEntreprise = dalEntreprise;
+             this.dalEntreprise = new DalEntreprise();
         }
 
         // GET: DossierFinancement
@@ -23,7 +23,11 @@ namespace Art_fundingV0.Controllers
         public ActionResult EtapeDossiersFinancement()
         {
             DossierFinancementViewModel DossierFinancementViewModel = new DossierFinancementViewModel();
-             int identreprise = StringUtil.toInt(HttpContext.User.Identity.Name);
+
+
+            entreprise entreprise = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name).entreprise;
+            
+            int identreprise = entreprise.identreprise;
           
             List<artiste> TousLesArtistesFinancement = dalArtiste.ObtientArtistesContacte(identreprise);
             DossierFinancementViewModel.TousLesArtistesFinancement = TousLesArtistesFinancement;

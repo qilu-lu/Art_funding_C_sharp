@@ -12,6 +12,7 @@ namespace Art_fundingV0.Controllers
     public class UserArtisteController : Controller
     {
 
+
         private IDalArtiste dalArtiste;
         private IDalEcole dalEcole;
         private art_fundingEntities context = new art_fundingEntities();
@@ -50,7 +51,7 @@ namespace Art_fundingV0.Controllers
                 utilisateurartiste artiste = dalArtiste.AuthentifierArtiste(viewModel.adress_mail, viewModel.mot_de_passe);
                 if (artiste != null)
                 {
-                    FormsAuthentication.SetAuthCookie(artiste.idartiste.ToString(), false);
+                    FormsAuthentication.SetAuthCookie(artiste.idUtilisateurArtiste.ToString(), false);
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
                     return Redirect("remplirphoto");
@@ -100,7 +101,7 @@ namespace Art_fundingV0.Controllers
                 int id = dalArtiste.AjouterUserArtiste(utilisateur.mailUA, utilisateur.mot_de_passe, creerArtiste);
                 FormsAuthentication.SetAuthCookie(id.ToString(), false);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("remplirphoto");
             }
             return View();
         }
@@ -132,17 +133,131 @@ namespace Art_fundingV0.Controllers
                     }
                 }
                 context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("chargerDocs");
+              
             }
 
             return View();
         }
 
+
+        public ActionResult chargerDocs()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult chargerDocs([Bind(Include = "iddocument_artiste, CNI,justificatif domicile ")] document_artiste document_artiste, HttpPostedFileBase file, HttpPostedFileBase file2)
+        {
+
+            if (ModelState.IsValid)
+            {
+                // convert file choose by user into byte[]
+                if (file.ContentLength > 0 && file2.ContentLength > 0)
+                {
+                    byte[] imageData = null;
+                    byte[] imageData2 = null;
+                   
+                    using (var binaryReader = new BinaryReader(file.InputStream))
+                    {
+                        imageData = binaryReader.ReadBytes(file.ContentLength);
+                    }
+                    using (var binaryReader = new BinaryReader(file2.InputStream))
+                    {
+                        imageData2 = binaryReader.ReadBytes(file2.ContentLength);
+                    }
+                   
+                    document_artiste.CNI = imageData;
+                    document_artiste.justificatif_de_domicile = imageData2;
+                   
+                    int id;
+                    if (int.TryParse(HttpContext.User.Identity.Name, out id))
+                    {
+                        artiste artiste= context.utilisateurartistes.Find(id).artiste;
+
+
+                        document_artiste.artiste = artiste;
+
+
+                        context.document_artiste.Add(document_artiste);
+                        context.SaveChanges();
+                        ViewBag.success = "Uploaded Filed Saved Succesfully in a folder!";
+                        return RedirectToAction("/", "UserArtiste");
+                        
+                    }
+                }
+            }
+
+
+
+            return View(document_artiste);
+
+        }
+
+        public ActionResult AjouterContratecole()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult AjouterContratecole([Bind(Include = "iddocument_artiste, Contract_ecole ")] contrat_ecole contrat_Ecole, HttpPostedFileBase file)
+        {
+
+            if (ModelState.IsValid)
+            {
+                // convert file choose by user into byte[]
+                if (file.ContentLength > 0 )
+                {
+                    byte[] imageData = null;
+                
+
+                    using (var binaryReader = new BinaryReader(file.InputStream))
+                    {
+                        imageData = binaryReader.ReadBytes(file.ContentLength);
+                    }
+                    
+
+                    contrat_Ecole.fichier_contrat = imageData;
+                    
+
+                    int id;
+                    if (int.TryParse(HttpContext.User.Identity.Name, out id))
+                    {
+                        artiste artiste = context.utilisateurartistes.Find(id).artiste;
+
+
+                        contrat_Ecole.artiste = artiste;
+
+
+                        context.contrat_ecole.Add(contrat_Ecole);
+                        context.SaveChanges();
+                        ViewBag.success = "Uploaded Filed Saved Succesfully in a folder!";
+                        return RedirectToAction("/", "UserArtiste");
+
+                    }
+                }
+            }
+
+            return View(contrat_Ecole);
+        }
+
+        public void getContrat(int idcontrat)
+        {
+
+            //Verfiier que c'est bien une entreprise qui est connectée
+            byte[] fileContents = dalArtiste.ObtientContratEcole(idcontrat);
+            Response.Clear();
+            Response.AddHeader("Content-Length", fileContents.Length.ToString());
+            Response.AddHeader("Content-Disposition", "attachment; filename=contrat.pdf");
+            Response.OutputStream.Write(fileContents, 0, fileContents.Length);
+            Response.Flush();
+            Response.End();
+            // return null;
+        }
+
+
+
     }
-
-
-
 }
-
-
-

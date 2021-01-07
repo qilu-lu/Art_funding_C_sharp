@@ -31,7 +31,8 @@ namespace Art_fundingV0.Controllers
         // Les vues endessous ne sont pas encore créer
         public ActionResult ArtisteContactes()
         {
-            int identreprise = StringUtil.toInt(HttpContext.User.Identity.Name);
+            entreprise entreprise = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name).entreprise;
+            int identreprise = entreprise.identreprise;
             List<artiste> listArtiste = new List<artiste>();
             listArtiste = dalArtiste.ObtientArtistesContacte(identreprise);
             return View(listArtiste);
