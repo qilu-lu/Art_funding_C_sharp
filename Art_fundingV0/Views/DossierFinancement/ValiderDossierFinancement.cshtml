@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<script>
+    function verif_button() {
+        if (ValiderDossierFinancement.isValidate.checked)
+            ValiderDossierFinancement.getElementById('BoutonValidation').disabled = '';
+        else
+            ValiderDossierFinancement.getElementById('BoutonValidation').disabled = 'disabled';
+    }
+</script>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ValiderDossierFinancement</title>
+</head>
+<body>
+    <div>
+        voulez vous valider le dossier ? <br />
+        En cochant cela j'approuce le dossier
+        @Html.CheckBox("isValidate", false) <br />
+        <input id="BoutonValidation" value="Valider le dossier" type="button" />
+    </div>
+</body>
+</html>

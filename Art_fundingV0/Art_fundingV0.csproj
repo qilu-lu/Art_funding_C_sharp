@@ -232,15 +232,12 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\HomeBackgroundFond.png" />
     <Content Include="Content\images\ArtisteMonde.png" />
+    <Content Include="Content\images\beatriz-perez-moya-XN4T2PVUUgk-unsplash.jpg" />
     <Content Include="Content\images\Designers.jpg" />
     <Content Include="Content\images\Dessinateur.jpg" />
-    <Content Include="Content\images\galerie.jpg" />
     <Content Include="Content\images\HomeBackgroundFond.png" />
-    <Content Include="Content\images\image formulaire.PNG" />
     <Content Include="Content\images\peinture_4.jpg" />
-    <Content Include="Content\images\photo fond.jpg" />
     <Content Include="Content\images\Photographe.jpg" />
-    <Content Include="Content\images\photo_fond.jpg" />
     <Content Include="Content\images\Styliste.jpg" />
     <Content Include="Content\Styliste.jpg" />
     <Content Include="Content\Video\Notebook and Pen in Female Hand.mp4" />
@@ -269,6 +266,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="fonts\HYPED_Font.otf" />
+    <Content Include="Content\DocPdf\Contrat Entreprise et Artiste.pdf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -281,6 +279,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Style\styles.css" />
+    <Content Include="Style\stylesLogin.css" />
     <Content Include="Style\stylesUA.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -297,17 +296,14 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\userEntreprise\PieceManquant.cshtml" />
     <Content Include="Views\UserArtiste\Login.cshtml" />
-    <Content Include="Views\FormulaireEntreprise\FournirDocuments.cshtml" />
     <Content Include="Views\userEntreprise\CreerCompte.cshtml" />
     <Content Include="Views\UserArtiste\CreerCompte.cshtml" />
     <Content Include="Views\userEntreprise\paiement.cshtml" />
-    <Content Include="Views\UploadFiles\TelechargerDocs.cshtml" />
     <Content Include="Views\userEntreprise\Index.cshtml" />
     <Content Include="Views\userEntreprise\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\userEntreprise\envoyerDossier.cshtml" />
     <Content Include="Views\Dashboard\AccueilDashboard.cshtml" />
-    <Content Include="Views\Dashboard\BoiteArtiste.cshtml" />
     <Content Include="Views\Shared\LayoutAF.cshtml" />
     <Content Include="Views\RedigerMail\ContactAsync.cshtml" />
     <Content Include="Views\RedigerMail\SuccessMessage.cshtml" />
@@ -324,12 +320,13 @@
     <Content Include="Views\DossierFinancement\Contrat.cshtml" />
     <Content Include="Views\Shared\LayoutUA.cshtml" />
     <Content Include="Views\UserArtiste\AjouterContratecole.cshtml" />
+    <Content Include="Views\Shared\LayoutLogin.cshtml" />
+    <Content Include="Views\UploadFiles\TelechargerDocs.cshtml" />
+    <Content Include="Views\DossierFinancement\ValiderDossierFinancement.cshtml" />
+    <Content Include="Views\DossierFinancement\TelechargerDossierFinancement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\AccueilEntreprise\" />
-    <Folder Include="Views\Accueil\" />
-    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

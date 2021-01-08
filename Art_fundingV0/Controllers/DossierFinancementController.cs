@@ -33,5 +33,13 @@ namespace Art_fundingV0.Controllers
             DossierFinancementViewModel.TousLesArtistesFinancement = TousLesArtistesFinancement;
             return View(DossierFinancementViewModel);
         }
+        public ActionResult ValiderDossierFinancement()
+        {
+            return View();
+        }
+        public ActionResult TelechargerDossierFinancement()
+        {
+            return View();
+        }
     }
-    }
+}

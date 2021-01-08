@@ -22,31 +22,28 @@
                             {
                                 if (d.contrat_ecole.Count > 0)
                                 {
-                                    @Html.LabelFor(m => m.messagesaveccontrat)
+                                    @Html.LabelFor(m => m.messageFinancementAValider)
                                 <td>
                                     @foreach (var c in d.contrat_ecole)
                                     {
-                                        <a title="telechargercontrat" href="/UserArtiste/getContrat?idcontrat=@c.idcontrat_ecole">Telecharger</a>
+                                        @Html.ActionLink("ValiderDossierFinancement", "Valider Le dossier")
+                                        //<a title="telechargercontrat" href="/UserArtiste/getContrat?idcontrat=@c.idcontrat_ecole">Telecharger</a>
                                     }
-
                                 </td>
                             }
                             else
                             {
-                                @Html.LabelFor(m => m.messageavecdoc)
+                                @Html.LabelFor(m => m.messageDossierPreFinancement)
                             }
                         }
-
-
                         else if (d.document_artiste.Count <= 0)
                         {
-                            @Html.LabelFor(m => m.messagesansdoc)
+                            @Html.LabelFor(m => m.messageDossierNonConforme)
                         }
 
-                            </td>
                         </tr>
                     }
             </table>
         </div>
     </body>
-}             
+}
