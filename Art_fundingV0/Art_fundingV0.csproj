@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ArtisteEnFormationController.cs" />
     <Compile Include="Controllers\BoiteArtisteController.cs" />
     <Compile Include="Controllers\DossierFinancementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -218,6 +219,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AppRoleProvider\CustomAuthorize.cs" />
     <Compile Include="AppRoleProvider\SiteRole.cs" />
+    <Compile Include="ViewModels\ArtisteEnFormationViewModel.cs" />
     <Compile Include="ViewModels\BoiteArtisteViewModel.cs" />
     <Compile Include="ViewModels\CreerArtisteViewModel.cs" />
     <Compile Include="ViewModels\CreerEntrepriseViewModel.cs" />
@@ -236,9 +238,11 @@
     <Content Include="Content\images\Designers.jpg" />
     <Content Include="Content\images\Dessinateur.jpg" />
     <Content Include="Content\images\HomeBackgroundFond.png" />
+    <Content Include="Content\images\jess-bailey-l3N9Q27zULw-unsplash.jpg" />
     <Content Include="Content\images\peinture_4.jpg" />
     <Content Include="Content\images\Photographe.jpg" />
     <Content Include="Content\images\Styliste.jpg" />
+    <Content Include="Content\logo\ART_FUNDINGBlackGlass.png" />
     <Content Include="Content\Styliste.jpg" />
     <Content Include="Content\Video\Notebook and Pen in Female Hand.mp4" />
     <Content Include="favicon.ico" />
@@ -267,7 +271,11 @@
     </Content>
     <Content Include="fonts\HYPED_Font.otf" />
     <Content Include="Content\DocPdf\Contrat Entreprise et Artiste.pdf" />
+    <Content Include="fonts\GlacialIndifference-Bold.otf" />
+    <Content Include="fonts\GlacialIndifference-Italic.otf" />
+    <Content Include="fonts\GlacialIndifference-Regular.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\Font-Awesome.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -279,6 +287,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Style\styles.css" />
+    <Content Include="Style\styleLoginArtiste.css" />
     <Content Include="Style\stylesLogin.css" />
     <Content Include="Style\stylesUA.css" />
     <Content Include="Web.config">
@@ -324,6 +333,8 @@
     <Content Include="Views\UploadFiles\TelechargerDocs.cshtml" />
     <Content Include="Views\DossierFinancement\ValiderDossierFinancement.cshtml" />
     <Content Include="Views\DossierFinancement\TelechargerDossierFinancement.cshtml" />
+    <Content Include="Views\Shared\LayoutLoginArtiste.cshtml" />
+    <Content Include="Views\ArtisteEnFormation\ArtisteEnFormation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,5 +1,13 @@
-body{
-    height: 80%;
+﻿body {
+    height: 90%;
+   
+}
+
+#bground {
+ background-image: url('../Content/images/jess-bailey-l3N9Q27zULw-unsplash.jpg');
+    height: 90%;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 
@@ -31,15 +39,15 @@ body{
     }*/
 
 
-    #gradient {
-        text-align: center;
-        color: black;
-        font-size: 52px;
-        margin-top: 9px;
-    }
+#gradient {
+    text-align: center;
+    color: black;
+    font-size: 52px;
+    margin-top: 9px;
+}
 
-      
-    
+
+
 
 
 
@@ -59,16 +67,14 @@ a {
 
 /*  D R O P D O W N   M E N U  */
 .navbar {
-    position: fixed; 
-    
-    
+    position: fixed;
 }
 
 #artFunding {
     color: white;
     /*padding: 16px;*/
     /*font-family:  'Roboto Slab', serif;/* 'Raleway';*/
-    font-family: 'HYPED_Font', sans-serif; 
+    font-family: 'HYPED_Font', sans-serif;
     font-size: 1.3em;
     border: none;
 }
@@ -127,6 +133,7 @@ i {
     font-size: 1.3em;
     justify-content: space-around;
     text-decoration: none;
+    margin: 0.5em;
 }
 
 .navbar i {
@@ -139,7 +146,7 @@ i {
     width: 100%;
     height: 4em;
     bottom: 0;
-    background-color: #262C30; 
+    background-color: #262C30;
     text-align: center;
     display: flex;
     flex-wrap: nowrap;
@@ -149,7 +156,7 @@ i {
 i:hover {
     text-decoration: none;
     color: #FFB30F;
-}   
+}
 
 .htmllabel {
     color: !important yellow;

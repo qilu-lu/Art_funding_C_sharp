@@ -248,6 +248,16 @@ namespace Art_fundingV0.Models
             }
             return artistes;
         }
+        public List<artiste> ObtientArtistesEnFormation(int idEntreprise)
+        {
+            List<contrat_entreprise> ArtisteEnFormation = context.contrat_entreprise.Where(c => c.entreprise_id == idEntreprise && c.fichier_contrat != null).ToList();
+            List<artiste> artistes = new List<artiste>();
+            foreach (contrat_entreprise Boite in ArtisteEnFormation)
+            {
+                artistes.Add(Boite.artiste);
+            }
+            return artistes;
+        }
         //public List<artiste> TrouverLesArtistesFinances(int idBoiteArtisteContactes)
         //{
         //    List<boite_artiste> listeDossierFinancement = context.boite_artiste.Where(boite => boite.id_entreprise == idBoiteArtisteContactes && boite.etat == "contacte" && boite.artiste.contrat_ecole!=null).ToList();

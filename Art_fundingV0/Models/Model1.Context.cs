@@ -13,10 +13,10 @@ namespace Art_fundingV0.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class art_fundingEntities : DbContext
+    public partial class art_fundingEntities1 : DbContext
     {
-        public art_fundingEntities()
-            : base("name=art_fundingEntities")
+        public art_fundingEntities1()
+            : base("name=art_fundingEntities1")
         {
         }
     

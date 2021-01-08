@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="art_fundingModel.artiste" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
         <EntityTypeShape EntityType="art_fundingModel.boite_artiste" Width="1.5" PointX="10.5" PointY="15.625" IsExpanded="true" />
         <EntityTypeShape EntityType="art_fundingModel.categorie" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="art_fundingModel.contrat_abonnement" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="art_fundingModel.contrat_abonnement" Width="2.5" PointX="0.5" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="art_fundingModel.contrat_ecole" Width="1.5" PointX="3.25" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="art_fundingModel.contrat_entreprise" Width="1.5" PointX="7.5" PointY="15.5" IsExpanded="true" />
         <EntityTypeShape EntityType="art_fundingModel.document_artiste" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />

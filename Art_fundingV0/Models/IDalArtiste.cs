@@ -33,6 +33,7 @@ namespace Art_fundingV0.Models
         byte[] ObtientContratEcole(int id);
 
         byte[] ObtientPhoto(int id);
+        List<artiste> ObtientArtistesEnFormation(int idEntreprise);
 
     }
 }
