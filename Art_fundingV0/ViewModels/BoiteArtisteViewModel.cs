@@ -12,6 +12,7 @@ namespace Art_fundingV0.ViewModels
         public boite_artiste boite_Artiste { get; set; }
         public artiste artiste { get; set; }
         public List<int> photo { get; set; }
+        public string msg { get; set; }
 
     }
 }

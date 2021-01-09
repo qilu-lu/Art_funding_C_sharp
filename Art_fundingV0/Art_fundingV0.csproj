@@ -228,6 +228,7 @@
     <Compile Include="ViewModels\DossierFinancementViewModel.cs" />
     <Compile Include="ViewModels\EntrepriseViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\RechercheArtisteViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -336,7 +337,7 @@
     <Content Include="Views\Shared\LayoutLoginArtiste.cshtml" />
     <Content Include="Views\ArtisteEnFormation\ArtisteEnFormation.cshtml" />
     <Content Include="Views\PopUp\PopUp.cshtml" />
-    <Content Include="Views\Shared\LayoutAF.old.cshtml" />
+    <Content Include="Views\Shared\LayoutAF.cshtml" />
     <Content Include="Views\Dashboard\AccueilDashboard.cshtml" />
     <Content Include="Views\InfoArtFunding\QuiSommeNous.cshtml" />
     <Content Include="Views\InfoArtFunding\InfoArtFunding.cshtml" />

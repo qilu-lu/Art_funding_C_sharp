@@ -14,6 +14,7 @@ namespace Art_fundingV0.Controllers
 
 
         private IDalArtiste dalArtiste;
+        private IDalEntreprise dalEntreprise;
         private IDalEcole dalEcole;
         private art_fundingEntities context = new art_fundingEntities();
         public UserArtisteController() : this(new DalArtiste(), new DalEcole())
@@ -115,7 +116,8 @@ namespace Art_fundingV0.Controllers
         {
             if (ModelState.IsValid)
             {
-                int id = StringUtil.toInt(HttpContext.User.Identity.Name);
+                artiste artiste = dalArtiste.ObtientTousLesArtistes(HttpContext.User.Identity.Name).artiste;
+                int id = artiste.idartiste;
                 foreach (HttpPostedFileBase fileToUpload in filesToUpload)
                 {
                     if (fileToUpload != null && fileToUpload.ContentLength > 0)

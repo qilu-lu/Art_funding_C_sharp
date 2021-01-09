@@ -1,4 +1,5 @@
 ﻿using Art_fundingV0.Models;
+using Art_fundingV0.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,19 +30,22 @@ namespace Art_fundingV0.Controllers
 
             public ActionResult RechercheArtiste()
             {
-                List<artiste> listArtiste = new List<artiste>();
-                listArtiste = dalArtiste.ObtientTousLesArtistes();
-
-                return View(listArtiste);
+            RechercheArtisteViewModel rechercheArtisteViewModel = new RechercheArtisteViewModel();
+            List<artiste> listArtiste = new List<artiste>();
+               listArtiste = dalArtiste.ObtientTousLesArtistes();
+            rechercheArtisteViewModel.listArtiste = listArtiste;
+            return View(rechercheArtisteViewModel);
             }
 
         [HttpPost]
         public ActionResult RechercheArtiste(string searchString)
         {
-            List<artiste> listArtiste = new List<artiste>();
-            listArtiste = dalArtiste.RechercheArtistes(searchString);
+            RechercheArtisteViewModel rechercheArtisteViewModel = new RechercheArtisteViewModel();
+            
+            List<artiste> list = dalArtiste.RechercheArtistes(searchString);
+            rechercheArtisteViewModel.listArtiste = list;
 
-            return View(listArtiste);
+            return View(rechercheArtisteViewModel);
         }
 
     }

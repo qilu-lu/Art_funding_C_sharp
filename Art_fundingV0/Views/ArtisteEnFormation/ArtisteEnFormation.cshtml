@@ -10,15 +10,18 @@
             {
                 <div class="col-12 m-2">
                     <div class="d-flex position-relative border plop">
-                        <img src="/ArtisteEnFormation/getPhoto?idPhoto=@item.photos.FirstOrDefault() " class="flex-shrink-0 me-3" alt="ProjetArtiste" width="200" />
+                        @if (@item.photos.Count() > 0)
+                        {
+                            <img src="/ArtisteEnFormation/getPhoto?idPhoto=@item.photos.FirstOrDefault().idphoto " class="flex-shrink-0 me-3" alt="ProjetArtiste" width="200" />
+                        }
                         @*<img src="@artiste.photos.FirstOrDefault()" class="flex-shrink-0 me-3" alt="ProjetArtiste" width="200">*@
-                        <div>
-                            <h5>@item.nom @item.prenom @item.categorie.nom</h5>
-                            <p>@item.description</p>
-                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                            <a href="/BoiteArtiste/Portfoliu?idArtiste=@item.idartiste" class="btn btn-primary stretched-link">Voir le projet</a>
+                            <div>
+                                <h5>@item.nom @item.prenom @item.categorie.nom</h5>
+                                <p>@item.description;</p>
+                                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                                <a href="/BoiteArtiste/Portfoliu?idArtiste=@item.idartiste" class="btn btn-primary stretched-link">Voir le projet</a>
+                            </div>
                         </div>
-                    </div>
                 </div>
             }
         </div>

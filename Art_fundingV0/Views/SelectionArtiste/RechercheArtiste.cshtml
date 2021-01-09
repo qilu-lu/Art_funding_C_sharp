@@ -1,21 +1,32 @@
-﻿@{
+﻿@model Art_fundingV0.ViewModels.RechercheArtisteViewModel 
+@{
     Layout = "~/Views/Shared/LayoutAF.cshtml";
 }
 <div>
     <h1>Vue projets d'artiste</h1>
-    
+
     <div class="container">
         <div class="row">
-            @foreach (var artiste in Model)
+            @foreach (var artiste in Model.listArtiste)
             {
                 <div class="col-3">
                     <div class="card m-1">
-                        <img src="~/Content/images/Art Otter.png" class="card-img" alt="ImageArtiste">
+                        <!--img src="~/Content/images/Art Otter.png" class="card-img" alt="ImageArtiste">-->
                         <div class="card-body">
                             <div>
+                                @if (@artiste.photos.Count() > 0)
+                                {
+                                    <img src="/BoiteArtiste/getPhoto?idPhoto=@artiste.photos.FirstOrDefault().idphoto" />
+                                }
+
+                                @*@foreach (var photo in artiste.photos)
+                                {*@
+                                    <!--img src="/BoiteArtiste/getPhoto?idPhoto=photo.idphoto" />-->
+                                
                                 <h5 class="card-title">@artiste.nom @artiste.prenom @artiste.categorie.nom</h5>
-                                <p class="card-text">@artiste.Disponibilite.</p>
+                                <p class="card-text">@artiste.Disponibilite.Value.ToString("MM/dd/yyyy")</p>
                                 <a href="/BoiteArtiste/Portfoliu?idArtiste=@artiste.idartiste" class="btn btn-primary stretched-link">Voir le projet</a>
+
                             </div>
                         </div>
                     </div>

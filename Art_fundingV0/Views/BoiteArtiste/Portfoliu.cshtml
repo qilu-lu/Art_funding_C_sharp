@@ -4,94 +4,99 @@
 }
 
 
-    <div>
-        @using (Html.BeginForm())
-        {
-            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+@if (!string.IsNullOrEmpty(@Model.msg))
+{
+    <script>alert("@Model.msg");</script>
+}
 
-                @Html.LabelFor(m => m.artiste.nom)
-                @Model.artiste.nom
-            </div>
+<div>
+    @using (Html.BeginForm())
+    {
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                @Html.LabelFor(m => m.artiste.prenom)
-                @Model.artiste.prenom
-            </div>
+            @Html.LabelFor(m => m.artiste.nom)
+            @Model.artiste.nom
+        </div>
 
-            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                @Html.LabelFor(m => m.artiste.date_de_naissance)
-                @Model.artiste.date_de_naissance
-            </div>
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+            @Html.LabelFor(m => m.artiste.prenom)
+            @Model.artiste.prenom
+        </div>
 
-            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                @Html.LabelFor(m => m.artiste.adresse)
-                @Model.artiste.adresse
-            </div>
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+            @Html.LabelFor(m => m.artiste.date_de_naissance)
+            @Model.artiste.date_de_naissance
+        </div>
 
-            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+            @Html.LabelFor(m => m.artiste.adresse)
+            @Model.artiste.adresse
+        </div>
 
-                @Html.LabelFor(m => m.artiste.code_postale)
-                @Model.artiste.code_postale
-            </div>
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+            @Html.LabelFor(m => m.artiste.code_postale)
+            @Model.artiste.code_postale
+        </div>
 
-                @Html.LabelFor(m => m.artiste.ville)
-                @Model.artiste.ville
-            </div>
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+            @Html.LabelFor(m => m.artiste.ville)
+            @Model.artiste.ville
+        </div>
 
-                @Html.LabelFor(m => m.artiste.pays)
-                @Model.artiste.pays
-            </div>
-            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-                @Html.LabelFor(m => m.artiste.numero)
-                @Model.artiste.numero
-            </div>
-            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+            @Html.LabelFor(m => m.artiste.pays)
+            @Model.artiste.pays
+        </div>
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-                @Html.LabelFor(m => m.artiste.description)
-                @Model.artiste.description
-            </div>
-            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+            @Html.LabelFor(m => m.artiste.numero)
+            @Model.artiste.numero
+        </div>
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-                @Html.LabelFor(m => m.artiste.Disponibilite)
-                @Model.artiste.Disponibilite.Value.ToString("MM/dd/yyyy")
-            </div>
-            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+            @Html.LabelFor(m => m.artiste.description)
+            @Model.artiste.description
+        </div>
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-
-                @foreach (var item in Model.photo)
-                {
-                    <img src="/BoiteArtiste/getPhoto?idPhoto=@item" />
-                }
-         
-                <div class="container" style="padding-top: 20px;">
-                    <div class="row">
-                        <div class="col">
-                            <button class="btn btn-danger"><a href="javascript:history.go(-1)">Retour</a></button>
-                        </div>
-                        <div class="col">
-                            @*<button class="btn btn-success">J'apprécie fortement cette artiste. C'est décidé, je l'ajoute à ma selection :)</button>*@
-                            <a class="btn btn-success" id="boutonBAA" href="/BoiteArtiste/AjouterArtiste?idArtiste=@Model.artiste.idartiste">
-
-                                J'apprécie fortement cette artiste. C'est décidé, je l'ajoute à ma selection :)
-                            </a>
-
-                           
-                        </div>
+            @Html.LabelFor(m => m.artiste.Disponibilite)
+            @Model.artiste.Disponibilite.Value.ToString("MM/dd/yyyy")
+        </div>
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
 
-                        
+            @foreach (var item in Model.photo)
+            {
+                <img src="/BoiteArtiste/getPhoto?idPhoto=@item" />
+            }
+
+            <div class="container" style="padding-top: 20px;">
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-danger"><a href="javascript:history.go(-1)">Retour</a></button>
+                    </div>
+                    <div class="col">
+                        @*<button class="btn btn-success">J'apprécie fortement cette artiste. C'est décidé, je l'ajoute à ma selection :)</button>*@
+                        <a class="btn btn-success" id="boutonBAA" href="/BoiteArtiste/AjouterArtiste?idArtiste=@Model.artiste.idartiste">
+
+                            J'apprécie fortement cette artiste. C'est décidé, je l'ajoute à ma selection :)
+                        </a>
 
 
                     </div>
+
+
+
+
+
                 </div>
-
             </div>
-        }
 
-    </div>
- 
+        </div>
+    }
+
+</div>
+

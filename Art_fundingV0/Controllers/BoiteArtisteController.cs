@@ -43,12 +43,12 @@ namespace Art_fundingV0.Controllers
             {
                 if (artiste.idartiste == idartiste)
                 {
-                    return View();
+                    return RedirectToAction("Portfoliu", new { idartiste = idartiste, msg = "Attention, vous avez déjà ajouté cet artiste" });
                 }
-
-                dalArtiste.AjouterBoiteArtiste(entreprise.identreprise, idartiste);
             }
-            return RedirectToAction("Index");
+                dalArtiste.AjouterBoiteArtiste(entreprise.identreprise, idartiste);
+            
+            return RedirectToAction("Portfoliu", new { idartiste = idartiste, msg = "Vous venez d'ajouter cet artiste" });
         }
 
 
@@ -76,14 +76,14 @@ namespace Art_fundingV0.Controllers
         }
 
 
-        public ActionResult Portfoliu(int? idArtiste)
+        public ActionResult Portfoliu(int? idArtiste, String msg)
         {
 
 
             artiste artiste = dalArtiste.ObtientTousLesArtistes(idArtiste.Value);
 
             BoiteArtisteViewModel boiteArtisteViewModel = new BoiteArtisteViewModel();
-
+            boiteArtisteViewModel.msg = msg;
             boiteArtisteViewModel.artiste = artiste;
 
             boiteArtisteViewModel.photo = new List<int>();
