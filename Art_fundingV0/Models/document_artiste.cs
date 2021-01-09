@@ -18,7 +18,7 @@ namespace Art_fundingV0.Models
         public int id_artiste { get; set; }
         public byte[] CNI { get; set; }
         public byte[] justificatif_de_domicile { get; set; }
-    
+       
         public virtual artiste artiste { get; set; }
     }
 }

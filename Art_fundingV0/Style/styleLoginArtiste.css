@@ -67,7 +67,7 @@ a {
 
 /*  D R O P D O W N   M E N U  */
 .navbar {
-    position: fixed;
+ /*position: fixed;*/
 }
 
 #artFunding {

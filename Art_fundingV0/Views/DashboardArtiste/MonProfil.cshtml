@@ -1,0 +1,84 @@
+﻿@model Art_fundingV0.ViewModels.ArtisteProfilViewModel
+@{
+    Layout = "~/Views/Shared/LayoutUA.cshtml";
+}
+<style>
+body{
+    background-color:darkgreen;
+}
+</style>
+<div>
+    @using (Html.BeginForm())
+    {
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+
+            @Html.LabelFor(m => m.artiste.nom)
+            @Model.artiste.nom
+        </div>
+
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+            @Html.LabelFor(m => m.artiste.prenom)
+            @Model.artiste.prenom
+        </div>
+
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+            @Html.LabelFor(m => m.artiste.date_de_naissance)
+            @Model.artiste.date_de_naissance
+        </div>
+
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+            @Html.LabelFor(m => m.artiste.adresse)
+            @Model.artiste.adresse
+        </div>
+
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+
+            @Html.LabelFor(m => m.artiste.code_postale)
+            @Model.artiste.code_postale
+        </div>
+
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+
+            @Html.LabelFor(m => m.artiste.ville)
+            @Model.artiste.ville
+        </div>
+
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+
+            @Html.LabelFor(m => m.artiste.pays)
+            @Model.artiste.pays
+        </div>
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+
+            @Html.LabelFor(m => m.artiste.numero)
+            @Model.artiste.numero
+        </div>
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+
+            @Html.LabelFor(m => m.artiste.description)
+            @Model.artiste.description
+        </div>
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+
+            @Html.LabelFor(m => m.artiste.Disponibilite)
+            @Model.artiste.Disponibilite.Value.ToString("MM/dd/yyyy")
+        </div>
+
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+
+            @Html.ActionLink("Ajouter une photo", "remplirPhoto", "UserArtiste")
+        </div>
+
+        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+
+
+            @foreach (var item in Model.photo)
+            {
+                <img src="/BoiteArtiste/getPhoto?idPhoto=@item" /> <a href="/UserArtiste/SupprimerPhoto/?idPhoto=@item">Supprimer</a>
+            <br />
+            }
+
+        </div>
+    }
+</div>
+

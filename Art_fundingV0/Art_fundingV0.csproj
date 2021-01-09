@@ -137,6 +137,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArtisteEnFormationController.cs" />
     <Compile Include="Controllers\BoiteArtisteController.cs" />
+    <Compile Include="Controllers\DashboardArtisteController.cs" />
     <Compile Include="Controllers\DossierFinancementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InfoArtFundingController.cs" />
@@ -222,11 +223,13 @@
     <Compile Include="AppRoleProvider\CustomAuthorize.cs" />
     <Compile Include="AppRoleProvider\SiteRole.cs" />
     <Compile Include="ViewModels\ArtisteEnFormationViewModel.cs" />
+    <Compile Include="ViewModels\ArtisteProfilViewModel.cs" />
     <Compile Include="ViewModels\BoiteArtisteViewModel.cs" />
     <Compile Include="ViewModels\CreerArtisteViewModel.cs" />
     <Compile Include="ViewModels\CreerEntrepriseViewModel.cs" />
     <Compile Include="ViewModels\DossierFinancementViewModel.cs" />
     <Compile Include="ViewModels\EntrepriseViewModel.cs" />
+    <Compile Include="ViewModels\ArtistePhotosViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RechercheArtisteViewModel.cs" />
   </ItemGroup>
@@ -342,6 +345,7 @@
     <Content Include="Views\InfoArtFunding\QuiSommeNous.cshtml" />
     <Content Include="Views\InfoArtFunding\InfoArtFunding.cshtml" />
     <Content Include="Views\InfoArtFunding\Partenaires.cshtml" />
+    <Content Include="Views\DashboardArtiste\MonProfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,4 +1,4 @@
-﻿@model Art_fundingV0.Models.photo
+﻿@model Art_fundingV0.ViewModels.ArtistePhotosViewModel
 
 @{
     Layout = null;
@@ -11,18 +11,18 @@
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
 
-<script language="javascript">
+    <script language="javascript">
     function add() {
-        input = jQuery('<input name="filesToUpload" type="file"><br />');
-        var size = jQuery("[name='filesToUpload']").length;
+        var size = jQuery("[name='filesToUpload']").length + @Model.photoDejaEnvoyees;
         if (size < 10) {
-            jQuery("#div").append(input);
+            input = jQuery('<input name="filesToUpload" type="file"><br />');
+            jQuery("#divParent").append(input);
         } else {
             alert("Vous ne pouvez pas enregistrer plus de 10 photos !!");
         }
     }
 
-</script>
+    </script>
 </head>
 <body>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
@@ -37,14 +37,18 @@
         <div class="form-horizontal">
             <h4>picture</h4>
             <hr />
+            @if (@Model.photoDejaEnvoyees > 0)
+            {
+                <span>Vous avez déjà enregistré @Model.photoDejaEnvoyees photos</span><br /><br />
+            }
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
-                @Html.LabelFor(model => model.photo1, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div id="div" class="col-md-10">
+
+                <div id="divParent" class="col-md-10">
                     <input name="filesToUpload" type="file"><br />
                     <input name="filesToUpload" type="file"><br />
                     <input name="filesToUpload" type="file"><br />
-                    
+
 
                 </div><br />
                 <a href="#" onclick="add()">+</a><br /><br />

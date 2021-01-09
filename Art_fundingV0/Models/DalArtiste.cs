@@ -207,9 +207,14 @@ namespace Art_fundingV0.Models
             }*/
             return liste;
         }
-       
 
 
+        public void SupprimerPhoto(artiste artiste, int idPhoto)
+        {
+            photo ph = artiste.photos.FirstOrDefault(p => p.idphoto == idPhoto);
+            artiste.photos.Remove(ph);
+            context.SaveChanges();
+        }
         public boite_artiste ObtientTousLesBoites(int id)
         {
             return context.boite_artiste.FirstOrDefault(u => u.idBoite_Artiste == id);

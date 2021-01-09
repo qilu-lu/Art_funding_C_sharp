@@ -40,7 +40,7 @@ namespace Art_fundingV0.Controllers
 
                 utilisateurartiste utilisateurartiste = dalArtiste.ObtientTousLesArtistes(HttpContext.User.Identity.Name);
                 viewModelart.adress_mail = utilisateurartiste.mailUA;
-                //  return Redirect("Index");
+                return Redirect("Index");
             }
             return View(viewModelart);
         }
@@ -55,6 +55,11 @@ namespace Art_fundingV0.Controllers
                     FormsAuthentication.SetAuthCookie(artiste.idUtilisateurArtiste.ToString(), false);
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
+                    if (artiste.artiste.photos.Count() > 0)
+                    {
+                        return Redirect("Index");
+
+                    }
                     return Redirect("remplirphoto");
                 }
                 ModelState.AddModelError("utilisateurArtiste.mailUA", "wrong login");
@@ -106,10 +111,27 @@ namespace Art_fundingV0.Controllers
             }
             return View();
         }
+
         public ActionResult remplirphoto()
         {
-            return View();
+            artiste artiste = dalArtiste.ObtientTousLesArtistes(HttpContext.User.Identity.Name).artiste;
+            ArtistePhotosViewModel p = new ArtistePhotosViewModel();
+            p.photoDejaEnvoyees = artiste.photos.Count();
+            if (artiste.photos.Count() >= 10)
+            {
+                return RedirectToAction("");//TODO : lu
+            }
+            return View(p);
         }
+
+        public ActionResult SupprimerPhoto(int idPhoto)
+        {
+            artiste artiste = dalArtiste.ObtientTousLesArtistes(HttpContext.User.Identity.Name).artiste;
+            dalArtiste.SupprimerPhoto(artiste, idPhoto);
+            return RedirectToAction("MonProfil", "DashboardArtiste");
+        }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult remplirphoto(IEnumerable<HttpPostedFileBase> filesToUpload)
@@ -120,7 +142,7 @@ namespace Art_fundingV0.Controllers
                 int id = artiste.idartiste;
                 foreach (HttpPostedFileBase fileToUpload in filesToUpload)
                 {
-                    if (fileToUpload != null && fileToUpload.ContentLength > 0)
+                    if (fileToUpload != null && fileToUpload.ContentLength > 0 && artiste.photos.Count() < 7)
                     {
                         byte[] imageData = null;
                         using (var binaryReader = new BinaryReader(fileToUpload.InputStream))
@@ -136,7 +158,7 @@ namespace Art_fundingV0.Controllers
                 }
                 context.SaveChanges();
                 return RedirectToAction("chargerDocs");
-              
+
             }
 
             return View();
@@ -145,22 +167,30 @@ namespace Art_fundingV0.Controllers
 
         public ActionResult chargerDocs()
         {
+            document_artiste da = new document_artiste();
+            artiste artiste = dalArtiste.ObtientTousLesArtistes(HttpContext.User.Identity.Name).artiste;
+            if (artiste.document_artiste.Count() > 0)
+            {
+                return RedirectToAction("/index");
+            }
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public ActionResult chargerDocs([Bind(Include = "iddocument_artiste, CNI,justificatif domicile ")] document_artiste document_artiste, HttpPostedFileBase file, HttpPostedFileBase file2)
         {
+            artiste artiste = dalArtiste.ObtientTousLesArtistes(HttpContext.User.Identity.Name).artiste;
 
             if (ModelState.IsValid)
             {
+
                 // convert file choose by user into byte[]
-                if (file.ContentLength > 0 && file2.ContentLength > 0)
+                if (artiste.document_artiste.Count() == 0 && file.ContentLength > 0 && file2.ContentLength > 0)
                 {
                     byte[] imageData = null;
                     byte[] imageData2 = null;
-                   
+
                     using (var binaryReader = new BinaryReader(file.InputStream))
                     {
                         imageData = binaryReader.ReadBytes(file.ContentLength);
@@ -169,14 +199,14 @@ namespace Art_fundingV0.Controllers
                     {
                         imageData2 = binaryReader.ReadBytes(file2.ContentLength);
                     }
-                   
+
                     document_artiste.CNI = imageData;
                     document_artiste.justificatif_de_domicile = imageData2;
-                   
+
                     int id;
                     if (int.TryParse(HttpContext.User.Identity.Name, out id))
                     {
-                        artiste artiste= context.utilisateurartistes.Find(id).artiste;
+                        artiste = context.utilisateurartistes.Find(id).artiste;
 
 
                         document_artiste.artiste = artiste;
@@ -186,7 +216,7 @@ namespace Art_fundingV0.Controllers
                         context.SaveChanges();
                         ViewBag.success = "Uploaded Filed Saved Succesfully in a folder!";
                         return RedirectToAction("/", "UserArtiste");
-                        
+
                     }
                 }
             }
@@ -210,19 +240,19 @@ namespace Art_fundingV0.Controllers
             if (ModelState.IsValid)
             {
                 // convert file choose by user into byte[]
-                if (file.ContentLength > 0 )
+                if (file.ContentLength > 0)
                 {
                     byte[] imageData = null;
-                
+
 
                     using (var binaryReader = new BinaryReader(file.InputStream))
                     {
                         imageData = binaryReader.ReadBytes(file.ContentLength);
                     }
-                    
+
 
                     contrat_Ecole.fichier_contrat = imageData;
-                    
+
 
                     int id;
                     if (int.TryParse(HttpContext.User.Identity.Name, out id))
