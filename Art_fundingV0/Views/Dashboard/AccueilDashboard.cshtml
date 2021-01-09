@@ -1,19 +1,23 @@
-﻿@model Art_fundingV0.Models.utilisateurentreprise
+@model Art_fundingV0.Models.utilisateurentreprise
 @{
-    Layout = "~/Views/Shared/LayoutAF.cshtml";
+    Layout = "~/Views/Shared/LayoutUA.cshtml";
 }
 <h1>Bienvenue sur mon DashBoard</h1>
 <ul class="nav justify-content-center">
     <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Artistes contactés</a>
+        @*<a class="nav-link active" aria-current="page" href="#">Artistes contactés</a>*@
+        <button class="btn btn-danger">@Html.ActionLink("Artistes contactés", "ArtisteContactes")</button>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">Dossiers de financement</a>
+        @*<a class="nav-link" href="#">Dossiers de financement</a>*@
+        <button class="btn btn-info">@Html.ActionLink("Dossiers de financement", "EtapeDossiersFinancement", "DossierFinancement")</button>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">En formation</a>
+        @*<a class="nav-link" href="#">En formation</a>*@
+        <button class="btn btn-success">@Html.ActionLink("En formation", "ArtisteEnFormation", "ArtisteEnFormation")</button>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="#">Messagerie</a>
+        @*<a class="nav-link " href="#">Messagerie</a>*@
+        <button class="btn btn-dark">@Html.ActionLink("Messagerie", "ContactAsync", "RedigerMail")</button>
     </li>
 </ul>

@@ -1,16 +1,9 @@
 ﻿@model Art_fundingV0.ViewModels.BoiteArtisteViewModel
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/LayoutUA.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Portfoliu</title>
-</head>
-<body>
     <div>
         @using (Html.BeginForm())
         {
@@ -72,13 +65,33 @@
 
                 @foreach (var item in Model.photo)
                 {
-                <img src="/BoiteArtiste/getPhoto?idPhoto=@item" />
+                    <img src="/BoiteArtiste/getPhoto?idPhoto=@item" />
                 }
+         
+                <div class="container" style="padding-top: 20px;">
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-danger"><a href="javascript:history.go(-1)">Retour</a></button>
+                        </div>
+                        <div class="col">
+                            @*<button class="btn btn-success">J'apprécie fortement cette artiste. C'est décidé, je l'ajoute à ma selection :)</button>*@
+                            <a class="btn btn-success" id="boutonBAA" href="/BoiteArtiste/AjouterArtiste?idArtiste=@Model.artiste.idartiste">
 
+                                J'apprécie fortement cette artiste. C'est décidé, je l'ajoute à ma selection :)
+                            </a>
+
+                           
+                        </div>
+
+
+                        
+
+
+                    </div>
+                </div>
 
             </div>
         }
 
     </div>
-    </body>
-</html>
+ 

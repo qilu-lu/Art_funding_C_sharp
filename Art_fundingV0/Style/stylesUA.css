@@ -127,10 +127,12 @@ i {
     font-size: 1.3em;
     justify-content: space-around;
     text-decoration: none;
+
 }
 
 .navbar i {
     color: white;
+    
 }
 
 
@@ -146,15 +148,11 @@ i {
     justify-content: space-around;
 }
 
-i:hover {
+
+a:hover, i:hover {
     text-decoration: none;
     color: #FFB30F;
 }   
-
-.htmllabel {
-    color: !important yellow;
-    font-size: !important 25px;
-}
 
 @font-face {
     font-family: 'HYPED_Font';

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 
@@ -33,17 +34,22 @@ namespace Art_fundingV0.Controllers
             return View(boiteArtisteViewModel);
         }
 
-//        public ActionResult AjouterArtiste()
-//        {
-//            return View();
-//        }
-//[HttpPost]
-//        public ActionResult AjouterArtiste(int? idArtiste)
-//        {
-//            entreprise entreprise = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name).entreprise;
-//            dalArtiste.AjouterBoiteArtiste(idArtiste);
-//            return RedirectToAction("Index");
-//        }
+       
+
+      public ActionResult AjouterArtiste(int? idartiste)
+      {
+            entreprise entreprise = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name).entreprise;
+            foreach (artiste artiste in dalArtiste.ObtientArtistesdansBoiteArtiste(entreprise.identreprise))
+            {
+                if (artiste.idartiste == idartiste)
+                {
+                    return View();
+                }
+
+                dalArtiste.AjouterBoiteArtiste(entreprise.identreprise, idartiste);
+            }
+            return RedirectToAction("Index");
+        }
 
 
 

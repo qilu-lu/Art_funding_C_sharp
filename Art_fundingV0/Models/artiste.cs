@@ -18,11 +18,12 @@ namespace Art_fundingV0.Models
         public artiste()
         {
             this.boite_artiste = new HashSet<boite_artiste>();
+            this.contrat_ecole = new HashSet<contrat_ecole>();
             this.document_artiste = new HashSet<document_artiste>();
             this.entreprises = new HashSet<entreprise>();
             this.photos = new HashSet<photo>();
             this.utilisateurartistes = new HashSet<utilisateurartiste>();
-            this.contrat_ecole = new HashSet<contrat_ecole>();
+            this.contrat_entreprise = new HashSet<contrat_entreprise>();
         }
     
         public int idartiste { get; set; }
@@ -45,6 +46,8 @@ namespace Art_fundingV0.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<boite_artiste> boite_artiste { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<contrat_ecole> contrat_ecole { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<document_artiste> document_artiste { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<entreprise> entreprises { get; set; }
@@ -53,6 +56,6 @@ namespace Art_fundingV0.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<utilisateurartiste> utilisateurartistes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<contrat_ecole> contrat_ecole { get; set; }
+        public virtual ICollection<contrat_entreprise> contrat_entreprise { get; set; }
     }
 }

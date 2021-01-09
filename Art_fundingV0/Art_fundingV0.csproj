@@ -139,6 +139,8 @@
     <Compile Include="Controllers\BoiteArtisteController.cs" />
     <Compile Include="Controllers\DossierFinancementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InfoArtFundingController.cs" />
+    <Compile Include="Controllers\PopUpController.cs" />
     <Compile Include="Controllers\RedigerMailController.cs" />
     <Compile Include="Controllers\SelectionArtisteController.cs" />
     <Compile Include="Controllers\UploadFilesController.cs" />
@@ -262,6 +264,11 @@
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\HYPED_Font.otf" />
+    <Content Include="Content\DocPdf\Contrat Entreprise et Artiste.pdf" />
+    <Content Include="fonts\GlacialIndifference-Bold.otf" />
+    <Content Include="fonts\GlacialIndifference-Italic.otf" />
+    <Content Include="fonts\GlacialIndifference-Regular.otf" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -269,11 +276,6 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="fonts\HYPED_Font.otf" />
-    <Content Include="Content\DocPdf\Contrat Entreprise et Artiste.pdf" />
-    <Content Include="fonts\GlacialIndifference-Bold.otf" />
-    <Content Include="fonts\GlacialIndifference-Italic.otf" />
-    <Content Include="fonts\GlacialIndifference-Regular.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Font-Awesome.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -312,8 +314,6 @@
     <Content Include="Views\userEntreprise\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\userEntreprise\envoyerDossier.cshtml" />
-    <Content Include="Views\Dashboard\AccueilDashboard.cshtml" />
-    <Content Include="Views\Shared\LayoutAF.cshtml" />
     <Content Include="Views\RedigerMail\ContactAsync.cshtml" />
     <Content Include="Views\RedigerMail\SuccessMessage.cshtml" />
     <Content Include="Views\UserArtiste\Index.cshtml" />
@@ -335,6 +335,12 @@
     <Content Include="Views\DossierFinancement\TelechargerDossierFinancement.cshtml" />
     <Content Include="Views\Shared\LayoutLoginArtiste.cshtml" />
     <Content Include="Views\ArtisteEnFormation\ArtisteEnFormation.cshtml" />
+    <Content Include="Views\PopUp\PopUp.cshtml" />
+    <Content Include="Views\Shared\LayoutAF.old.cshtml" />
+    <Content Include="Views\Dashboard\AccueilDashboard.cshtml" />
+    <Content Include="Views\InfoArtFunding\QuiSommeNous.cshtml" />
+    <Content Include="Views\InfoArtFunding\InfoArtFunding.cshtml" />
+    <Content Include="Views\InfoArtFunding\Partenaires.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

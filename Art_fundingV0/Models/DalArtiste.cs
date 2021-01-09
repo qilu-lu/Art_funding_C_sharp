@@ -75,9 +75,12 @@ namespace Art_fundingV0.Models
             context.boite_artiste.Remove(boiteArtiste);
             context.SaveChanges();
         }
-        public void AjouterBoiteArtiste(int? idArtiste)
+        public void AjouterBoiteArtiste(int identreprise, int? idArtiste)
         {
-            boite_artiste boiteArtiste = context.boite_artiste.FirstOrDefault(u=> u.id_artiste == idArtiste);
+            boite_artiste boiteArtiste = new boite_artiste();
+            boiteArtiste.id_artiste = idArtiste;
+            boiteArtiste.id_entreprise = identreprise;
+
             context.boite_artiste.Add(boiteArtiste);
             context.SaveChanges();
         }
@@ -236,6 +239,16 @@ namespace Art_fundingV0.Models
         public List<artiste> RechercheArtistes(string SearchString)
         {
             List<artiste> artistes = context.artistes.Where(a => a.nom.Contains(SearchString) || a.categorie.nom.Contains(SearchString) || a.prenom.Contains(SearchString)).ToList();
+            return artistes;
+        }
+        public List<artiste> ObtientArtistesdansBoiteArtiste(int idEntreprise)
+        {
+            List<boite_artiste> listeBoite = context.boite_artiste.Where(boite => boite.id_entreprise == idEntreprise).ToList();
+            List<artiste> artistes = new List<artiste>();
+            foreach (boite_artiste Boite in listeBoite)
+            {
+                artistes.Add(Boite.artiste);
+            }
             return artistes;
         }
         public List<artiste> ObtientArtistesContacte(int idEntreprise)

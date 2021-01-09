@@ -19,6 +19,7 @@ namespace Art_fundingV0.Models
         {
             this.boite_artiste = new HashSet<boite_artiste>();
             this.contrat_entreprise = new HashSet<contrat_entreprise>();
+            this.contrat_entreprise1 = new HashSet<contrat_entreprise>();
             this.document_entreprise = new HashSet<document_entreprise>();
             this.utilisateurentreprises = new HashSet<utilisateurentreprise>();
         }
@@ -45,6 +46,8 @@ namespace Art_fundingV0.Models
         public virtual ICollection<boite_artiste> boite_artiste { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<contrat_entreprise> contrat_entreprise { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<contrat_entreprise> contrat_entreprise1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<document_entreprise> document_entreprise { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

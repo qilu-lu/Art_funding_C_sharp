@@ -3,13 +3,7 @@
 }
 <div>
     <h1>Vue projets d'artiste</h1>
-    @using (Html.BeginForm("RechercheArtiste", "SelectionArtiste", FormMethod.Post))
-    {
-        <p>
-            <span>Recherche:</span> <input type="text" name="SearchString">
-            <input type="submit" value="Filter" />
-        </p>
-    }
+    
     <div class="container">
         <div class="row">
             @foreach (var artiste in Model)
