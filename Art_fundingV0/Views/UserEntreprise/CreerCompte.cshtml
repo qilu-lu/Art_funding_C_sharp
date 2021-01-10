@@ -1,147 +1,105 @@
-﻿@model  Art_fundingV0.Models.utilisateurentreprise
+﻿@model Art_fundingV0.Models.utilisateurentreprise
 @{
-    Layout = "~/Views/Shared/LayoutUA.cshtml";
+    Layout = "~/Views/Shared/LayoutCreerCompteEntreprise.cshtml";
 }
-
-<div class="fullscreen-bg">
-    <div class="overlay">
-        <h1>SUPERBE NOUVELLE : Vous êtes bientôt des nôtres. :)</h1>
-
-        @*@using (Html.BeginForm())*@
-        {
-            <div class="container-sm">
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h1 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Quelle est votre société ?
-                            </button>
-                        </h1>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <form class="row g-2">
-                                    <div class="col-md-4">
-                                        <p class="htmllabel"> @Html.LabelFor(m => m.entreprise.denomination_Commerciale)</p>
-                                        <input type="text" class="form-control" id="denomination_Commerciale" placeholder="Le nom commercial de votre entreprise.">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <p class="htmllabel">@Html.LabelFor(m => m.entreprise.raison_Sociale)</p>
-                                            <input type="text" class="form-control" id="raison_Sociale" placeholder="Le nom figurant sur vos statuts">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <p class="htmllabel">@Html.LabelFor(m => m.entreprise.SIRET)</p>
-                                            <input type="number" class="form-control" id="SIRET" placeholder="Votre numéro de SIRET à 14 chiffres.">
-                                    </div>
-                                </form>
-                            </div>
+<div class="container-fluid" style="margin-top: 30%;">
+    @using (Html.BeginForm())
+    {
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="text-align: center !important; color: #FFC107; font-size: 22px;">
+                        Quelle est votre société ?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="row accordion-body">
+                        <div class="col" style="text-align: center; color: white; font-size: 22px;">
+                            @Html.LabelFor(m => m.entreprise.SIRET)
+                            @Html.TextBoxFor(m => m.entreprise.SIRET)
+                            @Html.ValidationMessageFor(m => m.entreprise.SIRET)
+                        </div>
+                        <div class="col" style="text-align: center; color: white; font-size: 22px;">
+                            @Html.LabelFor(m => m.entreprise.denomination_Commerciale)
+                            @Html.TextBoxFor(m => m.entreprise.denomination_Commerciale)
+                            @Html.ValidationMessageFor(m => m.entreprise.denomination_Commerciale)
+                        </div>
+                        <div class="col" style="text-align: center; color: white; font-size: 22px;">
+                            @Html.LabelFor(m => m.entreprise.raison_Sociale)
+                            @Html.TextBoxFor(m => m.entreprise.raison_Sociale)
+                            @Html.ValidationMessageFor(m => m.entreprise.raison_Sociale)
                         </div>
                     </div>
-
-
-                    <div class="accordion-item">
-                        <h1 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Notre interlocuteur principal.
-                            </button>
-                        </h1>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <form class="row g-2">
-                                    <div class="col-md-4">
-                                        <p class="htmllabel">@Html.LabelFor(m => m.entreprise.prenom_de_l_ayant_droit)</p>
-                                            <input type="text" class="form-control" id="prenom_de_l_ayant_droit" placeholder="Votre prénom.">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <p class="htmllabel">@Html.LabelFor(m => m.entreprise.nom_de_l_ayant_droit)</p>
-                                            <input type="text" class="form-control" id="nom_del_ayant_droit" placeholder="Votre nom de famille.">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <p class="htmllabel">@Html.LabelFor(m => m.entreprise.fonction_au_sein_de_l_entreprise)</p>
-                                        </p>
-                                            <input type="text" class="form-control" id="fonction_au_sein_de_l_entreprise" placeholder="Quel est votre fnction au sein de la société?">
-                                    </div>
-                                </form>
-                                <form class="row g-2">
-                                    <div class="col-md-4">
-                                        <p class="htmllabel">@Html.LabelFor(m => m.entreprise.numero)</p>
-                                            <input type="number" class="form-control" id="numero" placeholder="Votre ligne directe pour un échange efficace.">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <p class="htmllabel">
-                                            @Html.LabelFor(m => m.adresse_mailUE)
-                                        </p>
-                                            <input type="text" class="form-control" id="adresse_mailUE" placeholder="Cette adresse e-mail servira d'identifiant et de contact.">
-</div>
-                                    <div class="col-md-4">
-                                        <p class="htmllabel">
-                                            @Html.LabelFor(m => m.mot_de_passeUE)
-                                        </p>
-                                            <input type="text" class="form-control" id="mot_de_passeUE" placeholder="Le choix du mot de passe: Un exercice difficile pour votre sécurité.">
-                                    </div>
-                                </form>
-                            </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="text-align: center; color: #FFC107; font-size: 22px;">
+                        Notre interlocuteur principal.
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="row accordion-body">
+                        <div class="col" style="text-align: center; color: white; font-size: 22px;">
+                            @Html.LabelFor(m => m.entreprise.fonction_au_sein_de_l_entreprise)
+                            @Html.TextBoxFor(m => m.entreprise.fonction_au_sein_de_l_entreprise)
+                            @Html.ValidationMessageFor(m => m.entreprise.fonction_au_sein_de_l_entreprise)
+                        </div>
+                        <div class="col" style="text-align: center; color: white; font-size: 22px;">
+                            @Html.LabelFor(m => m.entreprise.nom_de_l_ayant_droit)
+                            @Html.TextBoxFor(m => m.entreprise.nom_de_l_ayant_droit)
+                            @Html.ValidationMessageFor(m => m.entreprise.nom_de_l_ayant_droit)
+                        </div>
+                        <div class="col" style="text-align: center; color: white; font-size: 22px;">
+                            @Html.LabelFor(m => m.entreprise.prenom_de_l_ayant_droit)
+                            @Html.TextBoxFor(m => m.entreprise.prenom_de_l_ayant_droit)
+                            @Html.ValidationMessageFor(m => m.entreprise.prenom_de_l_ayant_droit)
+                        </div>
+                        <div class="col" style="text-align: center; color: white; font-size: 22px;">
+                            @Html.LabelFor(m => m.entreprise.adresse_email)
+                            @Html.TextBoxFor(m => m.entreprise.adresse_email)
+                            @Html.ValidationMessageFor(m => m.entreprise.adresse_email)
                         </div>
                     </div>
-
-
-                    <div class="accordion-item">
-                        <h1 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Où êtes-vous?
-                            </button>
-                        </h1>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <form class="row g-2">
-                                    <div class="col-md-4">
-                                        <p class="htmllabel">
-                                            @Html.LabelFor(m => m.entreprise.adresse)
-                                        </p>
-                                            <input type="text" class="form-control" id="adresse" placeholder="L'adresse SVP.">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <p class="htmllabel">
-                                            @Html.LabelFor(m => m.entreprise.ville)
-                                        </p>
-                                            <input type="text" class="form-control" id="ville" placeholder="Ok, mais dans quelle ville?">
-</div>
-                                    <div class="col-4">
-                                        <p class="htmllabel">
-                                            @Html.LabelFor(m => m.entreprise.code_postale)
-                                        </p>
-                                            <input type="number" class="form-control" id="code_postale" placeholder="Votre code postale SVP.">
-</div>
-                                </form>
-                                <form class="row g-2">
-                                    <div class="col" style="text-align: center;">
-                                        <p class="htmllabel">
-                                            @Html.LabelFor(m => m.entreprise.pays)
-                                            <input type="number" class="form-control" id="pays" placeholder="Où vous situez-vous sur notre planète Terre?">
-                                        </p>
-</div>
-                                </form>
-                            </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="text-align: center; color: #FFC107; font-size: 22px;">
+                        Où êtes-vous ?
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="row accordion-body">
+                        <div class="col" style="text-align: center; color: white; font-size: 22px;">
+                            @Html.LabelFor(m => m.entreprise.numero)
+                            @Html.TextBoxFor(m => m.entreprise.numero)
+                            @Html.ValidationMessageFor(m => m.entreprise.numero)
+                        </div>
+                        <div class="col" style="text-align: center; color: white; font-size: 22px;">
+                            @Html.LabelFor(m => m.entreprise.adresse)
+                            @Html.TextBoxFor(m => m.entreprise.adresse)
+                            @Html.ValidationMessageFor(m => m.entreprise.adresse)
+                        </div>
+                        <div class="col" style="text-align: center; color: white; font-size: 22px;">
+                            @Html.LabelFor(m => m.entreprise.ville)
+                            @Html.TextBoxFor(m => m.entreprise.ville)
+                            @Html.ValidationMessageFor(m => m.entreprise.ville)
+                        </div>
+                        <div class="col" style="text-align: center; color: white; font-size: 22px;">
+                            @Html.LabelFor(m => m.entreprise.code_postale)
+                            @Html.TextBoxFor(m => m.entreprise.code_postale)
+                            @Html.ValidationMessageFor(m => m.entreprise.code_postale)
+                        </div>
+                        <div class="col" style="text-align: center; color: white; font-size: 22px;">
+                            @Html.LabelFor(m => m.entreprise.pays)
+                            @Html.TextBoxFor(m => m.entreprise.pays)
+                            @Html.ValidationMessageFor(m => m.entreprise.pays)
                         </div>
                     </div>
-
-                        @* -------- Boutons ABANDONNER et PASSEZ A L'ETAPE SUIVANTE* ---------------*@
-                        <div class="container-fluid" style="margin-bottom: 3em;">
-                            <div class="row">
-                                <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; text-align: center;">
-                                    <button class="btn btn-danger" onclick="javascript: history.go(-1);" value="Abandonner" id="abandonner">Abandonner</button>
-                                </div>
-                                <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; text-align: center;">
-                                    <button class="btn btn-info" type="submit" id="etapesuivante">Passez à l'étape suivante</button>
-                                </div>
-                            </div>
-                        </div> @* -------------------------- FERMETURE CLASS CONTAINER-FLUID pour les boutons -----------------------*@
-       
-                    </div>  @* ------------ FERMETURE CLASS ACCORDION -----------------*@
-         </div> @* ------------- FERMETURE CLASS CONTAINER-SM --------------------*@
-
-        
-        </div> @* -------------- FERMETURE CLASS OVERLAY -------------------------*@
- 
-
-</div> @* --------------- FERMETURE CLASS FULLSCREEN_BG --------------------*@
-
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-warning my-4 w-100" type="submit" style="color: white; font-size: 22px">C'est dans la boîte !</button>
+    }
+</div>

@@ -2,30 +2,47 @@
 @{
     Layout = "~/Views/Shared/LayoutAF.cshtml";
 }
+<style>
+    .card-fixed-height {
+        max-height: 250px;
+        min-height: 200px;
+        height: 250px;
+    }
+
+    .image-fixed-center {
+        height: 100px;
+        margin: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+</style>
 <div>
     <h1>Artistes contactés</h1>
     <div class="container">
         <div class="row">
             @foreach (var artiste in Model.listArtiste)
             {
-                <div class="col-12 m-2">
-                    <div class="d-flex position-relative border plop">
-                        @*<img src="~/Content/images/Art Otter.png" class="flex-shrink-0 me-3" alt="ProjetArtiste" width="200">*@
-                        @if (@artiste.photos.Count() > 0)
-                        {
-                            <img src="/BoiteArtiste/getPhoto?idPhoto=@artiste.photos.FirstOrDefault().idphoto" />
-                        }
+            <div class="col-3">
+                <div class=" card m-1 card-fixed-height">
+                    @*<img src="~/Content/images/Art Otter.png" class="flex-shrink-0 me-3" alt="ProjetArtiste" width="200">*@
 
+                    <div class="card-body">
 
                         <div>
                             <h5>@artiste.nom @artiste.prenom @artiste.categorie.nom</h5>
                             <p>@artiste.description</p>
-                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
                             <a href="/BoiteArtiste/Portfoliu?idArtiste=@artiste.idartiste" class="btn btn-primary stretched-link">Voir le projet</a>
+                            @if (@artiste.photos.Count() > 0)
+                            {
+                                <br /><img class="image-fixed-center" src="/BoiteArtiste/getPhoto?idPhoto=@artiste.photos.FirstOrDefault().idphoto" alt="Image de l'artiste" />
+                            }
                         </div>
                     </div>
                 </div>
+            </div>
             }
         </div>
-    </div>
+ 
+        </div>
 </div>
