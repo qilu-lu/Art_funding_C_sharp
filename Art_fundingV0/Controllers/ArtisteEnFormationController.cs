@@ -20,7 +20,7 @@ namespace Art_fundingV0.Controllers
         public ActionResult ArtisteEnFormation()
         {
             ArtisteEnFormationViewModel ArtisteEnFormationViewModel = new ArtisteEnFormationViewModel();
-            entreprise entreprise = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name).entreprise;
+            entreprise entreprise = dalEntreprise.ObtientUtilisateurE(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).entreprise;
             int identreprise = entreprise.identreprise;
             List<artiste> TousLesArtistesEnFormation = dalArtiste.ObtientArtistesEnFormation(identreprise);
             ArtisteEnFormationViewModel.TousLesArtistesEnFormation = TousLesArtistesEnFormation;

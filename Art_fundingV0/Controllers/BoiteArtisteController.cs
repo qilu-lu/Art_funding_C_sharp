@@ -26,7 +26,7 @@ namespace Art_fundingV0.Controllers
         public ActionResult Index()
         {
             BoiteArtisteViewModel boiteArtisteViewModel = new BoiteArtisteViewModel();
-            entreprise entreprise = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name).entreprise;
+            entreprise entreprise = dalEntreprise.ObtientUtilisateurE(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).entreprise;
             List<boite_artiste> liste = dalArtiste.ObtientTousLesBoitesparentreprise(entreprise.identreprise);
             boiteArtisteViewModel.list = liste;
 
@@ -38,7 +38,8 @@ namespace Art_fundingV0.Controllers
 
       public ActionResult AjouterArtiste(int? idartiste)
       {
-            entreprise entreprise = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name).entreprise;
+            entreprise entreprise = dalEntreprise.ObtientUtilisateurE(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).entreprise;
+
             foreach (artiste artiste in dalArtiste.ObtientArtistesdansBoiteArtiste(entreprise.identreprise))
             {
                 if (artiste.idartiste == idartiste)
@@ -56,7 +57,8 @@ namespace Art_fundingV0.Controllers
 
         public ActionResult Supprimer(int? idArtiste)
         {
-            entreprise entreprise = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name).entreprise;
+            entreprise entreprise = dalEntreprise.ObtientUtilisateurE(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).entreprise;
+
             dalArtiste.SupprimerBoiteArtiste(entreprise.identreprise, idArtiste);
             return RedirectToAction("Index");
         }

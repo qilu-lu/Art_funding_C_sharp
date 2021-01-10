@@ -205,6 +205,7 @@
     <Compile Include="Models\photo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CookieUtil.cs" />
     <Compile Include="Models\StringUtil.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\DalArtiste.cs" />

@@ -29,8 +29,9 @@ namespace Art_fundingV0.Controllers
 
         public ActionResult MonProfil()
         {
+            
             ArtisteProfilViewModel artisteProfilViewModel = new ArtisteProfilViewModel();
-            artiste artiste = dalArtiste.ObtientTousLesArtistes(HttpContext.User.Identity.Name).artiste;
+            artiste artiste = dalArtiste.ObtientUtilisateurA(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).artiste;
             artisteProfilViewModel.artiste = artiste;
 
             artisteProfilViewModel.photo = new List<int>();

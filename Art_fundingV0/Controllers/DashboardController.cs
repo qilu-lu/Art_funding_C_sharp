@@ -33,7 +33,7 @@ namespace Art_fundingV0.Controllers
         public ActionResult ArtisteContactes()
         {
             DashboardEntrepriseViewModel dashboardEntrepriseViewModel = new DashboardEntrepriseViewModel();
-            entreprise entreprise = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name).entreprise;
+            entreprise entreprise = dalEntreprise.ObtientUtilisateurE(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).entreprise;
             int identreprise = entreprise.identreprise;
             
             dashboardEntrepriseViewModel.listArtiste = dalArtiste.ObtientArtistesContacte(identreprise);

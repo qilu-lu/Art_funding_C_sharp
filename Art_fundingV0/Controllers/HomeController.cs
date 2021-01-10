@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Art_fundingV0.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,19 @@ namespace Art_fundingV0.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                string type = CookieUtil.getTypeFromCookie(HttpContext.User.Identity.Name);
+                if (type.Equals("entreprise"))
+                {
+                    return RedirectToAction("Index", "UserEntreprise");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "UserArtiste");
+                }
+            }
+
             return View();
         }
 

@@ -38,7 +38,7 @@ namespace Art_fundingV0.Controllers
             if (HttpContext.User.Identity.IsAuthenticated)
             {
 
-                utilisateurartiste utilisateurartiste = dalArtiste.ObtientTousLesArtistes(HttpContext.User.Identity.Name);
+                utilisateurartiste utilisateurartiste = dalArtiste.ObtientUtilisateurA(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name));
                 viewModelart.adress_mail = utilisateurartiste.mailUA;
                 return Redirect("Index");
             }
@@ -52,7 +52,7 @@ namespace Art_fundingV0.Controllers
                 utilisateurartiste artiste = dalArtiste.AuthentifierArtiste(viewModel.adress_mail, viewModel.mot_de_passe);
                 if (artiste != null)
                 {
-                    FormsAuthentication.SetAuthCookie(artiste.idUtilisateurArtiste.ToString(), false);
+                    FormsAuthentication.SetAuthCookie(CookieUtil.generateCookieValue("artiste", artiste.idUtilisateurArtiste), false);
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
                     if (artiste.artiste.photos.Count() > 0)
@@ -105,7 +105,7 @@ namespace Art_fundingV0.Controllers
                     return View(utilisateur);
                 }
                 int id = dalArtiste.AjouterUserArtiste(utilisateur.mailUA, utilisateur.mot_de_passe, creerArtiste);
-                FormsAuthentication.SetAuthCookie(id.ToString(), false);
+                FormsAuthentication.SetAuthCookie(CookieUtil.generateCookieValue("artiste", id), false);
 
                 return RedirectToAction("remplirphoto");
             }
@@ -114,7 +114,7 @@ namespace Art_fundingV0.Controllers
 
         public ActionResult remplirphoto()
         {
-            artiste artiste = dalArtiste.ObtientTousLesArtistes(HttpContext.User.Identity.Name).artiste;
+            artiste artiste = dalArtiste.ObtientUtilisateurA(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).artiste;
             ArtistePhotosViewModel p = new ArtistePhotosViewModel();
             p.photoDejaEnvoyees = artiste.photos.Count();
             if (artiste.photos.Count() >= 10)
@@ -138,7 +138,7 @@ namespace Art_fundingV0.Controllers
         {
             if (ModelState.IsValid)
             {
-                artiste artiste = dalArtiste.ObtientTousLesArtistes(HttpContext.User.Identity.Name).artiste;
+                artiste artiste = dalArtiste.ObtientUtilisateurA(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).artiste;
                 int id = artiste.idartiste;
                 foreach (HttpPostedFileBase fileToUpload in filesToUpload)
                 {
@@ -168,7 +168,7 @@ namespace Art_fundingV0.Controllers
         public ActionResult chargerDocs()
         {
             document_artiste da = new document_artiste();
-            artiste artiste = dalArtiste.ObtientTousLesArtistes(HttpContext.User.Identity.Name).artiste;
+            artiste artiste = dalArtiste.ObtientUtilisateurA(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).artiste;
             if (artiste.document_artiste.Count() > 0)
             {
                 return RedirectToAction("/index");
@@ -180,7 +180,7 @@ namespace Art_fundingV0.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult chargerDocs([Bind(Include = "iddocument_artiste, CNI,justificatif domicile ")] document_artiste document_artiste, HttpPostedFileBase file, HttpPostedFileBase file2)
         {
-            artiste artiste = dalArtiste.ObtientTousLesArtistes(HttpContext.User.Identity.Name).artiste;
+            artiste artiste = dalArtiste.ObtientUtilisateurA(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).artiste;
 
             if (ModelState.IsValid)
             {
@@ -204,20 +204,19 @@ namespace Art_fundingV0.Controllers
                     document_artiste.justificatif_de_domicile = imageData2;
 
                     int id;
-                    if (int.TryParse(HttpContext.User.Identity.Name, out id))
-                    {
-                        artiste = context.utilisateurartistes.Find(id).artiste;
+
+                    artiste = context.utilisateurartistes.Find(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).artiste;
 
 
-                        document_artiste.artiste = artiste;
+                    document_artiste.artiste = artiste;
 
 
-                        context.document_artiste.Add(document_artiste);
-                        context.SaveChanges();
-                        ViewBag.success = "Uploaded Filed Saved Succesfully in a folder!";
-                        return RedirectToAction("/", "UserArtiste");
+                    context.document_artiste.Add(document_artiste);
+                    context.SaveChanges();
+                    ViewBag.success = "Uploaded Filed Saved Succesfully in a folder!";
+                    return RedirectToAction("/", "UserArtiste");
 
-                    }
+
                 }
             }
 
@@ -253,22 +252,18 @@ namespace Art_fundingV0.Controllers
 
                     contrat_Ecole.fichier_contrat = imageData;
 
-
-                    int id;
-                    if (int.TryParse(HttpContext.User.Identity.Name, out id))
-                    {
-                        artiste artiste = context.utilisateurartistes.Find(id).artiste;
+                    artiste artiste = context.utilisateurartistes.Find(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).artiste;
 
 
-                        contrat_Ecole.artiste = artiste;
+                    contrat_Ecole.artiste = artiste;
 
 
-                        context.contrat_ecole.Add(contrat_Ecole);
-                        context.SaveChanges();
-                        ViewBag.success = "Uploaded Filed Saved Succesfully in a folder!";
-                        return RedirectToAction("/", "UserArtiste");
+                    context.contrat_ecole.Add(contrat_Ecole);
+                    context.SaveChanges();
+                    ViewBag.success = "Uploaded Filed Saved Succesfully in a folder!";
+                    return RedirectToAction("/", "UserArtiste");
 
-                    }
+
                 }
             }
 

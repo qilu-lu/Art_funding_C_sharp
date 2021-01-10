@@ -24,11 +24,11 @@ namespace Art_fundingV0.Controllers
 
         public ActionResult TelechargerDocs([Bind(Include = "iddocument_entreprise, Attestation_assurance,Kbis,RIB,Dernier_statut ")] document_entreprise document_Entreprise, HttpPostedFileBase file, HttpPostedFileBase file2, HttpPostedFileBase file3, HttpPostedFileBase file4)
         {
-            
+
             if (ModelState.IsValid)
             {
                 // convert file choose by user into byte[]
-                if (file.ContentLength > 0&& file2.ContentLength > 0 && file3.ContentLength > 0 && file4.ContentLength > 0)
+                if (file.ContentLength > 0 && file2.ContentLength > 0 && file3.ContentLength > 0 && file4.ContentLength > 0)
                 {
                     byte[] imageData = null;
                     byte[] imageData2 = null;
@@ -55,27 +55,22 @@ namespace Art_fundingV0.Controllers
                     document_Entreprise.Kbis = imageData2;
                     document_Entreprise.RIB = imageData3;
                     document_Entreprise.Dernier_statut = imageData4;
-                    int id;
-                    if (int.TryParse(HttpContext.User.Identity.Name, out id)) { 
-                    entreprise entreprise = context.utilisateurentreprises.Find(id).entreprise;
-                
-                   
-                    document_Entreprise.entreprise=entreprise;
-                   
+                    entreprise entreprise = context.utilisateurentreprises.Find(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).entreprise;
+                    document_Entreprise.entreprise = entreprise;
 
                     context.document_entreprise.Add(document_Entreprise);
                     context.SaveChanges();
                     ViewBag.success = "Uploaded Filed Saved Succesfully in a folder!";
                     return RedirectToAction("/", "UserEntreprise");
-                        //pourquoi la view piecemanquant
-                    }
+                    //pourquoi la view piecemanquant
+
                 }
             }
 
-           
+
 
             return View(document_Entreprise);
-          
+
         }
     }
 }

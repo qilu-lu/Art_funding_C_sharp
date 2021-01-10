@@ -25,7 +25,7 @@ namespace Art_fundingV0.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ContactAsync(Models.ContactModel model)
         {
-            entreprise entreprise = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name).entreprise;
+            entreprise entreprise = dalEntreprise.ObtientUtilisateurE(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).entreprise;
             artiste artiste = dalArtiste.ObtientTousLesArtistes(model.artisteId);
             if (ModelState.IsValid)
             {
