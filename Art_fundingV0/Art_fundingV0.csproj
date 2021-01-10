@@ -300,6 +300,8 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Style\styleConnexionArtiste.css" />
     <Content Include="Style\styleConnexionEntreprise.css" />
+    <Content Include="Style\styleIndexEntreprise.css" />
+    <Content Include="Style\styleRechercheArtiste.css" />
     <Content Include="Style\styles.css" />
     <Content Include="Style\styleLoginArtiste.css" />
     <Content Include="Style\stylesCreerCompteEntreprise.css" />
@@ -323,7 +325,6 @@
     <Content Include="Views\userEntreprise\CreerCompte.cshtml" />
     <Content Include="Views\UserArtiste\CreerCompte.cshtml" />
     <Content Include="Views\userEntreprise\paiement.cshtml" />
-    <Content Include="Views\userEntreprise\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\userEntreprise\envoyerDossier.cshtml" />
     <Content Include="Views\RedigerMail\ContactAsync.cshtml" />
@@ -360,6 +361,9 @@
     <Content Include="Views\Shared\LayoutConnexionEntreprise.cshtml" />
     <Content Include="Views\UserArtiste\Login.cshtml" />
     <Content Include="Views\Shared\LayoutConnexionArtiste.cshtml" />
+    <Content Include="Views\Shared\LayoutRechercheArtiste.cshtml" />
+    <Content Include="Views\Shared\LayoutIndexEntreprise.cshtml" />
+    <Content Include="Views\userEntreprise\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

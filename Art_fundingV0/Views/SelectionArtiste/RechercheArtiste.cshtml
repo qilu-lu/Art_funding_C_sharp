@@ -1,13 +1,13 @@
 ﻿@model Art_fundingV0.ViewModels.RechercheArtisteViewModel
 @{
-    Layout = "~/Views/Shared/LayoutAF.cshtml";
+    Layout = "~/Views/Shared/LayoutRechercheArtiste.cshtml";
 }
 
 <style>
     .card-fixed-height {
-        max-height: 250px;
+        max-height: 450px;
         min-height: 200px;
-        height: 250px;
+        height: 450px;
     }
 
     .image-fixed-center {
@@ -17,12 +17,11 @@
         margin-right: auto;
         display: block;
     }
-
 </style>
 
 <div>
-    <h1>Vue projets d'artiste</h1>
-
+    <h1> "Si vous croyez en un projet, vous devez le soutenir",<br/> dixit Vin Diesel.</h1>
+    <br />
     <div class="container">
         <div class="row">
             @foreach (var artiste in Model.listArtiste)
@@ -38,14 +37,16 @@
                                     {*@
                                 <!--img src="/BoiteArtiste/getPhoto?idPhoto=photo.idphoto" />-->
 
-                                <h5 class="card-title">@artiste.nom @artiste.prenom @artiste.categorie.nom</h5>
+                                <h5 class="card-title">@artiste.nom @artiste.prenom</h5><br />
+                                <h5 class="card-title"> @artiste.categorie.nom</h5>
                                 <p class="card-text">@artiste.Disponibilite.Value.ToString("MM/dd/yyyy")</p>
-                                <a href="/BoiteArtiste/Portfoliu?idArtiste=@artiste.idartiste" class="btn btn-primary stretched-link">Voir le projet</a>
+                                <p>@artiste.description</p>
+                                <a href="/BoiteArtiste/Portfoliu?idArtiste=@artiste.idartiste" class="btn btn-success stretched-link" style="font-size: 16px;">J'explore</a>
                                 @if (@artiste.photos.Count() > 0)
                                 {
-                                   
-                                        <br /><img class="image-fixed-center" src="/BoiteArtiste/getPhoto?idPhoto=@artiste.photos.FirstOrDefault().idphoto" alt="Image de l'Artiste" />
-                                   
+
+                                    <br /><img class="image-fixed-center" src="/BoiteArtiste/getPhoto?idPhoto=@artiste.photos.FirstOrDefault().idphoto" alt="Image de l'Artiste" />
+
                                 }
                             </div>
                         </div>
@@ -55,3 +56,4 @@
         </div>
     </div>
 </div>
+

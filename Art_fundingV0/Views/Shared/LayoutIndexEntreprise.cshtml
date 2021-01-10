@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Inscription</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Style/styleIndexEntreprise.css" rel="stylesheet" />
+    <script src="~/Scripts/Font-Awesome.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-toggler navbar-dark bg-dark w-100">
+
+        <!--  D R O P D O W N  M E N U  -->
+        <div class="dropdown">
+            <a class="navlink" id="artFunding">Art_F</a>
+            <div class="dropdown-content">
+                <a href="#">Transformez votre talent en métier</a>
+                <a href="#">Qui sommes-nous ?</a>
+                <a href="#">Nos partenaires</a>
+            </div>
+        </div>
+        <!--  E N D  D R O P D O W N  M E N U  -->
+        <!--
+        <div class="navbar-header">
+             <a class="navbar-brand" href="#"></a>
+        </div> -->
+
+
+        <div class="nav navbar-nav">
+            <a href="http://google.com">Découvrez nos projets</a>
+        </div>
+        <form class="navbar-form navbar-left" action="/action_page.php" id="search1">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Rechercher...">
+                <div class="input-group-btn" id="search2">
+                    <button class="btn btn-default" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="nav navbar-nav navbar-right">
+            <a href="#"><i class="fas fa-user-circle"></i> Sign Up</a>
+        </div>
+        <div class="nav navbar-nav navbar-right">
+            <a href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
+        </div>
+    </nav>
+
+
+    @RenderBody()
+
+<footer>
+    <div class="footer">
+        <ul class="icons">
+            <li class="d-inline"><a href="http://facebook.com"><i class="fab fa-facebook-f" style="color: white;" alt="Facebook" id="icon1"></i></a></li>
+            <li class="d-inline"><a href="http://instagram.com"><i class="fab fa-instagram" alt="Instagram" style="color: white;" id="icon2"></i></a></li>
+            <li class="d-inline"><a href="http://linkedin.com"><i class="fab fa-linkedin-in" alt="Linkedin" style="color: white;" id="icon3"></i></a></li>
+            <li class="d-inline"><a href="/"><i class="far fa-envelope" style="color: white;" id="icon4"></i></a></li>
+        </ul>
+    </div>
+</footer>
+</body>
+</html>

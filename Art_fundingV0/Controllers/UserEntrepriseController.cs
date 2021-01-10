@@ -100,6 +100,7 @@ namespace Art_fundingV0.Controllers
         {
             if (ModelState.IsValid)
             {
+               
                 //verifie si le compte existe deja
                 var EntreprisemailAlreadyExists = dalEntreprise.getUtilisateurEntrepriseParEmail(utilisateur.adresse_mailUE.ToLower());
                 if (EntreprisemailAlreadyExists != null)

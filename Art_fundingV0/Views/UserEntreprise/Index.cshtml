@@ -1,64 +1,64 @@
 ﻿@model  Art_fundingV0.Models.utilisateurentreprise
 @{
-    Layout = "~/Views/Shared/LayoutAF.cshtml";
+    Layout = "~/Views/Shared/LayoutIndexEntreprise.cshtml";
 }
-<!--   	<img class="center" src="images/imagePrincipale.jpeg">
-    <p id="art"><span>art_</span></p>
-    <p id="fun">fun</p>
-    <p id="ding"><span>ding</span></p> -->
-<!-- <h2><span>Transformer l'art en métier</span></h2>
-<h3 id="entreprise"><a href="https://fr.wikipedia.org/wiki/entreprise">Entreprise</h3>
-<h3 id="artiste"><a href="https://fr.wikipedia.org/wiki/Artiste">Artiste</h3> -->
-<div>
-    <h1 id="transformez">"Transformez le talent en savoir-faire." <span>Art_Funding</span></h1>
+
+<div class="container" style="text-align: center; margin-top: 15em; font-family: 'Raleway', sans-serif;">
+    <h1>
+        L'Art, c'est quand l'admiration d'une oeuvre suscite en vous le désir d'en faire autant.
+    </h1>
 </div>
-<!---<img class="center" src="images/principale.jpeg"> -->
-<div class="container-fluid" id="coverflow">
-    <div class="gallery">
-        @using (Html.BeginForm("RechercheArtiste", "SelectionArtiste", new { searchString = "peintre" }, FormMethod.Post))
-        {
-            <input class="gallery-item" type="image" src="~/Content/images/peinture_4.jpg" />
-        }
-        <p>Nos peintres</p>
+<div class="container-fluid" id="coverflow" style="margin-top: 17em;">
+   
+     <div class="row w-100">
+        <div class="col mx-2" style="text-align: center;">
+            <img src="~/Content/images/peinture_4.jpg" />
+            @using (Html.BeginForm("RechercheArtiste", "SelectionArtiste", new { searchString = "peintre" }, FormMethod.Post))
+            {
+                <button class="btn btn-link" style="font-size: 22px; text-decoration: none; margin-top: -48%">NOS PEINTRES</button>
+            }
+
+        </div>
+        <div class="col mx-2" style="text-align: center;">
+            <img src="~/Content/images/Photographe.jpg" />
+            @using (Html.BeginForm("RechercheArtiste", "SelectionArtiste", new { searchString = "photographe" }, FormMethod.Post))
+            {
+                <button class="btn btn-link" style="font-size: 22px; color: white; text-decoration: none; margin-top: -48%">NOS PHOTOGRAPHES</button>
+            }
+
+        </div>
+        <div class="col mx-2" style="text-align: center;">
+            <img src="~/Content/images/Designers.jpg" />
+            @using (Html.BeginForm("RechercheArtiste", "SelectionArtiste", new { searchString = "designer" }, FormMethod.Post))
+            {
+                <button class="btn btn-link" style="font-size: 22px; color: white; text-decoration: none; margin-top: -48%">NOS DESIGNERS</button>
+            }
+        </div>
+        <div class="col mx-2" style="text-align: center;">
+            <img src="~/Content/images/Styliste.jpg" />
+            @using (Html.BeginForm("RechercheArtiste", "SelectionArtiste", new { searchString = "styliste" }, FormMethod.Post))
+            {
+                <button class="btn btn-link" style="font-size: 22px; color: #FFC107; text-decoration: none; margin-top: -48%">NOS STYLISTES</button>
+            }
+        </div>
+        <div class="col mx-2" style="text-align: center;">
+            <img src="~/Content/images/ArtisteMonde.png" />
+            @using (Html.BeginForm("RechercheArtiste", "SelectionArtiste", new { searchString = "artisteDuMonde" }, FormMethod.Post))
+            {
+                <button class="btn btn-link" style="font-size: 22px; color: white; text-decoration: none; margin-top: -48%">NOS ARTISTES<br />DU MONDE</button>
+
+            }
+        </div>
+        <div class="col mx-2" style="text-align: center;">
+            <img style="box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);" src="~/Content/images/Dessinateur.jpg" />
+            @using (Html.BeginForm("RechercheArtiste", "SelectionArtiste", new { searchString = "dessinateur" }, FormMethod.Post))
+            {
+                <button class="btn btn-link" style="font-size: 22px; text-decoration: none; margin-top: -48%;">NOS DESSINATEURS</button>
+            }
+
+        </div>
+
     </div>
-    <div class="gallery">
-        @using (Html.BeginForm("RechercheArtiste", "SelectionArtiste", new { searchString = "photographe" }, FormMethod.Post))
-        {
-            <input class="gallery-item" type="image" src="~/Content/images/Photographe.jpg" />
-        }
-        <p>Nos photographes</p>
-    </div>
-    <div class="gallery">
-        @using (Html.BeginForm("RechercheArtiste", "SelectionArtiste", new { searchString = "designer" }, FormMethod.Post))
-        {
-            <input class="gallery-item" type="image" src="~/Content/images/Designers.jpg" />
-        }
-        <p>Nos designers</p>
-    </div>
-    <div class="gallery">
-        @using (Html.BeginForm("RechercheArtiste", "SelectionArtiste", new { searchString = "styliste" }, FormMethod.Post))
-        {
-            <input class="gallery-item" type="image" src="~/Content/images/Styliste.jpg" />
-        }
-        <p>Nos stylistes</p>
-    </div>
-    <div class="gallery">
-        @using (Html.BeginForm("RechercheArtiste", "SelectionArtiste", new { searchString = "artiste Du Monde" }, FormMethod.Post))
-        {
-            <input class="gallery-item" type="image" src="~/Content/images/ArtisteMonde.png" />
-        }
-        <p>Nos artistes du monde</p>
-    </div>
-    <div class="gallery">
-        @using (Html.BeginForm("RechercheArtiste", "SelectionArtiste", new { searchString = "dessinateur" }, FormMethod.Post))
-        {
-            <input class="gallery-item" type="image" src="~/Content/images/Dessinateur.jpg" />
-        }
-        <p>Nos dessinateurs</p>
-    </div>
-    <!-- <section class="container" id="content">
-        <img src="111.jpg">
-    </section> -->
 </div>
 
 

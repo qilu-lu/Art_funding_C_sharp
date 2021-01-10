@@ -34,6 +34,13 @@ namespace Art_fundingV0.Controllers
             List<artiste> listArtiste = new List<artiste>();
                listArtiste = dalArtiste.ObtientTousLesArtistes();
             rechercheArtisteViewModel.listArtiste = listArtiste;
+            foreach (artiste a in rechercheArtisteViewModel.listArtiste)
+            {
+                if (a.description.Count() > 100)
+                {
+                    a.description = a.description.Substring(0, 97) + "...";
+                }
+            }
             return View(rechercheArtisteViewModel);
             }
 

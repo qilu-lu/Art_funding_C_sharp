@@ -56,9 +56,14 @@
                             @Html.ValidationMessageFor(m => m.entreprise.prenom_de_l_ayant_droit)
                         </div>
                         <div class="col" style="text-align: center; color: white; font-size: 22px;">
-                            @Html.LabelFor(m => m.entreprise.adresse_email)
-                            @Html.TextBoxFor(m => m.entreprise.adresse_email)
-                            @Html.ValidationMessageFor(m => m.entreprise.adresse_email)
+                            @Html.LabelFor(m => m.adresse_mailUE)
+                            @Html.TextBoxFor(m => m.adresse_mailUE)
+                            @Html.ValidationMessageFor(m => m.adresse_mailUE)
+                        </div>
+                        <div class="col" style="text-align: center; color: white; font-size: 22px;">
+                            @Html.LabelFor(m => m.mot_de_passeUE)
+                            @Html.PasswordFor(m => m.adresse_mailUE)
+                            @Html.ValidationMessageFor(m => m.adresse_mailUE)
                         </div>
                     </div>
                 </div>
