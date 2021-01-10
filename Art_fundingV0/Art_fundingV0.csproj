@@ -245,6 +245,8 @@
     <Content Include="Content\images\Designers.jpg" />
     <Content Include="Content\images\Dessinateur.jpg" />
     <Content Include="Content\images\HomeBackgroundFond.png" />
+    <Content Include="Content\images\image %2810%29.png" />
+    <Content Include="Content\images\image %2811%29.png" />
     <Content Include="Content\images\image %282%29.png" />
     <Content Include="Content\images\image %287%29.png" />
     <Content Include="Content\images\jess-bailey-l3N9Q27zULw-unsplash.jpg" />
@@ -295,6 +297,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Style\styleConnexionArtiste.css" />
+    <Content Include="Style\styleConnexionEntreprise.css" />
     <Content Include="Style\styles.css" />
     <Content Include="Style\styleLoginArtiste.css" />
     <Content Include="Style\stylesCreerCompteEntreprise.css" />
@@ -315,12 +319,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\userEntreprise\PieceManquant.cshtml" />
-    <Content Include="Views\UserArtiste\Login.cshtml" />
     <Content Include="Views\userEntreprise\CreerCompte.cshtml" />
     <Content Include="Views\UserArtiste\CreerCompte.cshtml" />
     <Content Include="Views\userEntreprise\paiement.cshtml" />
     <Content Include="Views\userEntreprise\Index.cshtml" />
-    <Content Include="Views\userEntreprise\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\userEntreprise\envoyerDossier.cshtml" />
     <Content Include="Views\RedigerMail\ContactAsync.cshtml" />
@@ -353,6 +355,10 @@
     <Content Include="Views\DashboardArtiste\MonProfil.cshtml" />
     <Content Include="Views\Shared\LayoutCreerCompteEntreprise.cshtml" />
     <Content Include="Views\Shared\LayoutTelechargerDocs.cshtml" />
+    <Content Include="Views\userEntreprise\Login.cshtml" />
+    <Content Include="Views\Shared\LayoutConnexionEntreprise.cshtml" />
+    <Content Include="Views\UserArtiste\Login.cshtml" />
+    <Content Include="Views\Shared\LayoutConnexionArtiste.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

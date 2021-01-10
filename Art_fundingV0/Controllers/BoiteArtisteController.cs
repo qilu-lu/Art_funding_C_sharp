@@ -68,7 +68,7 @@ namespace Art_fundingV0.Controllers
             byte[] fileContents = dalArtiste.ObtientPhoto(idPhoto);
             Response.Clear();
             Response.AddHeader("Content-Length", fileContents.Length.ToString());
-            Response.AddHeader("Content-Disposition", "attachment; filename=FILENAME");
+            Response.AddHeader("Content-Disposition", "attachment; filename=image.png");
             Response.OutputStream.Write(fileContents, 0, fileContents.Length);
             Response.Flush();
             Response.End();

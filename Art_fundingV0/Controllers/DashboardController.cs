@@ -37,6 +37,13 @@ namespace Art_fundingV0.Controllers
             int identreprise = entreprise.identreprise;
             
             dashboardEntrepriseViewModel.listArtiste = dalArtiste.ObtientArtistesContacte(identreprise);
+            foreach (artiste a in dashboardEntrepriseViewModel.listArtiste)
+            {
+                if (a.description.Count() > 100)
+                {
+                    a.description = a.description.Substring(0, 97) + "...";
+                }
+            }
             return View(dashboardEntrepriseViewModel);
         }
         public ActionResult DossierDeFinancement()

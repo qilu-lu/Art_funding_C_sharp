@@ -8,11 +8,11 @@ namespace Art_fundingV0.Models
 {
     public class ContactModel
     {
-        [Required, Display(Name = "Sender Name")]
-        public string SenderName { get; set; }
-        [Required, Display(Name = "Sender Email"), EmailAddress]
-        public string SenderEmail { get; set; }
+
         [Required]
         public string Message { get; set; }
+
+        [Required]
+        public int artisteId { get; set; }
     }
 }

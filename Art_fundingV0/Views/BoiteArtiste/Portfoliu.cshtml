@@ -1,5 +1,7 @@
 ﻿@model Art_fundingV0.ViewModels.BoiteArtisteViewModel
 @{
+    /**/
+
     Layout = "~/Views/Shared/LayoutUA.cshtml";
 }
 
@@ -79,16 +81,15 @@
                         <button class="btn btn-danger"><a href="javascript:history.go(-1)">Retour</a></button>
                     </div>
                     <div class="col">
-                        @*<button class="btn btn-success">J'apprécie fortement cette artiste. C'est décidé, je l'ajoute à ma selection :)</button>*@
                         <a class="btn btn-success" id="boutonBAA" href="/BoiteArtiste/AjouterArtiste?idArtiste=@Model.artiste.idartiste">
-
                             J'apprécie fortement cette artiste. C'est décidé, je l'ajoute à ma selection :)
                         </a>
-
-
                     </div>
-
-
+                    <div class="col">
+                        <a class="btn btn-success" id="boutonBAA" href="/RedigerMail/ContactAsync?idArtiste=@Model.artiste.idartiste">
+                            Envoyer Message
+                        </a>
+                    </div>
 
 
 

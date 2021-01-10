@@ -11,28 +11,30 @@ using Art_fundingV0.Models;
 namespace Art_fundingV0.Controllers
 {
     public class RedigerMailController : Controller
-    { private IDalEntreprise dalEntreprise = new DalEntreprise();
+    {
+        private IDalEntreprise dalEntreprise = new DalEntreprise();
+        private IDalArtiste dalArtiste = new DalArtiste();
 
         [HttpGet]
         public ActionResult ContactAsync()
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ContactAsync(Models.ContactModel model)
         {
             entreprise entreprise = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name).entreprise;
-           
+            artiste artiste = dalArtiste.ObtientTousLesArtistes(model.artisteId);
             if (ModelState.IsValid)
             {
                 var mail = new MailMessage();
-                mail.To.Add(new MailAddress(model.SenderEmail));
                 mail.Subject = "ArtFunding - Une entreprise vous a envoye un message";
-                model.SenderName = entreprise.artiste.nom;
-                model.SenderEmail = entreprise.artiste.utilisateurartistes.First().mailUA;
-                model.Message = "Vous avez recu un message de " + entreprise.raison_Sociale  + "<br>" + model.Message;
-                mail.Body = string.Format("<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>", model.SenderName, model.SenderEmail, model.Message);
+                string SenderName = artiste.nom;
+                string SenderEmail = artiste.utilisateurartistes.FirstOrDefault().mailUA;
+                mail.To.Add(new MailAddress(SenderEmail));
+                mail.Body = "Vous avez recu un message de " + entreprise.raison_Sociale + "<br>" + model.Message;
                 mail.IsBodyHtml = true;
                 using (var smtp = new SmtpClient())
                 {
