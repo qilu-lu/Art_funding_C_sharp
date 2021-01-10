@@ -35,6 +35,8 @@ namespace Art_fundingV0.Models
         byte[] ObtientPhoto(int id);
         List<artiste> ObtientArtistesEnFormation(int idEntreprise);
         List<artiste> ObtientArtistesdansBoiteArtiste(int idEntreprise);
+
+        void ContactArtistesBoiteArtiste(int idEntreprise, int idArtiste);
         void SupprimerPhoto(artiste artiste, int idPhoto);
         utilisateurartiste ObtientUtilisateurA(int id);
     }

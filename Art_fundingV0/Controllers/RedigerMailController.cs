@@ -14,7 +14,7 @@ namespace Art_fundingV0.Controllers
     {
         private IDalEntreprise dalEntreprise = new DalEntreprise();
         private IDalArtiste dalArtiste = new DalArtiste();
-
+        public art_fundingEntities context;
         [HttpGet]
         public ActionResult ContactAsync()
         {
@@ -27,8 +27,10 @@ namespace Art_fundingV0.Controllers
         {
             entreprise entreprise = dalEntreprise.ObtientUtilisateurE(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).entreprise;
             artiste artiste = dalArtiste.ObtientTousLesArtistes(model.artisteId);
+            
             if (ModelState.IsValid)
             {
+                dalArtiste.ContactArtistesBoiteArtiste(entreprise.identreprise, artiste.idartiste);
                 var mail = new MailMessage();
                 mail.Subject = "ArtFunding - Une entreprise vous a envoye un message";
                 string SenderName = artiste.nom;
@@ -41,6 +43,7 @@ namespace Art_fundingV0.Controllers
                     await smtp.SendMailAsync(mail);
                     return RedirectToAction("SuccessMessage");
                 }
+               
             }
             return View(model);
         }

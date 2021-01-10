@@ -246,6 +246,25 @@ namespace Art_fundingV0.Models
             List<artiste> artistes = context.artistes.Where(a => a.nom.Contains(SearchString) || a.categorie.nom.Contains(SearchString) || a.prenom.Contains(SearchString)).ToList();
             return artistes;
         }
+
+        public void ContactArtistesBoiteArtiste(int idEntreprise, int idArtiste)
+        {
+            List<boite_artiste> bas = context.boite_artiste.Where(boite =>  boite.id_entreprise == idEntreprise && boite.id_artiste == idArtiste).ToList();
+            if (bas.Count() > 0)
+            {
+                bas.First().etat="contacte";
+            }
+            else
+            {
+                boite_artiste ba = new boite_artiste();
+                ba.id_artiste = idArtiste;
+                ba.id_entreprise = idEntreprise;
+                ba.etat = "contacte";
+                context.boite_artiste.Add(ba);
+            }
+            context.SaveChanges();
+        }
+
         public List<artiste> ObtientArtistesdansBoiteArtiste(int idEntreprise)
         {
             List<boite_artiste> listeBoite = context.boite_artiste.Where(boite => boite.id_entreprise == idEntreprise).ToList();
