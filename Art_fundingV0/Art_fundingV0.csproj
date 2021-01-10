@@ -227,6 +227,7 @@
     <Compile Include="ViewModels\BoiteArtisteViewModel.cs" />
     <Compile Include="ViewModels\CreerArtisteViewModel.cs" />
     <Compile Include="ViewModels\CreerEntrepriseViewModel.cs" />
+    <Compile Include="ViewModels\DashboardEntrepriseViewModel.cs" />
     <Compile Include="ViewModels\DossierFinancementViewModel.cs" />
     <Compile Include="ViewModels\EntrepriseViewModel.cs" />
     <Compile Include="ViewModels\ArtistePhotosViewModel.cs" />

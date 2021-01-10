@@ -1,4 +1,5 @@
 ﻿using Art_fundingV0.Models;
+using Art_fundingV0.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,11 +32,12 @@ namespace Art_fundingV0.Controllers
         // Les vues endessous ne sont pas encore créer
         public ActionResult ArtisteContactes()
         {
+            DashboardEntrepriseViewModel dashboardEntrepriseViewModel = new DashboardEntrepriseViewModel();
             entreprise entreprise = dalEntreprise.ObtientToutesLesEntreprises(HttpContext.User.Identity.Name).entreprise;
             int identreprise = entreprise.identreprise;
-            List<artiste> listArtiste = new List<artiste>();
-            listArtiste = dalArtiste.ObtientArtistesContacte(identreprise);
-            return View(listArtiste);
+            
+            dashboardEntrepriseViewModel.listArtiste = dalArtiste.ObtientArtistesContacte(identreprise);
+            return View(dashboardEntrepriseViewModel);
         }
         public ActionResult DossierDeFinancement()
         {
