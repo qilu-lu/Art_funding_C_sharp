@@ -12,6 +12,7 @@ namespace Art_fundingV0.Controllers
     {
         
             private IDalArtiste dalArtiste;
+        private IDalEntreprise dalEntreprise=new DalEntreprise();
             public SelectionArtisteController() : this(new DalArtiste())
             {
             }
@@ -30,6 +31,8 @@ namespace Art_fundingV0.Controllers
 
             public ActionResult RechercheArtiste()
             {
+            entreprise entreprise = dalEntreprise.ObtientToutesLesEntreprises(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name));
+            ViewBag.nom_entreprise = entreprise.prenom_de_l_ayant_droit;
             RechercheArtisteViewModel rechercheArtisteViewModel = new RechercheArtisteViewModel();
             List<artiste> listArtiste = new List<artiste>();
                listArtiste = dalArtiste.ObtientTousLesArtistes();
@@ -47,6 +50,8 @@ namespace Art_fundingV0.Controllers
         [HttpPost]
         public ActionResult RechercheArtiste(string searchString)
         {
+            entreprise entreprise = dalEntreprise.ObtientUtilisateurE(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).entreprise;
+            ViewBag.nom_entreprise = entreprise.prenom_de_l_ayant_droit;
             RechercheArtisteViewModel rechercheArtisteViewModel = new RechercheArtisteViewModel();
             
             List<artiste> list = dalArtiste.RechercheArtistes(searchString);

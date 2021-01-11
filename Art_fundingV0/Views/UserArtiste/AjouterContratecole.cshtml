@@ -1,46 +1,43 @@
 ﻿@model Art_fundingV0.Models.contrat_ecole
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/LayoutAjouterContratecole.cshtml";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>TelechargerDocs</title>
-</head>
-<body>
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
     @using (Html.BeginForm("AjouterContratecole", "UserArtiste", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>pdf</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.fichier_contrat, htmlAttributes: new { @class = "control-label col-md-2" })
-                
+            <h1 style="color: white; font-size: 90px;"> L'ensemble de l'équipe Art_Funding vous félicite ! </h1>
+        </div>
+        <div class="form-horizontal my-5">
+            <h2 style="color: #FFC107; margin-top: 20%; text-align: center;">Afin de finaliser le financement auprès de l'entreprise,<br />vous devez charger ci-dessous le contrat entre vous et l'organisme de formation. </h2>
+        </div>
+        
+        <div class="container-sm">
+            @Html.ValidationSummary(true, "", new { @class = "text-center" })
+            <div class="row">
+                <div class="col my-5 text-center">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.fichier_contrat, htmlAttributes: new { @style = "color: white; font-size: 26px;" })
+                    </div>
+                </div>
 
-                <div class="col-md-10">
-                    <input name="file" type="file"><br />
-                    
+                <div class="col my-5 text-center">
+                    <input name="file" type="file" style="font-size: 22px;">
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                    @*<input type="submit" value="Create" class="btn btn-default" />*@
+            <div class="row">  
+                <div class="col my-5 text-center">
+                    <button class="btn btn-danger" style="color: white; font-size: 22px;">@Html.ActionLink("Retour", "Index")</button>
                 </div>
+
+                <div class="col my-5">
+                        <button class=" btn btn-success" type="submit" style="color: white; font-size: 22px;">Je charge mon contrat. Le rêve se concrétise :) </button>
+                    </div>
             </div>
         </div>
     }
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
-</body>
-</html>
+

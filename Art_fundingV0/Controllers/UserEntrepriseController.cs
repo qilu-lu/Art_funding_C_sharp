@@ -48,7 +48,9 @@ namespace Art_fundingV0.Controllers
                 return RedirectToAction("PieceManquant");
             }
             // return RedirectToAction("Index");
+            ViewBag.prenom = utilisateurentreprise.entreprise.prenom_de_l_ayant_droit;
             return View();
+            
         }
 
         [HttpPost]
