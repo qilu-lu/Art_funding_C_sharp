@@ -1,0 +1,47 @@
+﻿<html>
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>Creation Compte Artiste</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Style/styleCreationCompteArtiste.css" rel="stylesheet" />
+    <script src="~/Scripts/Font-Awesome.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-toggler navbar-dark bg-dark w-100">
+
+        <!--  D R O P D O W N  M E N U  -->
+        <div class="dropdown">
+            <a class="navlink" id="artFunding">Art_F</a>
+            <div class="dropdown-content">
+                <a href="#">Transformez votre talent en metier</a>
+                <a href="#">Qui sommes-nous ?</a>
+                <a href="#">Nos partenaires</a>
+            </div>
+        </div>
+        <!--  E N D  D R O P D O W N  M E N U  -->
+        
+    </nav>
+
+
+    @RenderBody()
+
+    <footer>
+        <div class="footer">
+            <ul class="icons">
+                <li class="d-inline"><a href="http://facebook.com"><i class="fab fa-facebook-f" alt="Facebook" id="icon1"></i></a></li>
+                <li class="d-inline"><a href="http://instagram.com"><i class="fab fa-instagram" alt="Instagram" id="icon2"></i></a></li>
+                <li class="d-inline"><a href="http://linkedin.com"><i class="fab fa-linkedin-in" alt="Linkedin" id="icon3"></i></a></li>
+                <li class="d-inline"><a href="/"><i class="far fa-envelope" id="icon4"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
+
+

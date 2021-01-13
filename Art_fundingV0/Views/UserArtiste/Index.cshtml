@@ -1,14 +1,40 @@
 ﻿
 @{
 
-    Layout = "/Views/Shared/LayoutUA.cshtml";
+    Layout = "~/Views/Shared/LayoutConnexionArtiste.cshtml";
 
 }
-<style>
-    body {
-        background-color: darkgreen;
-    }
-</style>
-@Html.ActionLink("Mon Profil", "MonProfil", "DashboardArtiste")
-<br />
-@Html.ActionLink("Envoyer Contrat", "AjouterContratecole", "userArtiste")
+
+<div class="container-sm mt-4 text-center">
+    <img src="~/Content/logo/ART_FLogoBlack.png" />
+</div>
+
+
+<div class="container-sm" style="margin-top: 6%; margin-left: 10%; text-align: center;">
+    <div class="row my-5 text-center" style="margin-left: 165px; margin-bottom: 10px; black; font-size: 25px;">
+        <h1 style="margin-left: -26%; color: white;">
+            Je suis sur mon Dashboard 
+        </h1>
+    </div>
+
+    <div class="container-sm text-center" style="margin-top: 150px; margin-left: -7%;">
+        <div class="row text-center my-5">
+            <div class="col my-5">
+                <button class="btn btn-whatever" style="font-size: 30px; background-color: #3f1f34;">
+                    @Html.ActionLink("Mon Profil", "MonProfil", "DashboardArtiste")
+                </button>
+            </div>
+            <div class="col my-5">
+                <button class="btn btn-whatever" style="font-size: 30px; background-color: #3f1f34; margin-right: 53%;">
+                    @Html.ActionLink("Envoyer Contrat", "AjouterContratecole", "userArtiste")
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    @*<br />
+        @Html.ActionLink("Mes dossiers", "AjouterContratecole", "userArtiste")*@

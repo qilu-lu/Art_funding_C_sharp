@@ -1,103 +1,115 @@
 ﻿@model Art_fundingV0.ViewModels.BoiteArtisteViewModel
 @{
-    /**/
-
-    Layout = "~/Views/Shared/LayoutUA.cshtml";
+    Layout = "~/Views/Shared/LayoutPortfolio.cshtml";
 }
 
+@*<style>
+    .fit {
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>*@
 
 @if (!string.IsNullOrEmpty(@Model.msg))
 {
-    <script>alert("@Model.msg");</script>
+    <script>alert("@Html.Raw(Model.msg)")</script>
 }
 
-<div>
-    @using (Html.BeginForm())
-    {
+
+@using (Html.BeginForm())
+{
+    <div class="info-artiste">
         <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-            @Html.LabelFor(m => m.artiste.nom)
+            @Html.LabelFor(m => m.artiste.nom):
             @Model.artiste.nom
         </div>
 
         <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-            @Html.LabelFor(m => m.artiste.prenom)
+            @Html.LabelFor(m => m.artiste.prenom):
             @Model.artiste.prenom
         </div>
 
         <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-            @Html.LabelFor(m => m.artiste.date_de_naissance)
-            @Model.artiste.date_de_naissance
+            @Html.LabelFor(m => m.artiste.date_de_naissance):
+            @Model.artiste.date_de_naissance.ToString("MM/dd/yyyy")
         </div>
 
         <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-            @Html.LabelFor(m => m.artiste.adresse)
+            @Html.LabelFor(m => m.artiste.adresse):
             @Model.artiste.adresse
         </div>
 
         <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-            @Html.LabelFor(m => m.artiste.code_postale)
+            @Html.LabelFor(m => m.artiste.code_postale):
             @Model.artiste.code_postale
         </div>
 
         <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-            @Html.LabelFor(m => m.artiste.ville)
+            @Html.LabelFor(m => m.artiste.ville):
             @Model.artiste.ville
         </div>
 
         <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-            @Html.LabelFor(m => m.artiste.pays)
+            @Html.LabelFor(m => m.artiste.pays):
             @Model.artiste.pays
         </div>
         <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-            @Html.LabelFor(m => m.artiste.numero)
+            @Html.LabelFor(m => m.artiste.numero):
             @Model.artiste.numero
         </div>
         <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-            @Html.LabelFor(m => m.artiste.description)
+            @Html.LabelFor(m => m.artiste.description):
             @Model.artiste.description
         </div>
         <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-            @Html.LabelFor(m => m.artiste.Disponibilite)
+            @Html.LabelFor(m => m.artiste.Disponibilite):
             @Model.artiste.Disponibilite.Value.ToString("MM/dd/yyyy")
         </div>
-        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+    </div>
+    <div class="container" style="padding-top: 20px;">
+        <div class="row">
+            <div class="col">
+                <button onclick="window.history.go(-1); " type="button">Go Back</button>
+            </div>
+            <div class="col">
+                <a class="btn btn-success" id="boutonBAA" href="/BoiteArtiste/AjouterArtiste?idArtiste=@Model.artiste.idartiste">
+                    J'apprécie fortement cette artiste. C'est décidé, je l'ajoute à ma selection :)
+                </a>
+            </div>
+            <div class="col">
+                <a class="btn btn-success" id="boutonBAA" href="/RedigerMail/ContactAsync?idArtiste=@Model.artiste.idartiste">
+                    Envoyer Message
+                </a>
+            </div>
+            <h2>Oeuvres de l'artiste</h2>
+        </div>
+    </div>
+    <div class="container-fluid" style="justify-content: space-around; display: flex; flex-wrap: nowrap;">
+        @foreach (var item in Model.photo)
+        {
 
-
-            @foreach (var item in Model.photo)
-            {
-                <img src="/BoiteArtiste/getPhoto?idPhoto=@item" />
-            }
-
-            <div class="container" style="padding-top: 20px;">
-                <div class="row">
-                    <div class="col">
-                        <button class="btn btn-danger"><a href="javascript:history.go(-1)">Retour</a></button>
-                    </div>
-                    <div class="col">
-                        <a class="btn btn-success" id="boutonBAA" href="/BoiteArtiste/AjouterArtiste?idArtiste=@Model.artiste.idartiste">
-                            J'apprécie fortement cette artiste. C'est décidé, je l'ajoute à ma selection :)
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a class="btn btn-success" id="boutonBAA" href="/RedigerMail/ContactAsync?idArtiste=@Model.artiste.idartiste">
-                            Envoyer Message
-                        </a>
-                    </div>
-
-
-
+            <div class="row">
+                <div class="col-2 text-center">
+                    <img class="fit" style="width: 16em; margin: 0.25em; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
+                        transition-duration: 1s;" src="/BoiteArtiste/getPhoto?idPhoto=@item" />
                 </div>
             </div>
+        }
 
-        </div>
-    }
+    </div>
 
-</div>
+
+
+
+
+
+}
+
 

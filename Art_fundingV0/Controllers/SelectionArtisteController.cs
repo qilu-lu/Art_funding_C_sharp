@@ -31,7 +31,7 @@ namespace Art_fundingV0.Controllers
 
             public ActionResult RechercheArtiste()
             {
-            entreprise entreprise = dalEntreprise.ObtientToutesLesEntreprises(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name));
+            entreprise entreprise = dalEntreprise.ObtientUtilisateurE(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).entreprise;
             ViewBag.nom_entreprise = entreprise.prenom_de_l_ayant_droit;
             RechercheArtisteViewModel rechercheArtisteViewModel = new RechercheArtisteViewModel();
             List<artiste> listArtiste = new List<artiste>();
@@ -39,7 +39,7 @@ namespace Art_fundingV0.Controllers
             rechercheArtisteViewModel.listArtiste = listArtiste;
             foreach (artiste a in rechercheArtisteViewModel.listArtiste)
             {
-                if (a.description.Count() > 100)
+                if (a.description.Count() >100 )
                 {
                     a.description = a.description.Substring(0, 97) + "...";
                 }
@@ -56,6 +56,13 @@ namespace Art_fundingV0.Controllers
             
             List<artiste> list = dalArtiste.RechercheArtistes(searchString);
             rechercheArtisteViewModel.listArtiste = list;
+            foreach (artiste a in rechercheArtisteViewModel.listArtiste)
+            {
+                if (a.description.Count() > 100)
+                {
+                    a.description = a.description.Substring(0, 97) + "...";
+                }
+            }
 
             return View(rechercheArtisteViewModel);
         }

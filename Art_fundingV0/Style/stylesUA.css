@@ -156,3 +156,19 @@ a:hover, i:hover {
     font-family: 'HYPED_Font';
     src: url('../fonts/HYPED_Font.otf') format('opentype');
 }
+
+
+.image-porfolio {
+    margin: 0.5em;
+    border: solid;
+    border-color: black;
+    border-width : thin;
+}
+.info-artiste {
+    margin: 0.5em;
+    background-color: white;
+    border: solid;
+    border-color: black;
+    border-radius: 10px;
+    font-size: 22px
+}

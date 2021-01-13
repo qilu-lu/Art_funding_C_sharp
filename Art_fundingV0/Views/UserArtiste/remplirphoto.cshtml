@@ -1,15 +1,11 @@
 ﻿@model Art_fundingV0.ViewModels.ArtistePhotosViewModel
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/LayoutChargerDocsArtiste.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
+<div class="container" style="margin-right: 5%;"> 
 
     <script language="javascript">
     function add() {
@@ -23,8 +19,7 @@
     }
 
     </script>
-</head>
-<body>
+
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
@@ -34,9 +29,10 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>picture</h4>
-            <hr />
+        <div class="form-horizontal mt-5">
+            <h4>Je sélectionne mes meilleures photographies permettant de mettre en valeur mon Art.</h4>
+            <h4>J'ai la possibilité de charger de 3 à 10 photographies</h4>
+            
             @if (@Model.photoDejaEnvoyees > 0)
             {
                 <span>Vous avez déjà enregistré @Model.photoDejaEnvoyees photos</span><br /><br />
@@ -45,25 +41,25 @@
             <div class="form-group">
 
                 <div id="divParent" class="col-md-10">
-                    <input name="filesToUpload" type="file"><br />
-                    <input name="filesToUpload" type="file"><br />
-                    <input name="filesToUpload" type="file"><br />
+                    <input name="filesToUpload" type="file" style="font-size: 22px;"><br />
+                    <input name="filesToUpload" type="file" style="font-size: 22px;"><br />
+                    <input name="filesToUpload" type="file" style="font-size: 22px;"><br />
 
 
                 </div><br />
-                <a href="#" onclick="add()">+</a><br /><br />
+                <button class="btn btn-warning" style="font-size: 22px;"><a href="#" onclick="add()">+</a></button>
             </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <button class="btn btn-success" type="submit" style="font-size: 22px;">Importer</button> 
                 </div>
             </div>
         </div>
     }
 
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        <button class="btn btn-danger" style="font-size: 22px;"> @Html.ActionLink("Back to List", "Index") </button>
     </div>
-</body>
-</html>
+
+</div>

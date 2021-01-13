@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <meta charset="UTF-8">
-    <title>Inscription</title>
+    <title>Creer Compte Entreprise</title>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Style/stylesCreerCompteEntreprise.css" rel="stylesheet" />
     <script src="~/Scripts/Font-Awesome.js"></script>
@@ -13,40 +13,21 @@
 <body>
     <header>
         <nav class="navbar navbar-toggler navbar-dark bg-dark w-100">
+
             <!--  D R O P D O W N  M E N U  -->
             <div class="dropdown">
                 <a class="navlink" id="artFunding">Art_F</a>
                 <div class="dropdown-content">
                     <a href="#">Transformez votre talent en métier</a>
-                    <a href="#">Qui sommes-nous ?</a>
-                    <a href="#">Nos partenaires</a>
+                    @Html.ActionLink("Qui sommes-nous ?", "QuiSommeNous", "InfoArtFunding")
+                    @Html.ActionLink("Nos partenaires", "Partenaires", "InfoArtFunding")
                 </div>
             </div>
             <!--  E N D  D R O P D O W N  M E N U  -->
-            <!--
-            <div class="navbar-header">
-                 <a class="navbar-brand" href="#"></a>
-            </div> -->
-            <div class="nav navbar-nav">
-                <a href="http://google.com">Découvrez nos projets</a>
-            </div>
-            <form class="navbar-form navbar-left" action="/action_page.php" id="search1">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Rechercher...">
-                    <div class="input-group-btn" id="search2">
-                        <button class="btn btn-default" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-            <div class="nav navbar-nav navbar-right">
-                <a href="#"><i class="fas fa-user-circle"></i> Bonjour, @Html.LabelFor(m => m.entreprise.prenom_de_l_ayant_droit) </a>
-            </div>
-            <div class="nav navbar-nav navbar-right">
-                @*A J O U T E R  F O N C T I O N  D E C O N N E X I O N*@
-                <a href="#"><i class="fas fa-sign-out-alt"></i> Me déconnecter </a>
-            </div>
+            
+
+            
+               
         </nav>
     </header>
     @RenderBody()

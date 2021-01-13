@@ -1,6 +1,7 @@
 body {
     height: 80%;
-    background-image: url('../Content/images/image (11).png');
+    background-image: url('../Content/images/edu-lauton-TyQ-0lPp6e4-unsplash.jpg');
+    /*transform: scaleX(-1);*/
     background-repeat: no-repeat;
     background-size: cover;
 }

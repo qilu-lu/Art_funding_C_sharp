@@ -1,84 +1,90 @@
 ﻿@model Art_fundingV0.ViewModels.ArtisteProfilViewModel
 @{
-    Layout = "~/Views/Shared/LayoutUA.cshtml";
+    Layout = "~/Views/Shared/LayoutMonProfil.cshtml";
 }
-<style>
-body{
-    background-color:darkgreen;
-}
-</style>
+
 <div>
     @using (Html.BeginForm())
     {
-        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+        <div class="info-artiste col">
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-            @Html.LabelFor(m => m.artiste.nom)
-            @Model.artiste.nom
-        </div>
+                @Html.LabelFor(m => m.artiste.nom):
+                @Model.artiste.nom
+            </div>
 
-        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-            @Html.LabelFor(m => m.artiste.prenom)
-            @Model.artiste.prenom
-        </div>
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                @Html.LabelFor(m => m.artiste.prenom):
+                @Model.artiste.prenom
+            </div>
 
-        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-            @Html.LabelFor(m => m.artiste.date_de_naissance)
-            @Model.artiste.date_de_naissance
-        </div>
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                @Html.LabelFor(m => m.artiste.date_de_naissance):
+                @Model.artiste.date_de_naissance.ToString("MM/dd/yyyy")
+            </div>
 
-        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-            @Html.LabelFor(m => m.artiste.adresse)
-            @Model.artiste.adresse
-        </div>
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                @Html.LabelFor(m => m.artiste.adresse):
+                @Model.artiste.adresse
+            </div>
 
-        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-            @Html.LabelFor(m => m.artiste.code_postale)
-            @Model.artiste.code_postale
-        </div>
+                @Html.LabelFor(m => m.artiste.code_postale):
+                @Model.artiste.code_postale
+            </div>
 
-        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-            @Html.LabelFor(m => m.artiste.ville)
-            @Model.artiste.ville
-        </div>
+                @Html.LabelFor(m => m.artiste.ville):
+                @Model.artiste.ville
+            </div>
 
-        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-            @Html.LabelFor(m => m.artiste.pays)
-            @Model.artiste.pays
-        </div>
-        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                @Html.LabelFor(m => m.artiste.pays):
+                @Model.artiste.pays
+            </div>
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-            @Html.LabelFor(m => m.artiste.numero)
-            @Model.artiste.numero
-        </div>
-        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                @Html.LabelFor(m => m.artiste.numero):
+                @Model.artiste.numero
+            </div>
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-            @Html.LabelFor(m => m.artiste.description)
-            @Model.artiste.description
-        </div>
-        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+                @Html.LabelFor(m => m.artiste.description):
+                @Model.artiste.description
+            </div>
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
-            @Html.LabelFor(m => m.artiste.Disponibilite)
-            @Model.artiste.Disponibilite.Value.ToString("MM/dd/yyyy")
-        </div>
+                @Html.LabelFor(m => m.artiste.Disponibilite):
+                @Model.artiste.Disponibilite.Value.ToString("MM/dd/yyyy")
+            </div>
+            </div>
+            <div class="col link-sup" style="margin-right: 0.5em; margin-left: 0.5em;">
+                @Html.ActionLink("Retour", "Index", "UserArtiste")
+            </div>
+            <div class="col link-sup" style="margin-right: 0.5em; margin-left: 0.5em;">
+                @Html.ActionLink("Ajouter une photo", "remplirPhoto", "UserArtiste")
 
-        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
+            </div>
 
-            @Html.ActionLink("Ajouter une photo", "remplirPhoto", "UserArtiste")
-        </div>
+            @*<div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">*@
+            <div class="container">
+                <div class="row" style="width : 2000px ; font-size: 22px;">
 
-        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
 
 
-            @foreach (var item in Model.photo)
-            {
-                <img src="/BoiteArtiste/getPhoto?idPhoto=@item" /> <a href="/UserArtiste/SupprimerPhoto/?idPhoto=@item">Supprimer</a>
-            <br />
+                    @foreach (var item in Model.photo)
+                    {
+                        <div class="col-3 col-artiste">
+                            <img clas="image-artiste" src="/BoiteArtiste/getPhoto?idPhoto=@item" style="width : 200px;" />
+                            <a class="link-sup" href="/UserArtiste/SupprimerPhoto/?idPhoto=@item">Supprimer</a>
+                        </div>
+                    }
+                </div>
+            </div>
+
             }
-
         </div>
-    }
-</div>
 

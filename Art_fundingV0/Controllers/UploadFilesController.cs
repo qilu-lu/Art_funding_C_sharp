@@ -14,12 +14,16 @@ namespace Art_fundingV0.Controllers
     {
         private art_fundingEntities context = new art_fundingEntities();
         // GET: UploadFiles
-
+        DalEntreprise dalEntreprise = new DalEntreprise();
+      
         public ActionResult TelechargerDocs()
         {
+            entreprise entreprise = context.utilisateurentreprises.Find(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).entreprise;
+           
+            ViewBag.prenom = entreprise.prenom_de_l_ayant_droit;
             return View();
         }
-        [HttpPost]
+      [HttpPost]
         [ValidateAntiForgeryToken]
 
         public ActionResult TelechargerDocs([Bind(Include = "iddocument_entreprise, Attestation_assurance,Kbis,RIB,Dernier_statut ")] document_entreprise document_Entreprise, HttpPostedFileBase file, HttpPostedFileBase file2, HttpPostedFileBase file3, HttpPostedFileBase file4)
@@ -27,6 +31,8 @@ namespace Art_fundingV0.Controllers
 
             if (ModelState.IsValid)
             {
+               
+               
                 // convert file choose by user into byte[]
                 if (file.ContentLength > 0 && file2.ContentLength > 0 && file3.ContentLength > 0 && file4.ContentLength > 0)
                 {
@@ -57,7 +63,7 @@ namespace Art_fundingV0.Controllers
                     document_Entreprise.Dernier_statut = imageData4;
                     entreprise entreprise = context.utilisateurentreprises.Find(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).entreprise;
                     document_Entreprise.entreprise = entreprise;
-
+                   
                     context.document_entreprise.Add(document_Entreprise);
                     context.SaveChanges();
                     ViewBag.success = "Uploaded Filed Saved Succesfully in a folder!";

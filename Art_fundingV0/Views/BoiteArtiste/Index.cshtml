@@ -1,47 +1,77 @@
 ﻿@model Art_fundingV0.ViewModels.BoiteArtisteViewModel
 
 @{
-    Layout = "~/Views/Shared/LayoutAF.cshtml";
+    Layout = "~/Views/Shared/LayoutRose.cshtml";
 }
 
 @using (Html.BeginForm())
 {
+            
+<div class="container text-center" style="margin-top: 10%;">
+    <h1 style="margin-bottom: 20px;">Ma Boîte Artistes</h1>
+    <table>
+        <tr>
 
 
+            <td style="background-color: black; font-size: 20px; width: 200px;border: solid;
+    color: white; border-color: black;">
+                Prénom
+            </td>
+            <td style="background-color: black; font-size: 20px; width: 200px;border: solid;
+    color: white; border-color: black;">
+                Nom
+            </td>
+            <td style="background-color: black; font-size: 20px; width: 200px;border: solid;
+    color: white; border-color: black;">
+                Catégorie
+            </td>
+            <td style="background-color: black; font-size: 20px; width: 200px;border: solid;
+    color: white; border-color: black;">
+                Disponibilité
+            </td>
+            <td style="background-color: black; font-size: 20px; width: 200px;border: solid;
+    color: white; border-color: black;">
+                Lien vers portfolio
+            </td>
+            <td style="background-color: black; font-size: 20px; width: 200px;border: solid;
+    color: white; border-color: black;">
+                Supprimer
+            </td>
+        </tr>
+        @foreach (var d in Model.list)
+        {
+            <tr>
+                <td style="font-size: 20px; width: 200px;border: solid;
+    border-color: black;">
+                    @d.artiste.prenom
+</td>
+<td style="font-size: 20px; width: 200px;border: solid;
+    border-color: black;">
+    @d.artiste.nom
+</td>
+<td style="font-size: 20px; width: 200px;border: solid;
+    border-color: black;">
+    @d.artiste.categorie.nom
+</td>
+<td style="font-size: 20px; width: 200px;border: solid;
+    border-color: black;">
+    @d.artiste.Disponibilite.Value.ToString("MM/dd/yyyy")
+</td>
+<td style="font-size: 20px; width: 200px;border: solid;
+    border-color: black;">
+    <a title="Portfolio" href="/BoiteArtiste/portfoliu?idArtiste=@d.artiste.idartiste" style="color: forestgreen">Lien</a>
+</td>
+<td style="font-size: 20px; width: 200px;border: solid;
+    border-color: black;">
+    <a class="delete" title="Delete" href="/BoiteArtiste/Supprimer?idArtiste=@d.artiste.idartiste"><i class="fas fa-trash-alt" style="color: firebrick;"></i></a>
+</td>
 
 
+</tr>
+}
 
-    <title>Index</title>
-
-    <body>
-        <div>
-            <table>
-                <tr>
-
-
-                    <td>Prénom</td>
-                    <td>Nom</td>
-                    <td>Catégorie</td>
-                    <td>Disponibilité</td>
-                    <td>Lien vers portfolio</td>
-                    <td>Supprimer</td>
-                </tr>
-                @foreach (var d in Model.list)
-                {
-                    <tr>
-                        <td>@d.artiste.prenom</td>
-                        <td>@d.artiste.nom</td>
-                        <td>@d.artiste.categorie.nom</td>
-                        <td>@d.artiste.Disponibilite.Value.ToString("MM/dd/yyyy")</td>
-                        <td><a title="Portfolio" href="/BoiteArtiste/portfoliu?idArtiste=@d.artiste.idartiste">Lien</a></td>
-                        <td>  <a class="delete" title="Delete" href="/BoiteArtiste/Supprimer?idArtiste=@d.artiste.idartiste"><i class="fas fa-trash-alt"></i></a></td>
-
-
-                    </tr>
-                }
-
-            </table>
-        </div>
-    </body>
+    </table>
+</div>
+   
 
 }

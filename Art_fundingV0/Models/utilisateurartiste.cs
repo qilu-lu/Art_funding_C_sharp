@@ -11,11 +11,14 @@ namespace Art_fundingV0.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class utilisateurartiste
     {
         public int idUtilisateurArtiste { get; set; }
+        [Display(Name = "Adresse email")]
         public string mailUA { get; set; }
+        [Display(Name = "Mot de passe")]
         public string mot_de_passe { get; set; }
         public Nullable<int> idartiste { get; set; }
         public string role { get; set; }

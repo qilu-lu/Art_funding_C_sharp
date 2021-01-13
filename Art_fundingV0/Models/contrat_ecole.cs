@@ -11,10 +11,12 @@ namespace Art_fundingV0.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class contrat_ecole
     {
         public int idcontrat_ecole { get; set; }
+        [Display(Name="Mon contrat avec le centre de formation")]
         public byte[] fichier_contrat { get; set; }
         public Nullable<int> ecole_id { get; set; }
         public Nullable<int> artiste_id { get; set; }

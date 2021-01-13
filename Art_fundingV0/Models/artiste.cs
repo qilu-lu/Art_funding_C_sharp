@@ -11,7 +11,8 @@ namespace Art_fundingV0.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class artiste
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,27 +20,40 @@ namespace Art_fundingV0.Models
         {
             this.boite_artiste = new HashSet<boite_artiste>();
             this.contrat_ecole = new HashSet<contrat_ecole>();
+            this.contrat_entreprise = new HashSet<contrat_entreprise>();
             this.document_artiste = new HashSet<document_artiste>();
             this.entreprises = new HashSet<entreprise>();
             this.photos = new HashSet<photo>();
             this.utilisateurartistes = new HashSet<utilisateurartiste>();
-            this.contrat_entreprise = new HashSet<contrat_entreprise>();
         }
     
         public int idartiste { get; set; }
+        [Display(Name = "Nom")]
         public string nom { get; set; }
+        [Display(Name = "Prénom")]
         public string prenom { get; set; }
+        [Display(Name = "Date de naissance")]
         public System.DateTime date_de_naissance { get; set; }
+        [Display(Name = "Adresse")]
         public string adresse { get; set; }
+        [Display(Name = "Code Postale")]
         public string code_postale { get; set; }
+        [Display(Name = "Ville")]
         public string ville { get; set; }
+        [Display(Name = "Pays")]
         public string pays { get; set; }
+        [Display(Name = "Numéro de téléphone")]
         public string numero { get; set; }
+        [Display(Name = "Description")]
         public string description { get; set; }
+        
         public long ecole_choisie_id { get; set; }
         public Nullable<int> formation_choisie_id { get; set; }
+        [Display(Name = "Disponibilité")]
         public Nullable<System.DateTime> Disponibilite { get; set; }
         public int categorie_id { get; set; }
+        [Display(Name = "Coût de la formation")]
+        public Nullable<int> prix_formation { get; set; }
     
         public virtual categorie categorie { get; set; }
         public virtual ecole ecole { get; set; }
@@ -48,6 +62,8 @@ namespace Art_fundingV0.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<contrat_ecole> contrat_ecole { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<contrat_entreprise> contrat_entreprise { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<document_artiste> document_artiste { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<entreprise> entreprises { get; set; }
@@ -55,7 +71,5 @@ namespace Art_fundingV0.Models
         public virtual ICollection<photo> photos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<utilisateurartiste> utilisateurartistes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<contrat_entreprise> contrat_entreprise { get; set; }
     }
 }

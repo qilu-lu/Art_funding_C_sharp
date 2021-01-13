@@ -27,6 +27,7 @@ namespace Art_fundingV0.Controllers
         {
             BoiteArtisteViewModel boiteArtisteViewModel = new BoiteArtisteViewModel();
             entreprise entreprise = dalEntreprise.ObtientUtilisateurE(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).entreprise;
+            ViewBag.prenom = entreprise.prenom_de_l_ayant_droit;
             List<boite_artiste> liste = dalArtiste.ObtientTousLesBoitesparentreprise(entreprise.identreprise);
             boiteArtisteViewModel.list = liste;
 
@@ -83,7 +84,8 @@ namespace Art_fundingV0.Controllers
 
 
             artiste artiste = dalArtiste.ObtientTousLesArtistes(idArtiste.Value);
-
+            entreprise entreprise = dalEntreprise.ObtientUtilisateurE(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).entreprise;
+            ViewBag.prenom = entreprise.prenom_de_l_ayant_droit;
             BoiteArtisteViewModel boiteArtisteViewModel = new BoiteArtisteViewModel();
             boiteArtisteViewModel.msg = msg;
             boiteArtisteViewModel.artiste = artiste;

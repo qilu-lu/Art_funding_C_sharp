@@ -1,33 +1,53 @@
 ﻿@model  Art_fundingV0.ViewModels.CreerEntrepriseViewModel
 @{
-    Layout = "~/Views/Shared/LayoutAF.cshtml";
+    Layout = "~/Views/Shared/LayoutPaiement.cshtml";
 }
 
+<div class="container-sm" style="margin-top: 25%; margin-left: 10%;">
     @using (Html.BeginForm())
     {
-        <div>
+        <div class="row">
+            <div class="col" style="font-size: 20px;">
 
-            @Html.LabelFor(m => m.utilisateurentreprise.Nocartebancaire)
+                @Html.LabelFor(m => m.utilisateurentreprise.Nocartebancaire)<br />
+                @Html.TextBoxFor(m => m.utilisateurentreprise.Nocartebancaire)
+                @Html.ValidationMessageFor(m => m.utilisateurentreprise.Nocartebancaire)
+            </div>
+            <div class="col" style="font-size: 20px;">
+                @*<link href="~/Style/styleRechercheArtiste.css" rel="stylesheet" />*@
+                @Html.LabelFor(m => m.utilisateurentreprise.CodeVerfication)<br />
+                @Html.TextBoxFor(m => m.utilisateurentreprise.CodeVerfication)
+                @Html.ValidationMessageFor(m => m.utilisateurentreprise.CodeVerfication)
 
-            @Html.TextBoxFor(m => m.utilisateurentreprise.Nocartebancaire)
-            @Html.ValidationMessageFor(m => m.utilisateurentreprise.Nocartebancaire)
+
+            </div>
         </div>
-        <div>
-            @Html.LabelFor(m => m.SelectedMoisIds)
-            @Html.ListBoxFor(model => model.SelectedMoisIds, Model.MoisList)
-          
+        <div class="row mt-5">
+            <div class="col" style="font-size: 20px;">
+                @Html.LabelFor(m => m.SelectedAnneeIds)
+                @Html.ListBoxFor(model => model.SelectedAnneeIds, Model.AnneeList)
+
+                    </div>
+            <div class="col" style="font-size: 20px;">
+
+               
+                @Html.LabelFor(m => m.SelectedMoisIds)
+                @Html.ListBoxFor(model => model.SelectedMoisIds, Model.MoisList)
+
+            </div>
+        <div class="row mt-4"> 
+            <div class="col"> 
+                <input type="button" onclick="javascript: history.go(-1);" value="Abandonner" />
+            </div>
+            <div class="col"> 
+                <button class="btn btn-success" type="submit" style="font-size: 15px;">Valider le paiement</button>
+            </div>
         </div>
-        <div>
-            @Html.LabelFor(m => m.SelectedAnneeIds)
-            @Html.ListBoxFor(model => model.SelectedAnneeIds, Model.AnneeList)
-            
         </div>
-        <div>
-            @Html.LabelFor(m => m.utilisateurentreprise.CodeVerfication)
-            @Html.TextBoxFor(m => m.utilisateurentreprise.CodeVerfication)
-            @Html.ValidationMessageFor(m => m.utilisateurentreprise.CodeVerfication)
-        </div>
-        <input name="envoyer" type="submit">
-        <input type="button" onclick="javascript: history.go(-1);" value="Abandonner" />
+
+        
+       
+        
         <br />
     }
+</div>  

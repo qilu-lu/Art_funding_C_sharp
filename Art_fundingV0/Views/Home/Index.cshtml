@@ -1,33 +1,33 @@
 ﻿
 @{
-    Layout = "/Views/Shared/LayoutUA.cshtml";
+    Layout = "/Views/Shared/LayoutAccueilAppli.cshtml";
 }
 
 
 
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top:50px;">
+
+    <div class="row" style="margin-top:130px;">
+        <div class="col-6 text-center">
+            <a href="/userEntreprise/Login"><span style="font-family: 'Glacial Indifference', sans-serif; font-size: 55px; font-weight: bold;" id="entreprise41">ENTREPRISE</span></a>
+        </div>
+
+        <div class="col-6 text-center">
+            <a href="/userArtiste/Login"><span style="font-family: 'Glacial Indifference', sans-serif; font-size: 55px; font-weight: bold;" id="artiste41">I'm an Artist</span></a>
+        </div>
+    </div>
     <div class="row min-vh-100 min-vw-100 justify-content-center bg-picture">
-        <div class="col-12 text-center mt-5">
-            <img src="~/Content/logo/ART_FUNDINGBlackGlass.png" />
-            <h1>Transformer le talent en savoir-faire</h1>
+        <div class="col-12 text-center">
+            <img src="~/Content/logo/ART_FLogoBlack.png" /> 
+            
+            <h1 class="col mt-2" style="text-align: center;">
+                "Transformer le talent en savoir-faire."
+            </h1>
         </div>
-
-        @*<div class="container" id="art_f">
-                <img src="~/Content/logo/ART_FUNDINGBlackGlass.png" />
-            </div>*@
-
-        <div class="row" style="margin-top: 240px;">
-            <div class="col-6 text-center">
-                <a href="/userEntreprise/Login"><span style="font-family: 'Glacial Indifference', sans-serif; font-size: 55px; font-weight: bold;">ENTREPRISE</span></a>
-            </div>
-
-            <div class="col-6 text-center">
-                <a href="/userArtiste/Login"><span style="font-family: 'Glacial Indifference', sans-serif; font-size: 55px; font-weight: bold;">I'm an Artist</span></a>
-            </div>
-        </div>
+        
+           
+        
 
     </div>
-
-    @*<video loop="" muted="" autoplay="" class="fullscreen-bg__video"></video>*@
-
 </div>
+

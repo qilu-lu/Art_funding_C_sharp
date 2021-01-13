@@ -1,26 +1,41 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/LayoutRose.cshtml";
 }
 <!DOCTYPE html>
-<script>
-    function verif_button() {
-        if (ValiderDossierFinancement.isValidate.checked)
-            ValiderDossierFinancement.getElementById('BoutonValidation').disabled = '';
-        else
-            ValiderDossierFinancement.getElementById('BoutonValidation').disabled = 'disabled';
-    }
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+<script language="javascript">
+    $(document).ready(function () {
+        jQuery("#isValidate").change(function () {
+            console.log(jQuery("#isValidate"));
+            if (jQuery("#isValidate")[0].checked) {
+                jQuery('#BoutonValidation')[0].disabled = '';
+            } else {
+                jQuery('#BoutonValidation')[0].disabled = 'disabled';
+            }
+        });
+
+    });
 </script>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ValiderDossierFinancement</title>
-</head>
-<body>
-    <div>
-        voulez vous valider le dossier ? <br />
-        En cochant cela j'approuce le dossier
-        @Html.CheckBox("isValidate", false) <br />
-        <input id="BoutonValidation" value="Valider le dossier" type="button" />
+@using (Html.BeginForm())
+{
+    <div class="container-sm text-center" style="margin-top: 240px;">
+        <div class="row mt-5">
+            <h1> Félicitations!</h1>
+            <h2>Vous êtes sur le point de valider le dossier de financement de votre futur talent. <br />Cet accord de principe vous engage. <br />Afin de finaliser la contractualisation, vous devez télécharger, remplir et signer le contrat qui vous lie avec l'artiste. <br />Ensuite, vous devez adresser ce document à votre conseiller Art_Funding à l'adresse: <br />70 rue de l'art 75001 Paris. </h2>
+        </div>
+        <div class="row mt-5">
+
+            <h1>J'approuve :)  @Html.CheckBox("isValidate", false)</h1>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col">
+                <button type="submit" disabled="" id="BoutonValidation" class="btn btn-success" style="font-size: 26px;">Je télécharge le contrat</button>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+}

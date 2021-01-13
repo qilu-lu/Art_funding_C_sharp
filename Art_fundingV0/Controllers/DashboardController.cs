@@ -23,6 +23,8 @@ namespace Art_fundingV0.Controllers
         // GET: Dashboard
         public ActionResult AccueilDashboard()
         {
+            utilisateurentreprise utilisateurentreprise = dalEntreprise.ObtientUtilisateurE(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name));
+            ViewBag.prenom = utilisateurentreprise.entreprise.prenom_de_l_ayant_droit;
             return View();
         }
         public ActionResult BoiteArtiste()
@@ -34,6 +36,7 @@ namespace Art_fundingV0.Controllers
         {
             DashboardEntrepriseViewModel dashboardEntrepriseViewModel = new DashboardEntrepriseViewModel();
             entreprise entreprise = dalEntreprise.ObtientUtilisateurE(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).entreprise;
+            ViewBag.prenom = entreprise.prenom_de_l_ayant_droit;
             int identreprise = entreprise.identreprise;
             
             dashboardEntrepriseViewModel.listArtiste = dalArtiste.ObtientArtistesContacte(identreprise);

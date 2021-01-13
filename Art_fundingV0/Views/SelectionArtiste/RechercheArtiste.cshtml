@@ -34,12 +34,13 @@
 
 
                                 @*@foreach (var photo in artiste.photos)
-                                    {*@
+        {*@
                                 <!--img src="/BoiteArtiste/getPhoto?idPhoto=photo.idphoto" />-->
 
                                 <h5 class="card-title">@artiste.nom @artiste.prenom</h5><br />
                                 <h5 class="card-title"> @artiste.categorie.nom</h5>
                                 <p class="card-text">@artiste.Disponibilite.Value.ToString("MM/dd/yyyy")</p>
+                                <h5 class="card-title">7800 €</h5><br />
                                 <p>@artiste.description</p>
                                 <a href="/BoiteArtiste/Portfoliu?idArtiste=@artiste.idartiste" class="btn btn-success stretched-link" style="font-size: 16px;">J'explore</a>
                                 @if (@artiste.photos.Count() > 0)

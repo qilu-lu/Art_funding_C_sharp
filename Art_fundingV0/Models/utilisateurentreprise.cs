@@ -11,17 +11,24 @@ namespace Art_fundingV0.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class utilisateurentreprise
     {
         public int idUtilisateurEntreprise { get; set; }
+        [Display(Name = "Adresse email")]
         public string adresse_mailUE { get; set; }
+        [Display(Name = "Mot de Passe")]
         public string mot_de_passeUE { get; set; }
         public Nullable<int> identreprise { get; set; }
         public string role { get; set; }
+        [Display(Name = "Numéro de carte bancaire")]
         public string Nocartebancaire { get; set; }
+        [Display(Name = "Mois Expiration")]
         public string MoisExpiration { get; set; }
+        [Display(Name = "Année d'expiration")]
         public string AnneeExpiration { get; set; }
+        [Display(Name = "Code de Vérification")]
         public string CodeVerfication { get; set; }
     
         public virtual entreprise entreprise { get; set; }

@@ -148,23 +148,36 @@ i {
 }
 
 
-.footer {
-    position: fixed;
-    width: 100%;
-    height: 4em;
-    bottom: 0;
-    background-color: #262C30;
-    text-align: center;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-}
 
 
 a:hover, i:hover {
     text-decoration: none;
     color: #FFB30F;
 }
+
+.footer {
+    position: fixed;
+    width: 100%;
+    height: 3em;
+    bottom: 0;
+    background-color: #262C30; /*#141719;*/ /*#1E2832;*/ /*#2C2730;*/ /*#48414F;*/ /*#241631;*/ /*#2C3A49;*/ /*#455872;*/ /*#0B0E12;*/ /*#232D50;*/ /*#372D2B;*/
+    /*color: rgba(255, 255, 255, 0.75);*/
+    text-align: center;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.icons {
+    margin: 0.5em;
+}
+
+#icon1, #icon2, #icon3, #icon4 {
+    margin: 0.5em;
+    font-size: 1.3em;
+ 
+}
+
 
 .gallery {
     height: 25em;

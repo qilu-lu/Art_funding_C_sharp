@@ -32,6 +32,7 @@ namespace Art_fundingV0.Controllers
             
             ArtisteProfilViewModel artisteProfilViewModel = new ArtisteProfilViewModel();
             artiste artiste = dalArtiste.ObtientUtilisateurA(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).artiste;
+            ViewBag.prenom = artiste.prenom;
             artisteProfilViewModel.artiste = artiste;
 
             artisteProfilViewModel.photo = new List<int>();

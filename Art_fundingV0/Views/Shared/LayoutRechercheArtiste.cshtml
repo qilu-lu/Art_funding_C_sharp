@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <meta charset="UTF-8">
-    <title>Inscription</title>
+    <title>RechercheArtiste</title>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Style/styleRechercheArtiste.css" rel="stylesheet" />
     <script src="~/Scripts/Font-Awesome.js"></script>
@@ -20,8 +20,8 @@
             <a class="navlink" id="artFunding">Art_F</a>
             <div class="dropdown-content">
                 <a href="#">Transformez votre talent en metier</a>
-                <a href="#">Qui sommes-nous ?</a>
-                <a href="#">Nos partenaires</a>
+                @Html.ActionLink("Qui sommes-nous ?", "QuiSommeNous", "InfoArtFunding")
+                @Html.ActionLink("Nos partenaires", "Partenaires", "InfoArtFunding")
             </div>
         </div>
         <!--  E N D  D R O P D O W N  M E N U  -->
@@ -32,7 +32,7 @@
 
 
         <div class="nav navbar-nav">
-            <a href="http://google.com">D&eacute;couvrez nos projets</a>
+            @Html.ActionLink("Découvrez nos projets", "RechercheArtiste", "SelectionArtiste")
         </div>
         @*<form class="navbar-form navbar-left" action="/action_page.php" id="search1">*@
         <div class="navbar-form navbar-left">

@@ -78,7 +78,7 @@ namespace Art_fundingV0.Controllers
             LoginViewModel viewModelentre = new LoginViewModel { LoggedIn = HttpContext.User.Identity.IsAuthenticated };
 
             utilisateurentreprise utilisateurentreprise = dalEntreprise.ObtientUtilisateurE(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name));
-           
+            ViewBag.prenom = utilisateurentreprise.entreprise.prenom_de_l_ayant_droit;
             viewModelentre.paiementNExistePas = utilisateurentreprise.Nocartebancaire == null;
             viewModelentre.docNExistePas = utilisateurentreprise.entreprise.document_entreprise == null || utilisateurentreprise.entreprise.document_entreprise.Count() == 0;
             
@@ -128,6 +128,8 @@ namespace Art_fundingV0.Controllers
         public ActionResult paiement()
         {
             CreerEntrepriseViewModel creerEntrepriseViewModel = new CreerEntrepriseViewModel();
+            utilisateurentreprise utilisateurentreprise = dalEntreprise.ObtientUtilisateurE(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name));
+            ViewBag.prenom = utilisateurentreprise.entreprise.prenom_de_l_ayant_droit;
             List<SelectListItem> list = new List<SelectListItem>();
             List<SelectListItem> list2 = new List<SelectListItem>();
             for (int i = 1; i <= 12; i++)

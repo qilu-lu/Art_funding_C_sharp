@@ -30,8 +30,9 @@
                     <div class="card-body">
 
                         <div>
-                            <h5>@artiste.nom @artiste.prenom </h5><br/>
+                            <h5>@artiste.nom @artiste.prenom </h5><br />
                             <h5>@artiste.categorie.nom</h5>
+                            <h5>@artiste.prix_formation €</h5>
                             <p>@artiste.description</p>
                             <a href="/BoiteArtiste/Portfoliu?idArtiste=@artiste.idartiste" class="btn btn-primary stretched-link">Voir le projet</a>
                             @if (@artiste.photos.Count() > 0)

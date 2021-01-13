@@ -21,6 +21,7 @@ namespace Art_fundingV0.Controllers
         {
             ArtisteEnFormationViewModel ArtisteEnFormationViewModel = new ArtisteEnFormationViewModel();
             entreprise entreprise = dalEntreprise.ObtientUtilisateurE(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).entreprise;
+            ViewBag.prenom = entreprise.prenom_de_l_ayant_droit;
             int identreprise = entreprise.identreprise;
             List<artiste> TousLesArtistesEnFormation = dalArtiste.ObtientArtistesEnFormation(identreprise);
             ArtisteEnFormationViewModel.TousLesArtistesEnFormation = TousLesArtistesEnFormation;

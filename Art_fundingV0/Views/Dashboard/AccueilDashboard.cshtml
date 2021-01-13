@@ -1,23 +1,19 @@
-@model Art_fundingV0.Models.utilisateurentreprise
+﻿@model Art_fundingV0.Models.utilisateurentreprise
 @{
-    Layout = "~/Views/Shared/LayoutUA.cshtml";
+    Layout = "~/Views/Shared/LayoutDashboardAccueil.cshtml";
 }
-<h1>Bienvenue sur mon DashBoard</h1>
-<ul class="nav justify-content-center">
-    <li class="nav-item">
+<ul class="nav justify-content-center" style="margin-top: 37%;">
+    <li class="nav-item mx-5">
         @*<a class="nav-link active" aria-current="page" href="#">Artistes contactés</a>*@
-        <button class="btn btn-danger">@Html.ActionLink("Artistes contactés", "ArtisteContactes")</button>
+        <button class="btn btn-whatever" style="background-color: #3F1F34; border-color: #FFC107 !important; border: solid 2px; font-size: 26px;">@Html.ActionLink("Artistes contactés", "ArtisteContactes")</button>
     </li>
-    <li class="nav-item">
+    <li class="nav-item mx-5">
         @*<a class="nav-link" href="#">Dossiers de financement</a>*@
-        <button class="btn btn-info">@Html.ActionLink("Dossiers de financement", "EtapeDossiersFinancement", "DossierFinancement")</button>
+        <button class="btn btn-whatever" style="background-color: #3F1F34; border-color: #FFC107 !important; border: solid 2px; font-size: 26px;">@Html.ActionLink("Dossiers de financement", "EtapeDossiersFinancement", "DossierFinancement")</button>
     </li>
-    <li class="nav-item">
+    <li class="nav-item mx-5">
         @*<a class="nav-link" href="#">En formation</a>*@
-        <button class="btn btn-success">@Html.ActionLink("En formation", "ArtisteEnFormation", "ArtisteEnFormation")</button>
-    </li>
-    <li class="nav-item">
-        @*<a class="nav-link " href="#">Messagerie</a>*@
-        <button class="btn btn-dark">@Html.ActionLink("Messagerie", "ContactAsync", "RedigerMail")</button>
+        <button class="btn btn-whatever"  style="background-color: #3F1F34; border-color: #FFC107 !important; border: solid 2px; font-size: 26px;">@Html.ActionLink("En formation", "ArtisteEnFormation", "ArtisteEnFormation")</button>
     </li>
 </ul>
+

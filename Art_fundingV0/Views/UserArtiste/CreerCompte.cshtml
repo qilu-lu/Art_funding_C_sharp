@@ -1,196 +1,157 @@
 ﻿@model  Art_fundingV0.ViewModels.CreerArtisteViewModel
 @{
-    Layout = "~/Views/Shared/LayoutAF.cshtml";
+    Layout = "~/Views/Shared/LayoutCreationCompteArtiste.cshtml";
 }
 
 
 
-<div>
-    @using (Html.BeginForm())
-    {
-        <div>
-            <div class="container-fluid" style="margin-bottom: 3em;">
-                <div class="row" style="margin-top: 24em;">
 
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.LabelFor(m => m.utilisateurartiste.artiste.nom)
-                    </div>
+@using (Html.BeginForm())
+{
+    <h1 class="container text-center mb-5" style="color: #ffc107; margin-top: 5%; font-size: 70px;">
+        Apprenons à nous connaître!
+    </h1>
+    <div class="container-fluid" style="margin-bottom: 1em;">
+        <div class="row mt-2" style="margin-top: 20em;">
 
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.TextBoxFor(m => m.utilisateurartiste.artiste.nom)
-                    </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.ValidationMessageFor(m => m.utilisateurartiste.artiste.nom)
-                    </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.LabelFor(m => m.utilisateurartiste.artiste.prenom)
-                                  
-                    </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.TextBoxFor(m => m.utilisateurartiste.artiste.prenom)
-                    </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.ValidationMessageFor(m => m.utilisateurartiste.artiste.prenom)
-                    </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.LabelFor(m => m.utilisateurartiste.artiste.date_de_naissance)
-                    </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.TextBoxFor(m => m.utilisateurartiste.artiste.date_de_naissance)
-                    </div>
-                </div>
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.LabelFor(m => m.utilisateurartiste.artiste.nom)
             </div>
 
-            <div class="container-fluid" style="margin-bottom: 3em;">
-                <div class="row">
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.ValidationMessageFor(m => m.utilisateurartiste.artiste.date_de_naissance)
-                    </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.LabelFor(m => m.utilisateurartiste.artiste.adresse)
-                    </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.TextBoxFor(m => m.utilisateurartiste.artiste.adresse)
-                    </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.ValidationMessageFor(m => m.utilisateurartiste.artiste.adresse)
-                    </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.LabelFor(m => m.utilisateurartiste.artiste.code_postale)
-                     </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.TextBoxFor(m => m.utilisateurartiste.artiste.code_postale)
-                    </div>
-                </div>
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.TextBoxFor(m => m.utilisateurartiste.artiste.nom)
             </div>
 
-            <div class="container-fluid" style="margin-bottom: 3em;">
-                <div class="row">
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.ValidationMessageFor(m => m.utilisateurartiste.artiste.code_postale)
-                    </div>
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px">
+                @Html.LabelFor(m => m.utilisateurartiste.artiste.prenom)
 
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.LabelFor(m => m.utilisateurartiste.artiste.ville)
-                    </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.TextBoxFor(m => m.utilisateurartiste.artiste.ville)
-                    </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.ValidationMessageFor(m => m.utilisateurartiste.artiste.ville)
-                    </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.LabelFor(m => m.utilisateurartiste.artiste.pays)
-                    </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.TextBoxFor(m => m.utilisateurartiste.artiste.pays)
-                    </div>
-                </div>
             </div>
 
-            <div class="container-fluid" style="margin-bottom: 3em;">
-                <div class="row">
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.ValidationMessageFor(m => m.utilisateurartiste.artiste.pays)
-                    </div>
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.TextBoxFor(m => m.utilisateurartiste.artiste.prenom)
+            </div>
 
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.LabelFor(m => m.utilisateurartiste.artiste.numero)
-                    </div>
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.LabelFor(m => m.utilisateurartiste.artiste.date_de_naissance)
+            </div>
 
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.TextBoxFor(m => m.utilisateurartiste.artiste.numero)
-                    </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.ValidationMessageFor(m => m.utilisateurartiste.artiste.numero)
-                    </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.LabelFor(m => m.utilisateurartiste.artiste.description)
-                    </div>
-
-                    <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                        @Html.TextBoxFor(m => m.utilisateurartiste.artiste.description)
-                    </div>
-                </div>
-
-                <div class="container-fluid" style="margin-bottom: 3em;">
-                    <div class="row">
-                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                            @Html.ValidationMessageFor(m => m.utilisateurartiste.artiste.description)
-                        </div>
-
-                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                            @Html.LabelFor(m => m.utilisateurartiste.artiste.Disponibilite)
-                        </div>
-
-                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                            @Html.TextBoxFor(m => m.utilisateurartiste.artiste.Disponibilite)
-                        </div>
-
-                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                            @Html.ValidationMessageFor(m => m.utilisateurartiste.artiste.Disponibilite)
-                        </div>
-
-
-
-                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                            @Html.LabelFor(m => m.utilisateurartiste.mailUA)
-                        </div>
-
-                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                            @Html.TextBoxFor(m => m.utilisateurartiste.mailUA)
-                        </div>
-
-                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                            @Html.ValidationMessageFor(m => m.utilisateurartiste.mailUA)
-                        </div>
-
-                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                            @Html.LabelFor(m => m.utilisateurartiste.mot_de_passe)
-                        </div>
-
-                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                            @Html.TextBoxFor(m => m.utilisateurartiste.mot_de_passe)
-                        </div>
-
-                        <div class="col" style="margin-right: 0.5em; margin-left: 0.5em;">
-                            @Html.ValidationMessageFor(m => m.utilisateurartiste.mot_de_passe)
-                        </div>
-                        @Html.LabelFor(m => m.SelectedEcoleIds)
-                        @Html.ListBoxFor(model => model.SelectedEcoleIds, Model.EcoleList)
-
-                        @Html.LabelFor(m => m.SelectedCategorieIds)
-                        @Html.ListBoxFor(model => model.SelectedCategorieIds, Model.CategorieList)
-
-                    </div>
-
-                    <div>
-                        <button class="btn btn-info" id="etapesuivante">Passez à l'étape suivante</button>
-                    </div>
-
-                 </div>
-                 <input name="envoyer" type="submit">
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.TextBoxFor(m => m.utilisateurartiste.artiste.date_de_naissance)
             </div>
         </div>
-        }
-</div>
+
+
+
+        <div class="row mt-2">
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.LabelFor(m => m.utilisateurartiste.artiste.adresse)
+            </div>
+
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.TextBoxFor(m => m.utilisateurartiste.artiste.adresse)
+            </div>
+
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.LabelFor(m => m.utilisateurartiste.artiste.code_postale)
+            </div>
+
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.TextBoxFor(m => m.utilisateurartiste.artiste.code_postale)
+            </div>
+
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.LabelFor(m => m.utilisateurartiste.artiste.ville)
+            </div>
+
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.TextBoxFor(m => m.utilisateurartiste.artiste.ville)
+            </div>
+        </div>
+
+
+
+        <div class="row mt-2">
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.LabelFor(m => m.utilisateurartiste.artiste.pays)
+            </div>
+
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.TextBoxFor(m => m.utilisateurartiste.artiste.pays)
+            </div>
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.LabelFor(m => m.utilisateurartiste.artiste.numero)
+            </div>
+
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.TextBoxFor(m => m.utilisateurartiste.artiste.numero)
+            </div>
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.LabelFor(m => m.utilisateurartiste.artiste.description)
+            </div>
+
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.TextBoxFor(m => m.utilisateurartiste.artiste.description)
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.LabelFor(m => m.utilisateurartiste.artiste.Disponibilite)
+            </div>
+
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.TextBoxFor(m => m.utilisateurartiste.artiste.Disponibilite)
+            </div>
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.LabelFor(m => m.utilisateurartiste.mailUA)
+            </div>
+
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.TextBoxFor(m => m.utilisateurartiste.mailUA)
+            </div>
+
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.LabelFor(m => m.utilisateurartiste.mot_de_passe)
+            </div>
+
+            <div class="col" style="margin-right: 0.5em; margin-left: 0.5em; font-size: 20px;">
+                @Html.PasswordFor(m => m.utilisateurartiste.mot_de_passe)
+            </div>
+        </div>
+
+        <div class="container-fluid mt-5">
+            <div class="row mt-5" style="font-size: 20px;">
+                @Html.LabelFor(m => m.SelectedEcoleIds)
+                @Html.ListBoxFor(model => model.SelectedEcoleIds, Model.EcoleList)
+
+                @Html.LabelFor(m => m.SelectedCategorieIds)
+                @Html.ListBoxFor(model => model.SelectedCategorieIds, Model.CategorieList)
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-5">
+            <div class="row text-center">
+                <div class="col">
+                    <button class="btn btn-danger" style="font-size: 26px;"><a href="javascript:history.go(-1)">Retour</a></button>
+                </div>
+
+                <div class="col">
+                    <button class="btn btn-success" id="etapesuivante"  style="font-size: 26px;">Passez à l'étape suivante</button>
+                </div>
+
+            </div>
+        </div>
+
+
+    
+
+
+
+
+
+}
+
 
 
 

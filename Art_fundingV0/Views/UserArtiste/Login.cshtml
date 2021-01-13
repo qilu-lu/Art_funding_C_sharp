@@ -16,39 +16,47 @@
 
 }
 else
-{
+{<div class="container-sm mt-4 text-center">
+    <img src="~/Content/logo/ART_FUNDINGGlass.png" />
+</div>
+    
 
     using (Html.BeginForm())
     {
 
-        <div class="container-sm" style="margin-top: 28%; text-align: center;">
-            <div class="row my-4" style="margin-left: 400px; color: white; font-size: 25px;">
-                <div class="col-2">
-                    @Html.LabelFor(m => m.adress_mail)
-                </div>
-                <div class="col-4">
-                    @Html.TextBoxFor(m => m.adress_mail)
-                    @Html.ValidationMessageFor(m => m.adress_mail)
-                </div>
-            </div>
-            <div class="row my-4" style="margin-left: 400px; color: white; font-size: 25px;">
-                <div class="col-2">
-                    @Html.LabelFor(m => m.mot_de_passe)
-                </div>
-                <div class="col-4">
-                    @Html.PasswordFor(m => m.mot_de_passe)
-                    @Html.ValidationMessageFor(m => m.mot_de_passe)
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 my-3">
-                    <button class="btn btn-success" type="submit" style=" color: white; font-size: 25px;">Je me connecte</button>
-                </div>
-                <div class="col-12 my-3">
-                    <button class="btn btn-danger" style=" color: white; font-size: 25px;"> @Html.ActionLink("Je crée mon compte", "CreerCompte")</button>
-                </div>
-            </div>
-        </div>
+ <div class="container-sm" style="margin-top: 6%; margin-left: 10%; text-align: center;">
+         <div class="row my-5 text-center" style="margin-left: 165px; margin-bottom: 10px; black; font-size: 25px;">
+             <h1 style="margin-left: -26%;">
+                 Hello ! Vous êtes <span style="color: white; text-decoration: line-through;">connecté.e</span>
+             </h1>
+         </div>
+         <div class="row my-4" style="margin-left: 165px; color: white; font-size: 25px;">
+             <div class="col-2">
+                 @Html.LabelFor(m => m.adress_mail)
+             </div>
+             <div class="col-4">
+                 @Html.TextBoxFor(m => m.adress_mail)
+                 @Html.ValidationMessageFor(m => m.adress_mail)
+             </div>
+         </div>
+         <div class="row my-4" style="margin-left: 165px; color: white; font-size: 25px;">
+             <div class="col-2">
+                 @Html.LabelFor(m => m.mot_de_passe)
+             </div>
+             <div class="col-4">
+                 @Html.PasswordFor(m => m.mot_de_passe)
+                 @Html.ValidationMessageFor(m => m.mot_de_passe)
+             </div>
+         </div>
+         <div class="row" style="margin-left: -15%;">
+             <div class="col-12 mx-3 my-3">
+                 <button class="btn btn-danger mx-4" style="margin-left: 100px; color: white; font-size: 25px;"> @Html.ActionLink("Je crée mon compte", "CreerCompte")</button>
+
+                 <button class="btn btn-success mx-4" type="submit" style="margin-left: 100px; color: white; font-size: 25px;">Je me connecte</button>
+
+             </div>
+         </div>
+     </div>
     }
 }
 

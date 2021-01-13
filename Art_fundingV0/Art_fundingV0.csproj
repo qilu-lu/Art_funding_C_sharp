@@ -141,7 +141,6 @@
     <Compile Include="Controllers\DossierFinancementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InfoArtFundingController.cs" />
-    <Compile Include="Controllers\PopUpController.cs" />
     <Compile Include="Controllers\RedigerMailController.cs" />
     <Compile Include="Controllers\SelectionArtisteController.cs" />
     <Compile Include="Controllers\UploadFilesController.cs" />
@@ -169,6 +168,7 @@
     <Compile Include="Models\contrat_entreprise.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CookieUtil.cs" />
     <Compile Include="Models\document_artiste.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -192,11 +192,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -205,7 +200,6 @@
     <Compile Include="Models\photo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CookieUtil.cs" />
     <Compile Include="Models\StringUtil.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\DalArtiste.cs" />
@@ -241,21 +235,42 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\HomeBackgroundFond.png" />
+    <Content Include="Content\images\alex-alvarez-63YVMrL2d6g-unsplash.jpg" />
     <Content Include="Content\images\ArtisteMonde.png" />
     <Content Include="Content\images\beatriz-perez-moya-XN4T2PVUUgk-unsplash.jpg" />
     <Content Include="Content\images\Designers.jpg" />
     <Content Include="Content\images\Dessinateur.jpg" />
+    <Content Include="Content\images\edu-lauton-TyQ-0lPp6e4-unsplash.jpg" />
+    <Content Include="Content\images\gemma-evans-IAKIkREkRzY-unsplash.jpg" />
     <Content Include="Content\images\HomeBackgroundFond.png" />
     <Content Include="Content\images\image %2810%29.png" />
     <Content Include="Content\images\image %2811%29.png" />
+    <Content Include="Content\images\image %2813%29.png" />
+    <Content Include="Content\images\image %2814%29.png" />
+    <Content Include="Content\images\image %2815%29.png" />
+    <Content Include="Content\images\image %2816%29.png" />
+    <Content Include="Content\images\image %2817%29.png" />
+    <Content Include="Content\images\image %2818%29.png" />
+    <Content Include="Content\images\image %2819%29.png" />
     <Content Include="Content\images\image %282%29.png" />
+    <Content Include="Content\images\image %285%29.png" />
+    <Content Include="Content\images\image %286%29.png" />
     <Content Include="Content\images\image %287%29.png" />
     <Content Include="Content\images\jasmine-coro-3NgnoYlNKdk-unsplash.jpg" />
+    <Content Include="Content\images\jess-bailey-l3N9Q27zULw-unsplash.111jpg.jpg" />
     <Content Include="Content\images\jess-bailey-l3N9Q27zULw-unsplash.jpg" />
+    <Content Include="Content\images\markus-winkler-gLdJnQFcIXE-unsplash.jpg" />
+    <Content Include="Content\images\Partenaire\Bored panda.jpg" />
+    <Content Include="Content\images\Partenaire\Google_arts_culture.jpg" />
+    <Content Include="Content\images\Partenaire\logoCAR.png" />
+    <Content Include="Content\images\Partenaire\Noealz.png" />
+    <Content Include="Content\images\Partenaire\source-logo.png" />
     <Content Include="Content\images\peinture_4.jpg" />
     <Content Include="Content\images\Photographe.jpg" />
     <Content Include="Content\images\Styliste.jpg" />
-    <Content Include="Content\logo\ART_FUNDINGBlackGlass.png" />
+    <Content Include="Content\logo\ART_FLogoBlack.png" />
+    <Content Include="Content\logo\ART_FUNDINGGlass.png" />
+    <Content Include="Content\logo\ART_FUNDINGWhiteGlass.png" />
     <Content Include="Content\Styliste.jpg" />
     <Content Include="Content\Video\Notebook and Pen in Female Hand.mp4" />
     <Content Include="favicon.ico" />
@@ -299,11 +314,25 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Style\styleAccueilAppli.css" />
     <Content Include="Style\styleAjouterContratecole.css" />
+    <Content Include="Style\stylePaiement.css" />
     <Content Include="Style\styleConnexionArtiste.css" />
     <Content Include="Style\styleConnexionEntreprise.css" />
+    <Content Include="Style\styleCreationCompteArtiste old.css" />
+    <Content Include="Style\styleCreationCompteArtiste.css" />
+    <Content Include="Style\styleEtapeDossierFinancement.css" />
+    <Content Include="Style\styleDashboardArtiste.css" />
+    <Content Include="Style\styleDashboardAccueil.css" />
+    <Content Include="Style\styleChargerDocsArtiste.css" />
+    <Content Include="Style\styleRoseArtiste.css" />
+    <Content Include="Style\styleSuccessMessage.css" />
     <Content Include="Style\styleIndexEntreprise.css" />
+    <Content Include="Style\styleArtisteEnFormation.css" />
+    <Content Include="Style\styleMonProfil.css" />
+    <Content Include="Style\stylePortfolio.css" />
     <Content Include="Style\styleRechercheArtiste.css" />
+    <Content Include="Style\styleRose.css" />
     <Content Include="Style\styles.css" />
     <Content Include="Style\styleLoginArtiste.css" />
     <Content Include="Style\stylesCreerCompteEntreprise.css" />
@@ -325,15 +354,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\userEntreprise\PieceManquant.cshtml" />
     <Content Include="Views\userEntreprise\CreerCompte.cshtml" />
-    <Content Include="Views\UserArtiste\CreerCompte.cshtml" />
     <Content Include="Views\userEntreprise\paiement.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\userEntreprise\envoyerDossier.cshtml" />
-    <Content Include="Views\RedigerMail\ContactAsync.cshtml" />
     <Content Include="Views\RedigerMail\SuccessMessage.cshtml" />
     <Content Include="Views\UserArtiste\Index.cshtml" />
     <Content Include="Views\UserArtiste\remplirphoto.cshtml" />
-    <Content Include="Views\userEntreprise\choisirCategorie.cshtml" />
     <Content Include="Views\SelectionArtiste\SelectionArtiste.cshtml" />
     <Content Include="Views\BoiteArtiste\Index.cshtml" />
     <Content Include="Views\SelectionArtiste\RechercheArtiste.cshtml" />
@@ -341,32 +365,45 @@
     <Content Include="Views\DossierFinancement\EtapeDossiersFinancement.cshtml" />
     <Content Include="Views\Dashboard\ArtisteContactes.cshtml" />
     <Content Include="Views\UserArtiste\chargerDocs.cshtml" />
-    <Content Include="Views\DossierFinancement\Contrat.cshtml" />
     <Content Include="Views\Shared\LayoutUA.cshtml" />
     <Content Include="Views\Shared\LayoutLogin.cshtml" />
     <Content Include="Views\UploadFiles\TelechargerDocs.cshtml" />
-    <Content Include="Views\DossierFinancement\ValiderDossierFinancement.cshtml" />
-    <Content Include="Views\DossierFinancement\TelechargerDossierFinancement.cshtml" />
     <Content Include="Views\Shared\LayoutLoginArtiste.cshtml" />
     <Content Include="Views\ArtisteEnFormation\ArtisteEnFormation.cshtml" />
-    <Content Include="Views\PopUp\PopUp.cshtml" />
     <Content Include="Views\Shared\LayoutAF.cshtml" />
-    <Content Include="Views\Dashboard\AccueilDashboard.cshtml" />
-    <Content Include="Views\InfoArtFunding\QuiSommeNous.cshtml" />
-    <Content Include="Views\InfoArtFunding\InfoArtFunding.cshtml" />
-    <Content Include="Views\InfoArtFunding\Partenaires.cshtml" />
     <Content Include="Views\DashboardArtiste\MonProfil.cshtml" />
     <Content Include="Views\Shared\LayoutCreerCompteEntreprise.cshtml" />
     <Content Include="Views\Shared\LayoutTelechargerDocs.cshtml" />
     <Content Include="Views\userEntreprise\Login.cshtml" />
     <Content Include="Views\Shared\LayoutConnexionEntreprise.cshtml" />
     <Content Include="Views\UserArtiste\Login.cshtml" />
-    <Content Include="Views\Shared\LayoutConnexionArtiste.cshtml" />
     <Content Include="Views\Shared\LayoutRechercheArtiste.cshtml" />
-    <Content Include="Views\Shared\LayoutIndexEntreprise.cshtml" />
-    <Content Include="Views\userEntreprise\Index.cshtml" />
     <Content Include="Views\UserArtiste\AjouterContratecole.cshtml" />
     <Content Include="Views\Shared\LayoutAjouterContratecole.cshtml" />
+    <Content Include="Views\userEntreprise\Index.cshtml" />
+    <Content Include="Views\Shared\LayoutIndexEntreprise.cshtml" />
+    <Content Include="Views\Dashboard\AccueilDashboard.cshtml" />
+    <Content Include="Views\Shared\LayoutDashboardAccueil.cshtml" />
+    <Content Include="Views\Shared\LayoutArtisteEnformation.cshtml" />
+    <Content Include="Views\Shared\LayoutDashboardArtiste.cshtml" />
+    <Content Include="Views\InfoArtFunding\QuiSommeNous.cshtml" />
+    <Content Include="Views\InfoArtFunding\Partenaires.cshtml" />
+    <Content Include="Views\Shared\LayoutMonProfil.cshtml" />
+    <Content Include="Views\Shared\LayoutPortfolio.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\LayoutAccueilAppli.cshtml" />
+    <Content Include="Views\DossierFinancement\TelechargerDossierFinancement.cshtml" />
+    <Content Include="Views\DossierFinancement\ValiderDossierFinancement.cshtml" />
+    <Content Include="Views\Shared\LayoutRose.cshtml" />
+    <Content Include="Views\UserArtiste\CreerCompte.cshtml" />
+    <Content Include="Views\Shared\LayoutConnexionArtiste.cshtml" />
+    <Content Include="Views\Shared\LayoutCreationCompteArtiste.cshtml" />
+    <Content Include="Views\RedigerMail\ContactAsync.cshtml" />
+    <Content Include="Views\Shared\LayoutSuccesMessage.cshtml" />
+    <Content Include="Views\Shared\LayoutEtapeDossierFinancement.cshtml" />
+    <Content Include="Views\Shared\LayoutRoseArtiste.cshtml" />
+    <Content Include="Views\Shared\LayoutChargerDocsArtiste.cshtml" />
+    <Content Include="Views\Shared\LayoutPaiement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

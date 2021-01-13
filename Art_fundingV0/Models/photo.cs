@@ -17,6 +17,7 @@ namespace Art_fundingV0.Models
         public int idphoto { get; set; }
         public Nullable<int> idartist { get; set; }
         public byte[] photo1 { get; set; }
+        public string photocol { get; set; }
     
         public virtual artiste artiste { get; set; }
     }

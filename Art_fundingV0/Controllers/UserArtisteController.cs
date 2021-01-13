@@ -14,7 +14,7 @@ namespace Art_fundingV0.Controllers
 
 
         private IDalArtiste dalArtiste;
-        private IDalEntreprise dalEntreprise;
+        
         private IDalEcole dalEcole;
         private art_fundingEntities context = new art_fundingEntities();
         public UserArtisteController() : this(new DalArtiste(), new DalEcole())
@@ -28,6 +28,8 @@ namespace Art_fundingV0.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            artiste utilisateurartiste = dalArtiste.ObtientUtilisateurA(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).artiste;
+            ViewBag.prenom = utilisateurartiste.prenom;
             return View();
         }
 
@@ -115,6 +117,7 @@ namespace Art_fundingV0.Controllers
         public ActionResult remplirphoto()
         {
             artiste artiste = dalArtiste.ObtientUtilisateurA(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).artiste;
+            ViewBag.prenom = artiste.prenom;
             ArtistePhotosViewModel p = new ArtistePhotosViewModel();
             p.photoDejaEnvoyees = artiste.photos.Count();
             if (artiste.photos.Count() >= 10)
@@ -126,7 +129,7 @@ namespace Art_fundingV0.Controllers
 
         public ActionResult SupprimerPhoto(int idPhoto)
         {
-            artiste artiste = dalArtiste.ObtientTousLesArtistes(HttpContext.User.Identity.Name).artiste;
+            artiste artiste = dalArtiste.ObtientUtilisateurA(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).artiste;
             dalArtiste.SupprimerPhoto(artiste, idPhoto);
             return RedirectToAction("MonProfil", "DashboardArtiste");
         }
@@ -157,8 +160,11 @@ namespace Art_fundingV0.Controllers
                     }
                 }
                 context.SaveChanges();
+                if (artiste.document_artiste.Count() > 0)
+                {
+                    return RedirectToAction("MonProfil", "DashboardArtiste");
+                }
                 return RedirectToAction("chargerDocs");
-
             }
 
             return View();
@@ -169,6 +175,7 @@ namespace Art_fundingV0.Controllers
         {
             document_artiste da = new document_artiste();
             artiste artiste = dalArtiste.ObtientUtilisateurA(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).artiste;
+            ViewBag.prenom = artiste.prenom;
             if (artiste.document_artiste.Count() > 0)
             {
                 return RedirectToAction("/index");
@@ -228,6 +235,8 @@ namespace Art_fundingV0.Controllers
 
         public ActionResult AjouterContratecole()
         {
+            artiste artiste = context.utilisateurartistes.Find(CookieUtil.getIdFromCookie(HttpContext.User.Identity.Name)).artiste;
+            ViewBag.prenom = artiste.prenom;
             return View();
         }
         [HttpPost]

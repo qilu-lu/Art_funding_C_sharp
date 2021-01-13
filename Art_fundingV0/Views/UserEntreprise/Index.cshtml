@@ -2,15 +2,19 @@
 @{
     Layout = "~/Views/Shared/LayoutIndexEntreprise.cshtml";
 }
-
-<div class="container" style="text-align: center; margin-top: 15em; font-family: 'Raleway', sans-serif;">
+<div class="container-sm mt-5 text-center">
+    <button class="btn btn-secondary" style="margin-left: 80%; color: #ffc107; font-size: 30px; border-color: #ffc107; border-radius: 5px; border-width: 7px;"> @Html.ActionLink("Ma Boîte à artistes", "Index", "BoiteArtiste") </button>
+</div>
+<div class="container" style="text-align: center; margin-top: 13em; font-family: 'Raleway', sans-serif;">
     <h1>
-        L'Art, c'est quand l'admiration d'une oeuvre suscite en vous le désir d'en faire autant.
+        L'ART, c'est quand...<br/>
+        l'admiration d'une oeuvre suscite en vous :le désir d'en faire autant.
     </h1>
 </div>
-<div class="container-fluid" id="coverflow" style="margin-top: 17em;">
-   
-     <div class="row w-100">
+
+<div class="container-fluid" id="coverflow" style="margin-top: 8em;">
+
+    <div class="row w-100">
         <div class="col mx-2" style="text-align: center;">
             <img src="~/Content/images/peinture_4.jpg" />
             @using (Html.BeginForm("RechercheArtiste", "SelectionArtiste", new { searchString = "peintre" }, FormMethod.Post))

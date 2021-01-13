@@ -1,0 +1,67 @@
+﻿<html>
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>Artiste en formation</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Style/stylePaiement.css" rel="stylesheet" />
+    <script src="~/Scripts/Font-Awesome.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+
+</head>
+
+<body>
+    <header>
+    <nav class="navbar navbar-toggler navbar-dark bg-dark w-100">
+
+        <!--  D R O P D O W N  M E N U  -->
+        <div class="dropdown">
+            <a class="navlink" id="artFunding">Art_F</a>
+            <div class="dropdown-content">
+                <a href="#">Transformez votre talent en métier</a>
+                @Html.ActionLink("Qui sommes-nous ?", "QuiSommeNous", "InfoArtFunding")
+                @Html.ActionLink("Nos partenaires", "Partenaires", "InfoArtFunding")
+            </div>
+        </div>
+        <!--  E N D  D R O P D O W N  M E N U  -->
+        <!--
+        <div class="navbar-header">
+             <a class="navbar-brand" href="#"></a>
+        </div> -->
+
+
+        
+
+        
+        <div class="nav navbar-nav navbar-right">
+            <p style="color: white;">
+                <i class="fas fa-user-circle"></i> Bonjour @ViewBag.prenom  @Html.ActionLink("! J'accéde à mon Dashboard ", "AccueilDashboard", "Dashboard")
+            </p>
+        </div>
+        <div class="nav navbar-nav navbar-right">
+            <p style="color: white;">
+                <i class="fas fa-sign-out-alt"></i> @Html.ActionLink("Je me déconnecte.", "deconnexion", "home")
+            </p>
+        </div>
+    </nav>
+
+
+
+    </header>
+    @RenderBody()
+
+    <footer>
+
+        <div class="footer">
+            <ul class="icons">
+                <a href="http://facebook.com"><i class="fab fa-facebook-f" alt="Facebook" id="icon1"></i></a>
+                <a href="http://instagram.com"><i class="fab fa-instagram" alt="Instagram" id="icon2"></i></a>
+                <a href="http://linkedin.com"><i class="fab fa-linkedin-in" alt="Linkedin" id="icon3"></i></a>
+                <a href="/"><i class="far fa-envelope" id="icon4"></i></a>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,33 +1,77 @@
 ﻿@model Art_fundingV0.ViewModels.DossierFinancementViewModel
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/LayoutRose.cshtml";
 }
+<style type="text/css">
+    td {
+        width: 100px;
+    }
+
+    th {
+        width: 100px;
+    }
+</style>
 @using (Html.BeginForm())
 {
-    <title>Index</title>
-    <body>
-        <div>
+    
+        <div class="container-fluid text-center" style="margin-top: 10%;">
+            <h1 style="margin-bottom: 20px;">Dossiers de financement en cours</h1>
             <table>
+                <tr>
+                    <td style="background-color: black; font-size: 20px; width: 200px;border: solid;
+    color: white; border-color: black;">
+                        Prénom
+                    </td>
+                    <td style="background-color: black; font-size: 20px; width: 200px;border: solid;
+    color: white; border-color: black;">
+                        Nom
+                    </td>
+                    <td style="background-color: black; font-size: 20px; width: 200px;border: solid;
+    color: white; border-color: black;">
+                        Disponibilité
+                    </td>
+                    <td style="background-color: black; font-size: 20px; width: 200px;border: solid;
+    color: white; border-color: black;">
+                        Date de naissance
+                    </td>
+                    <td style="background-color: black; font-size: 20px; width: 200px;border: solid;
+    color: white; border-color: black;">
+                        Etat d'avancement
+                    </td>
+                    <td style="background-color: black; font-size: 20px; width: 200px;border: solid;
+    color: white; border-color: black;">
+                        Action
+                    </td>
+                </tr>
                 @foreach (var d in Model.TousLesArtistesFinancement)
                 {
                     <tr>
-                        <td>@d.prenom</td>
-                        <td>@d.nom</td>
-                        <td>@d.Disponibilite.Value.ToString("mm/dd/yyyy")</td>
-                        <td>@d.date_de_naissance.ToString("mm/dd/yyyy")</td>
+                        <td style ="font-size: 20px; width: 200px;border: solid;
+    border-color: black;">@d.prenom</td>
+                        <td style="font-size: 20px; width: 200px;border: solid;
+border-color: black;">@d.nom</td>
+                        <td style="font-size: 20px; width: 200px;border: solid;
+    border-color: black;">
+                            @d.Disponibilite.Value.ToString("mm/dd/yyyy")
+                        </td>
+                        <td style="font-size: 20px; width: 200px;border: solid;
+    border-color: black;">
+                            @d.date_de_naissance.ToString("mm/dd/yyyy")
+                        </td>
                         @*<td><a title="Portfolio" href="/BoiteArtiste/portfoliu?idArtiste=@d.artiste.idartiste">Lien</a></td>
                             <td>  <a class="delete" title="Delete" href="/BoiteArtiste/Supprimer?idArtiste=@d.artiste.idartiste"><i class="fas fa-trash-alt"></i></a></td>*@
-                        <td>
+                        <td style ="font-size: 20px; width: 1300px;border: solid;
+    border-color: black;">
                             @if (d.document_artiste.Count > 0)
                             {
                                 if (d.contrat_ecole.Count > 0)
                                 {
                                     @Html.LabelFor(m => m.messageFinancementAValider)
-                                <td>
+                                <td style ="width: 10px;">
                                     @foreach (var c in d.contrat_ecole)
                                     {
-                                        @Html.ActionLink("ValiderDossierFinancement", "Valider Le dossier")
-                                        //<a title="telechargercontrat" href="/UserArtiste/getContrat?idcontrat=@c.idcontrat_ecole">Telecharger</a>
+                                        <button class="btn btn-success">@Html.ActionLink("Valider Le dossier", "ValiderDossierFinancement")</button>
+
                                     }
                                 </td>
                             }
@@ -45,5 +89,5 @@
                     }
             </table>
         </div>
-    </body>
+   
 }

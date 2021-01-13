@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="art_fundingModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="art_fundingModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="artiste">
           <Key>
             <PropertyRef Name="idartiste" />
@@ -23,12 +23,13 @@
           <Property Name="formation_choisie_id" Type="int" />
           <Property Name="Disponibilite" Type="date" />
           <Property Name="categorie_id" Type="int" Nullable="false" />
+          <Property Name="prix_formation" Type="int" />
         </EntityType>
         <EntityType Name="boite_artiste">
           <Key>
             <PropertyRef Name="idBoite_Artiste" />
           </Key>
-          <Property Name="idBoite_Artiste" Type="int" Nullable="false" />
+          <Property Name="idBoite_Artiste" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_entreprise" Type="int" />
           <Property Name="id_artiste" Type="int" />
           <Property Name="etat" Type="varchar" MaxLength="45" />
@@ -72,8 +73,8 @@
           </Key>
           <Property Name="id_document_artiste" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_artiste" Type="int" Nullable="false" />
-          <Property Name="CNI" Type="blob" Nullable="false" />
-          <Property Name="justificatif_de_domicile" Type="blob" />
+          <Property Name="CNI" Type="longblob" Nullable="false" />
+          <Property Name="justificatif_de_domicile" Type="longblob" />
         </EntityType>
         <EntityType Name="document_entreprise">
           <Key>
@@ -81,10 +82,10 @@
           </Key>
           <Property Name="iddocument_entreprise" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_entreprise" Type="int" Nullable="false" />
-          <Property Name="Attestation_assurance" Type="blob" />
-          <Property Name="Kbis" Type="blob" />
-          <Property Name="RIB" Type="blob" />
-          <Property Name="Dernier_statut" Type="blob" />
+          <Property Name="Attestation_assurance" Type="longblob" />
+          <Property Name="Kbis" Type="longblob" />
+          <Property Name="RIB" Type="longblob" />
+          <Property Name="Dernier_statut" Type="longblob" />
         </EntityType>
         <EntityType Name="ecole">
           <Key>
@@ -146,7 +147,8 @@
           </Key>
           <Property Name="idphoto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idartist" Type="int" />
-          <Property Name="photo" Type="blob" />
+          <Property Name="photo" Type="longblob" />
+          <Property Name="photocol" Type="varchar" MaxLength="45" />
         </EntityType>
         <EntityType Name="utilisateurartiste">
           <Key>
@@ -429,7 +431,8 @@
             <End Role="utilisateurentreprise" EntitySet="utilisateurentreprise" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="art_fundingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -451,21 +454,22 @@
           <Property Name="formation_choisie_id" Type="Int32" />
           <Property Name="Disponibilite" Type="DateTime" />
           <Property Name="categorie_id" Type="Int32" Nullable="false" />
+          <Property Name="prix_formation" Type="Int32" />
           <NavigationProperty Name="categorie" Relationship="Self.fk_artiste_categorie" FromRole="artiste" ToRole="categorie" />
           <NavigationProperty Name="ecole" Relationship="Self.fk_artiste_ecole" FromRole="artiste" ToRole="ecole" />
           <NavigationProperty Name="boite_artiste" Relationship="Self.fk_boite_artiste_artiste" FromRole="artiste" ToRole="boite_artiste" />
           <NavigationProperty Name="contrat_ecole" Relationship="Self.fk_contrat_ecole_artiste" FromRole="artiste" ToRole="contrat_ecole" />
+          <NavigationProperty Name="contrat_entreprise" Relationship="Self.fk_contrat_entreprise_artiste" FromRole="artiste" ToRole="contrat_entreprise" />
           <NavigationProperty Name="document_artiste" Relationship="Self.fk_document_artiste_artiste" FromRole="artiste" ToRole="document_artiste" />
           <NavigationProperty Name="entreprises" Relationship="Self.fk_entreprise_artiste" FromRole="artiste" ToRole="entreprise" />
           <NavigationProperty Name="photos" Relationship="Self.fk_photo_artiste" FromRole="artiste" ToRole="photo" />
           <NavigationProperty Name="utilisateurartistes" Relationship="Self.fk_UtilisateurArtiste_Artiste" FromRole="artiste" ToRole="utilisateurartiste" />
-          <NavigationProperty Name="contrat_entreprise" Relationship="art_fundingModel.fk_contrat_entreprise_artiste" FromRole="artiste" ToRole="contrat_entreprise" />
         </EntityType>
         <EntityType Name="boite_artiste">
           <Key>
             <PropertyRef Name="idBoite_Artiste" />
           </Key>
-          <Property Name="idBoite_Artiste" Type="Int32" Nullable="false" />
+          <Property Name="idBoite_Artiste" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_entreprise" Type="Int32" />
           <Property Name="id_artiste" Type="Int32" />
           <Property Name="etat" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
@@ -506,8 +510,8 @@
           <Property Name="entreprise_id" Type="Int32" />
           <Property Name="ecole_id" Type="Int32" />
           <Property Name="artiste_id" Type="Int32" />
-          <NavigationProperty Name="entreprise" Relationship="Self.fk_cibtrat_entreprise_entreprsie" FromRole="contrat_entreprise" ToRole="entreprise" />
-          <NavigationProperty Name="artiste" Relationship="art_fundingModel.fk_contrat_entreprise_artiste" FromRole="contrat_entreprise" ToRole="artiste" />
+          <NavigationProperty Name="artiste" Relationship="Self.fk_contrat_entreprise_artiste" FromRole="contrat_entreprise" ToRole="artiste" />
+          <NavigationProperty Name="entreprise" Relationship="Self.fk_contrat_entreprise_entreprise" FromRole="contrat_entreprise" ToRole="entreprise" />
         </EntityType>
         <EntityType Name="document_artiste">
           <Key>
@@ -572,8 +576,7 @@
           <Property Name="SIRET" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="artiste" Relationship="Self.fk_entreprise_artiste" FromRole="entreprise" ToRole="artiste" />
           <NavigationProperty Name="boite_artiste" Relationship="Self.fk_boite_artiste_enreprise" FromRole="entreprise" ToRole="boite_artiste" />
-          <NavigationProperty Name="contrat_entreprise" Relationship="Self.fk_cibtrat_entreprise_entreprsie" FromRole="entreprise" ToRole="contrat_entreprise" />
-          <NavigationProperty Name="contrat_entreprise1" Relationship="Self.fk_contrat_entreprise_entreprise" FromRole="entreprise" ToRole="contrat_entreprise" />
+          <NavigationProperty Name="contrat_entreprise" Relationship="Self.fk_contrat_entreprise_entreprise" FromRole="entreprise" ToRole="contrat_entreprise" />
           <NavigationProperty Name="document_entreprise" Relationship="Self.fk_document_entrprise_entrprise" FromRole="entreprise" ToRole="document_entreprise" />
           <NavigationProperty Name="utilisateurentreprises" Relationship="Self.fk_UtilsateurEntreprise_entreprise" FromRole="entreprise" ToRole="utilisateurentreprise" />
         </EntityType>
@@ -603,6 +606,7 @@
           <Property Name="idphoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idartist" Type="Int32" />
           <Property Name="photo1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="photocol" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="artiste" Relationship="Self.fk_photo_artiste" FromRole="photo" ToRole="artiste" />
         </EntityType>
         <EntityType Name="utilisateurartiste">
@@ -679,6 +683,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_contrat_entreprise_artiste">
+          <End Role="artiste" Type="Self.artiste" Multiplicity="0..1" />
+          <End Role="contrat_entreprise" Type="Self.contrat_entreprise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="artiste">
+              <PropertyRef Name="idartiste" />
+            </Principal>
+            <Dependent Role="contrat_entreprise">
+              <PropertyRef Name="artiste_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_document_artiste_artiste">
           <End Role="artiste" Type="Self.artiste" Multiplicity="1" />
           <End Role="document_artiste" Type="Self.document_artiste" Multiplicity="*" />
@@ -736,18 +752,6 @@
             </Principal>
             <Dependent Role="boite_artiste">
               <PropertyRef Name="id_entreprise" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_cibtrat_entreprise_entreprsie">
-          <End Role="entreprise" Type="Self.entreprise" Multiplicity="0..1" />
-          <End Role="contrat_entreprise" Type="Self.contrat_entreprise" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="entreprise">
-              <PropertyRef Name="identreprise" />
-            </Principal>
-            <Dependent Role="contrat_entreprise">
-              <PropertyRef Name="entreprise_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -811,7 +815,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="art_fundingEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="art_fundingEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="artistes" EntityType="Self.artiste" />
           <EntitySet Name="boite_artiste" EntityType="Self.boite_artiste" />
           <EntitySet Name="categories" EntityType="Self.categorie" />
@@ -843,6 +847,10 @@
             <End Role="artiste" EntitySet="artistes" />
             <End Role="contrat_ecole" EntitySet="contrat_ecole" />
           </AssociationSet>
+          <AssociationSet Name="fk_contrat_entreprise_artiste" Association="Self.fk_contrat_entreprise_artiste">
+            <End Role="artiste" EntitySet="artistes" />
+            <End Role="contrat_entreprise" EntitySet="contrat_entreprise" />
+          </AssociationSet>
           <AssociationSet Name="fk_document_artiste_artiste" Association="Self.fk_document_artiste_artiste">
             <End Role="artiste" EntitySet="artistes" />
             <End Role="document_artiste" EntitySet="document_artiste" />
@@ -862,10 +870,6 @@
           <AssociationSet Name="fk_boite_artiste_enreprise" Association="Self.fk_boite_artiste_enreprise">
             <End Role="entreprise" EntitySet="entreprises" />
             <End Role="boite_artiste" EntitySet="boite_artiste" />
-          </AssociationSet>
-          <AssociationSet Name="fk_cibtrat_entreprise_entreprsie" Association="Self.fk_cibtrat_entreprise_entreprsie">
-            <End Role="entreprise" EntitySet="entreprises" />
-            <End Role="contrat_entreprise" EntitySet="contrat_entreprise" />
           </AssociationSet>
           <AssociationSet Name="fk_contrat_entreprise_entreprise" Association="Self.fk_contrat_entreprise_entreprise">
             <End Role="entreprise" EntitySet="entreprises" />
@@ -887,29 +891,13 @@
             <End Role="fomation" EntitySet="fomations" />
             <End Role="formation_ecole" EntitySet="formation_ecole" />
           </AssociationSet>
-          <AssociationSet Name="fk_contrat_entreprise_artiste" Association="art_fundingModel.fk_contrat_entreprise_artiste">
-            <End Role="artiste" EntitySet="artistes" />
-            <End Role="contrat_entreprise" EntitySet="contrat_entreprise" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="fk_contrat_entreprise_artiste">
-          <End Type="art_fundingModel.artiste" Role="artiste" Multiplicity="0..1" />
-          <End Type="art_fundingModel.contrat_entreprise" Role="contrat_entreprise" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="artiste">
-              <PropertyRef Name="idartiste" />
-            </Principal>
-            <Dependent Role="contrat_entreprise">
-              <PropertyRef Name="artiste_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="art_fundingModelStoreContainer" CdmEntityContainer="art_fundingEntities2">
+        <EntityContainerMapping StorageEntityContainer="art_fundingModelStoreContainer" CdmEntityContainer="art_fundingEntities1">
           <EntitySetMapping Name="artistes">
             <EntityTypeMapping TypeName="art_fundingModel.artiste">
               <MappingFragment StoreEntitySet="artiste">
@@ -927,6 +915,7 @@
                 <ScalarProperty Name="formation_choisie_id" ColumnName="formation_choisie_id" />
                 <ScalarProperty Name="Disponibilite" ColumnName="Disponibilite" />
                 <ScalarProperty Name="categorie_id" ColumnName="categorie_id" />
+                <ScalarProperty Name="prix_formation" ColumnName="prix_formation" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1063,6 +1052,7 @@
                 <ScalarProperty Name="idphoto" ColumnName="idphoto" />
                 <ScalarProperty Name="idartist" ColumnName="idartist" />
                 <ScalarProperty Name="photo1" ColumnName="photo" />
+                <ScalarProperty Name="photocol" ColumnName="photocol" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,21 +1,25 @@
 ﻿@model Art_fundingV0.ViewModels.LoginViewModel
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/LayoutRose.cshtml";
 }
 
-<h3>
+<div class="container text-center mt-5"> 
+    <h3>
 
     Votre inscription n'est pas finalisée<br />
     Etapes manquants:<br />
     @if (Model.paiementNExistePas)
     {
-        <a href="/UserEntreprise/paiement">paiement</a><br />
+        <a href="/UserEntreprise/paiement">Paiement</a><br />
     }
     @if (Model.docNExistePas)
     {
-        <a href="/uploadFiles/TelechargerDocs">Fournir les piéce d'identite</a><br />
+        <h4>Afin de finaliser notre entrée en relation, il suffit de nous fournir les justificatifs de l'activité professionnelle.</h4> 
+       <button class="btn btn-success" style="font-size: 26px;"><a href="/uploadFiles/TelechargerDocs">Je le télécharge</a></button>
     }
     @*<a href="/userEntreprise/Index">Se connecter en tant qu'artiste</a>*@
 </h3>
 @*@Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")*@
-<a href="/Home/Deconnexion">Voulez-vous vous déconnecter</a><br />
+@*<a href="/Home/Deconnexion">Voulez-vous vous déconnecter</a><br />*@
+    </div>
+
